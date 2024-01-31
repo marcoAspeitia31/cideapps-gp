@@ -43,7 +43,7 @@ class Cideapps_Gp_Options_Menu_Page_Fields {
         );
 
         /**
-         * Branding.
+         * Branding Title.
          */
         $cagp_metabox->add_field(
             array(
@@ -120,7 +120,7 @@ class Cideapps_Gp_Options_Menu_Page_Fields {
         ) );
 
         /**
-         * Social Media
+         * Social Media Title.
          */
         $cagp_metabox->add_field( array(
             'name' => esc_html__( 'Social Media', 'cideapps-gp' ),
@@ -129,7 +129,7 @@ class Cideapps_Gp_Options_Menu_Page_Fields {
             'type' => 'title',
         ) );
 
-        // Facebook
+        // Facebook.
         $cagp_metabox->add_field( array(
             'name' => esc_html__( 'Facebook', 'cideapps-gp' ),
             'desc' => esc_html__( 'Add your Facebook profile URL', 'cideapps-gp' ),
@@ -138,7 +138,7 @@ class Cideapps_Gp_Options_Menu_Page_Fields {
             'protocols' => array( 'https' ),
         ) );
 
-        // Instagram
+        // Instagram.
         $cagp_metabox->add_field( array(
             'name' => esc_html__( 'Instagram', 'cideapps-gp' ),
             'desc' => esc_html__( 'Add your Instagram profile URL', 'cideapps-gp' ),
@@ -147,7 +147,7 @@ class Cideapps_Gp_Options_Menu_Page_Fields {
             'protocols' => array( 'https' ),
         ) );
 
-        // Youtube
+        // Youtube.
         $cagp_metabox->add_field( array(
             'name' => esc_html__( 'Youtube', 'cideapps-gp' ),
             'desc' => esc_html__( 'Add your Youtube profile URL', 'cideapps-gp' ),
@@ -156,7 +156,16 @@ class Cideapps_Gp_Options_Menu_Page_Fields {
             'protocols' => array( 'https' ),
         ) );
 
-        // Tiktok
+        // Twitter/X.
+        $cagp_metabox->add_field( array(
+            'name' => esc_html__( 'Twitter/X', 'cideapps-gp' ),
+            'desc' => esc_html__( 'Add your Twitter/X profile URL', 'cideapps-gp' ),
+            'id'   => 'twitter_url',
+            'type' => 'text_url',
+            'protocols' => array( 'https' ),
+        ) );
+
+        // Tiktok.
         $cagp_metabox->add_field( array(
             'name' => esc_html__( 'Tiktok', 'cideapps-gp' ),
             'desc' => esc_html__( 'Add your tiktok profile URL', 'cideapps-gp' ),
@@ -166,7 +175,7 @@ class Cideapps_Gp_Options_Menu_Page_Fields {
         ) );
 
         /**
-         * Registers secondary options page, and set main item as parent.
+         * Registers settings submenu options page.
          */
         $cagp_settings_metabox = new_cmb2_box( array(
             'id'           => 'cagp_settings_metabox',
@@ -176,9 +185,17 @@ class Cideapps_Gp_Options_Menu_Page_Fields {
             'parent_slug'  => 'cagp_theme_options',
         ) );
 
-        //Google API key
+        // Title.
         $cagp_settings_metabox->add_field( array(
-            'name' => esc_html__( 'Google API Key', 'cideapps-gp' ),
+            'name' => esc_html__( 'Addons', 'cideapps-gp' ),
+            'desc' => esc_html__( 'This section is the responsible to storage some plugins functionality', 'cideapps-gp' ),
+            'id'   => 'settings_title',
+            'type' => 'title',
+        ) );
+
+        //Google API key.
+        $cagp_settings_metabox->add_field( array(
+            'name' => esc_html__( 'Google Maps API Key', 'cideapps-gp' ),
             'desc' => esc_html__( 'Add a your Google Maps API key', 'cideapps-gp' ),
             'id'   => 'google_api_key',
             'type' => 'text',

@@ -132,6 +132,7 @@ class Cideapps_Gp {
 		 * The classes responsibles for defining custom metaboxes.
 		 */
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/custom-fields/class-cideapps-gp-options-menu-page-fields.php';
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/custom-fields/class-cideapps-gp-testimonial-fields.php';
 
 		/**
 		 * The class responsible for defining all actions that occur in the public-facing
@@ -181,6 +182,11 @@ class Cideapps_Gp {
 		$plugin_testimonial_post_type = new Cideapps_Gp_Testimonial_Post_Type();
 
 		$this->loader->add_action( 'init', $plugin_testimonial_post_type, 'testimonial_post_type', 0 );
+
+		$plugin_testimonial_fields = new Cideapps_Gp_Testimonial_Fields();
+
+		$this->loader->add_action( 'cmb2_init', $plugin_testimonial_fields, 'testimonial_metabox', 0 );
+
 
 	}
 
