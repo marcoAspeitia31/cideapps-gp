@@ -77,6 +77,7 @@ class Cideapps_Gp {
 		$this->load_dependencies();
 		$this->set_locale();
 		$this->define_admin_hooks();
+		$this->define_options_menu_page_fields_hooks();
 		$this->define_public_hooks();
 
 	}
@@ -112,8 +113,7 @@ class Cideapps_Gp {
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-cideapps-gp-i18n.php';
 
 		/**
-		 * The class responsible for defining internationalization functionality
-		 * of the plugin.
+		 * The class responsible for defining metaboxes with cmb2 framework functionality.
 		 */
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/cmb2-functions.php';
 
@@ -121,6 +121,11 @@ class Cideapps_Gp {
 		 * The class responsible for defining all actions that occur in the admin area.
 		 */
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/class-cideapps-gp-admin.php';
+
+		/**
+		 * The classes responsibles for defining custom metaboxes.
+		 */
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/custom-fields/class-cideapps-gp-options-menu-page-fields.php';
 
 		/**
 		 * The class responsible for defining all actions that occur in the public-facing
@@ -162,6 +167,14 @@ class Cideapps_Gp {
 
 		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_styles' );
 		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_scripts' );
+
+	}
+
+	private function define_options_menu_page_fields_hooks() {
+
+		$plugin_options_menu_page_fields = new Cideapps_Gp_Options_Menu_Page_Fields();
+
+		$this->loader->add_action( 'cmb2_admin_init', $plugin_options_menu_page_fields, 'menu_page_metabox', 10, 0 );
 
 	}
 
