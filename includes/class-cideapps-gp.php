@@ -112,6 +112,12 @@ class Cideapps_Gp {
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-cideapps-gp-i18n.php';
 
 		/**
+		 * The class responsible for defining internationalization functionality
+		 * of the plugin.
+		 */
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/cmb2-functions.php';
+
+		/**
 		 * The class responsible for defining all actions that occur in the admin area.
 		 */
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/class-cideapps-gp-admin.php';
