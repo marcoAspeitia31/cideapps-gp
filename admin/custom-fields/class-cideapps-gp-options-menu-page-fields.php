@@ -106,9 +106,9 @@ class Cideapps_Gp_Options_Menu_Page_Fields {
             'desc' => esc_html__( 'Add your phone number (optional)', 'cideapps-gp' ),
             'id'   => 'business_phone',
             'type' => 'text',
-            'attributes' => array(
+           /*  'attributes' => array(
                 'type' => 'number',
-            ),
+            ), */
         ) );
 
         // E-mail.
@@ -117,6 +117,23 @@ class Cideapps_Gp_Options_Menu_Page_Fields {
             'desc' => esc_html__( 'Add your corporate email (optional)', 'cideapps-gp' ),
             'id'   => 'contact_email',
             'type' => 'text_email',
+        ) );
+
+        // Map
+        $cagp_metabox->add_field( array(
+            'name' => esc_html__( 'Location', 'cideapps-gp' ),
+            'desc' => esc_html__( 'Drag the marker to set the exact location', 'cideapps-gp' ),
+            'id' => 'location',
+            'type' => 'pw_map',
+            // 'split_values' => true, // Save latitude and longitude as two separate fields
+        ) );
+
+        // Business address
+        $cagp_metabox->add_field( array(
+            'name' => esc_html__( 'Business address', 'cideapps-gp' ),
+            'desc' => esc_html__( 'This address will be autocompleted after modifying and saving this page', 'cideapps-gp' ),
+            'id'   => 'business_address',
+            'type' => 'textarea_small',
         ) );
 
         /**
@@ -203,6 +220,39 @@ class Cideapps_Gp_Options_Menu_Page_Fields {
                 'type' => 'password',
             ),
         ) );
+
+    }
+
+    function geocode_business_address( $option, $old_value, $value ) {
+
+        if( $option == 'cagp_theme_options' ) {
+
+            $cagp_settings_options = get_option( 'cagp_settings_options' );
+            $cagp_theme_options = get_option( $option );
+
+            if( ! empty( $cagp_settings_options['google_api_key'] ) ) {
+
+                $google_api_key = esc_html( $cagp_settings_options['google_api_key'] );
+
+            }
+
+            if( $cagp_theme_options['location'] && isset( $google_api_key ) ) {
+
+                $location = $cagp_theme_options['location'];
+
+                $url_maps = "https://maps.googleapis.com/maps/api/geocode/json?latlng=".$location['latitude'].",".$location['longitude']."&sensor=false&key=".$google_api_key;
+                $json_data = json_decode( @file_get_contents( $url_maps ) );
+
+                $business_address = array(
+                    'business_address' => $json_data->results[0]->formatted_address
+                );
+
+                $new_value = array_merge( $cagp_theme_options, $business_address );
+
+                update_option( $option, $new_value );
+            }
+
+        }
 
     }
 

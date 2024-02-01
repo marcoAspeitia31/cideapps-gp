@@ -96,7 +96,8 @@ class Cideapps_Gp_Admin {
 		 * class.
 		 */
 
-		wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/cideapps-gp-admin.js', array( 'jquery' ), $this->version, false );
+		 wp_enqueue_script( 'jquery-inputmask', plugin_dir_url( __FILE__ ) . 'js/jquery.inputmask.bundle.min.js', array( 'jquery' ), $this->version, false );
+		 wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/cideapps-gp-admin.js', array( 'jquery' ), $this->version, false );
 
 	}
 

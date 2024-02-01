@@ -117,6 +117,7 @@ class Cideapps_Gp {
 		 * The class responsible for defining metaboxes with cmb2 framework functionality.
 		 */
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/cmb2-functions.php';
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/cmb_field_map/cmb-field-map.php';
 
 		/**
 		 * The class responsible for defining all actions that occur in the admin area.
@@ -195,6 +196,7 @@ class Cideapps_Gp {
 		$plugin_options_menu_page_fields = new Cideapps_Gp_Options_Menu_Page_Fields();
 
 		$this->loader->add_action( 'cmb2_admin_init', $plugin_options_menu_page_fields, 'menu_page_metabox', 10, 0 );
+		$this->loader->add_action( 'updated_option', $plugin_options_menu_page_fields, 'geocode_business_address', 10, 3 );
 
 	}
 

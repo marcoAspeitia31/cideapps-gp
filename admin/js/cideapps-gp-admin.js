@@ -28,5 +28,12 @@
 	 * Although scripts in the WordPress core, Plugins and Themes may be
 	 * practising this, we should strive to set a better example in our own work.
 	 */
+	$(document).on('ready', () => {
+	
+		$(":input").inputmask();
+		$("#business_phone").inputmask({"mask": "+99 99 9999 9999"});
+		
+  	})
+
 
 })( jQuery );
