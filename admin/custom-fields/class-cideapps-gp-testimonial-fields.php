@@ -29,7 +29,7 @@ class Cideapps_Gp_Testimonial_Fields {
         $testimonial_metabox = new_cmb2_box( array(
             'id'            => $prefix . 'metabox',
             'title'         => esc_html__( 'Testimonial details', 'cideapps-gp' ),
-            'object_types'  => array( 'testimonial' ),
+            'object_types'  => array( 'testimonials' ),
             'context'    => 'normal',
             'priority'   => 'high',
             'show_names' => true,

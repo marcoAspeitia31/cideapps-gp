@@ -32,6 +32,7 @@
 	
 		$(":input").inputmask();
 		$("#business_phone").inputmask({"mask": "+99 99 9999 9999"});
+		$("#whatsapp_phone").inputmask({"mask": "+99 99 9999 9999"});
 		
   	})
 

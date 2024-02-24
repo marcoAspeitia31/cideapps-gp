@@ -111,6 +111,14 @@ class Cideapps_Gp_Options_Menu_Page_Fields {
             ), */
         ) );
 
+        // Whatsapp.
+        $cagp_metabox->add_field( array(
+            'name' => esc_html__( 'Whatsapp', 'cideapps-gp' ),
+            'desc' => esc_html__( 'The Whatsapp number must have the country prefix code (e.g. +52 55 4506 2592)', 'cideapps-gp' ),
+            'id'   => 'whatsapp_phone',
+            'type' => 'text',
+        ) );
+
         // E-mail.
         $cagp_metabox->add_field( array(
             'name' => esc_html__( 'Contact e-mail', 'cideapps-gp' ),
@@ -134,6 +142,14 @@ class Cideapps_Gp_Options_Menu_Page_Fields {
             'desc' => esc_html__( 'This address will be autocompleted after modifying and saving this page', 'cideapps-gp' ),
             'id'   => 'business_address',
             'type' => 'textarea_small',
+        ) );
+
+        // Contact form shortcode
+        $cagp_metabox->add_field( array(
+            'name' => esc_html__( 'Main contact form shortcode', 'cideapps-gp' ),
+            'desc' => esc_html__( 'Add the main contact form 7 shortcode (e.g. [contact-form-7 id="c7de0b7" title="Contact form 1"] )', 'cideapps-gp' ),
+            'id'   => 'main_contact_form_shortcode',
+            'type' => 'text',
         ) );
 
         /**

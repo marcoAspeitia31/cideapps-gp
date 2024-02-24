@@ -80,7 +80,7 @@ class Cideapps_Gp_Testimonial_Post_Type {
             'capability_type'       => 'page',
             'show_in_rest'          => true,
         );
-        register_post_type( 'testimonial', $args );
+        register_post_type( 'testimonials', $args );
     
     }
 
