@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Cide Apps GP v1.0.0\n"
 "Report-Msgid-Bugs-To: Translator Name <translations@example.com>\n"
-"POT-Creation-Date: 2024-05-13 21:53-0600\n"
+"POT-Creation-Date: 2024-05-13 22:50-0600\n"
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
 "Language-Team: CideApps <devs@cide-apps.com>\n"
@@ -22,6 +22,7 @@ msgstr ""
 "X-Poedit-Basepath: ..\n"
 "X-Generator: Poedit 3.4.3\n"
 "X-Poedit-SearchPath-0: .\n"
+"X-Poedit-SearchPathExcluded-0: includes/cmb2\n"
 
 #: admin/custom-fields/class-cideapps-gp-options-menu-page-fields.php:33
 #: admin/custom-fields/class-cideapps-gp-options-menu-page-fields.php:37
