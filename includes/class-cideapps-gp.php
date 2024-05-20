@@ -121,9 +121,9 @@ class Cideapps_Gp {
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/cmb_field_map/cmb-field-map.php';
 
 		/**
-		 * The class responsible for defining all actions that occur in the admin area.
+		 * Register custom taxonomies
 		 */
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/class-cideapps-gp-admin.php';
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/custom-taxonomies/class-cideapps-gp-taxonomies.php';
 
 		/**
 		 * The classes responsible for defining all custom post types
@@ -136,6 +136,12 @@ class Cideapps_Gp {
 		 */
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/custom-fields/class-cideapps-gp-options-menu-page-fields.php';
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/custom-fields/class-cideapps-gp-testimonial-fields.php';
+
+		/**
+		 * The class responsible for defining all actions that occur in the admin area.
+		 */
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/class-cideapps-gp-admin.php';
+
 
 		/**
 		 * The class responsible for defining all actions that occur in the public-facing
@@ -177,6 +183,12 @@ class Cideapps_Gp {
 
 		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_styles' );
 		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_scripts' );
+		$this->loader->add_action( 'registered_taxonomy_service_category', $plugin_admin, 'create_uncategorized_term_in_custom_taxonomy', 10, 3 );
+		$this->loader->add_action( 'registered_taxonomy_service_category', $plugin_admin, 'create_service_category_default_terms', 10, 3 );
+
+		// Custom Taxonomies.
+		$plugin_custom_taxonomies = new Cideapps_Gp_Taxonomies();
+		$this->loader->add_action( 'init', $plugin_custom_taxonomies, 'service_category', 0 );
 
 	}
 

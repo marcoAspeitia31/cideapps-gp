@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Cide Apps GP v1.0.0\n"
 "Report-Msgid-Bugs-To: Translator Name <translations@example.com>\n"
-"POT-Creation-Date: 2024-05-20 00:06-0600\n"
+"POT-Creation-Date: 2024-05-20 12:41-0600\n"
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
 "Language-Team: CideApps <devs@cide-apps.com>\n"
@@ -23,6 +23,26 @@ msgstr ""
 "X-Generator: Poedit 3.4.3\n"
 "X-Poedit-SearchPath-0: .\n"
 "X-Poedit-SearchPathExcluded-0: includes/cmb2\n"
+
+#: admin/class-cideapps-gp-admin.php:124
+msgid "This is your default term of your custom category"
+msgstr "Este es el término predeterminado de su categoría personalizada"
+
+#: admin/class-cideapps-gp-admin.php:153
+msgid ""
+"This term needs to relate the main services that will appear in the website "
+"frontend"
+msgstr ""
+"Este término debe relacionar los principales servicios que aparecerán en el "
+"frontend del sitio web."
+
+#: admin/class-cideapps-gp-admin.php:168
+msgid ""
+"This term needs to relate the featured services that will appear in the "
+"website frontend"
+msgstr ""
+"Este término debe relacionar los servicios destacados que aparecerán en la "
+"interfaz del sitio web."
 
 #: admin/custom-fields/class-cideapps-gp-options-menu-page-fields.php:33
 #: admin/custom-fields/class-cideapps-gp-options-menu-page-fields.php:37
@@ -417,6 +437,88 @@ msgstr "Lista de navegación de Testimonios"
 #: admin/custom-post-types/class-cideapps-gp-testimonial-post-type.php:64
 msgid "Testimonial Description"
 msgstr "Descripción del Testimonio"
+
+#: admin/custom-taxonomies/class-cideapps-gp-taxonomies.php:14
+msgctxt "Taxonomy General Name"
+msgid "Service categories"
+msgstr "Categorías de Servicio"
+
+#: admin/custom-taxonomies/class-cideapps-gp-taxonomies.php:15
+msgctxt "Taxonomy Singular Name"
+msgid "Service category"
+msgstr "Descripción de la categoría de Servicio"
+
+#: admin/custom-taxonomies/class-cideapps-gp-taxonomies.php:16
+msgid "Service category"
+msgstr "Categoría de Servicio"
+
+#: admin/custom-taxonomies/class-cideapps-gp-taxonomies.php:17
+msgid "All Service categories"
+msgstr "Todas las categorías de Servicios"
+
+#: admin/custom-taxonomies/class-cideapps-gp-taxonomies.php:18
+msgid "Parent Service category"
+msgstr "Padre de la categoría de Servicio"
+
+#: admin/custom-taxonomies/class-cideapps-gp-taxonomies.php:19
+msgid "Parent Service category:"
+msgstr "Padre de la categoría de Servicio:"
+
+#: admin/custom-taxonomies/class-cideapps-gp-taxonomies.php:20
+msgid "New Service category Name"
+msgstr "Nuevo nombre de categoría de servicio"
+
+#: admin/custom-taxonomies/class-cideapps-gp-taxonomies.php:21
+msgid "Add New Service category"
+msgstr "Agregar nueva categoría de servicio"
+
+#: admin/custom-taxonomies/class-cideapps-gp-taxonomies.php:22
+msgid "Edit Service category"
+msgstr "Editar categoría de Servicio"
+
+#: admin/custom-taxonomies/class-cideapps-gp-taxonomies.php:23
+msgid "Update Service category"
+msgstr "Actualizar categoría de Servicio"
+
+#: admin/custom-taxonomies/class-cideapps-gp-taxonomies.php:24
+msgid "View Service category"
+msgstr "Ver categoría de Servicio"
+
+#: admin/custom-taxonomies/class-cideapps-gp-taxonomies.php:25
+msgid "Separate Service categories with commas"
+msgstr "Separar  con comas las categorías de servicio"
+
+#: admin/custom-taxonomies/class-cideapps-gp-taxonomies.php:26
+msgid "Add or remove Service category"
+msgstr "Agregar o remover la categoría de servicio"
+
+#: admin/custom-taxonomies/class-cideapps-gp-taxonomies.php:27
+msgid "Choose from the most used"
+msgstr "Elegir de las más usadas"
+
+#: admin/custom-taxonomies/class-cideapps-gp-taxonomies.php:28
+msgid "Popular Service categories"
+msgstr "Categoría de servicios populares"
+
+#: admin/custom-taxonomies/class-cideapps-gp-taxonomies.php:29
+msgid "Search Service categories"
+msgstr "Buscar categorías de Servicio"
+
+#: admin/custom-taxonomies/class-cideapps-gp-taxonomies.php:30
+msgid "Not Found"
+msgstr "No encontrado"
+
+#: admin/custom-taxonomies/class-cideapps-gp-taxonomies.php:31
+msgid "No Service categories"
+msgstr "Sin categoría de servicio"
+
+#: admin/custom-taxonomies/class-cideapps-gp-taxonomies.php:32
+msgid "Service categories list"
+msgstr "Filtrar lista de categoría de Servicio"
+
+#: admin/custom-taxonomies/class-cideapps-gp-taxonomies.php:33
+msgid "Service categories list navigation"
+msgstr "Lista de navegación de categoría de Servicio"
 
 #: includes/cmb2-functions.php:115
 msgid "Test Metabox"
