@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Cideapps WordPress Pot v1.0.0\n"
 "Report-Msgid-Bugs-To: Cideapps <developers@cide-apps.com>\n"
-"POT-Creation-Date: 2024-05-13 21:53-0600\n"
+"POT-Creation-Date: 2024-05-20 00:00-0600\n"
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
 "Language-Team: Cideapps <developers@cide-apps.com>\n"
@@ -219,6 +219,131 @@ msgstr "Opinión"
 msgid "Write the testimonial opinion"
 msgstr "Escribe la opinión del testimonio"
 
+#: admin/custom-post-types/class-cideapps-gp-services-post-type.php:34
+msgctxt "Post Type General Name"
+msgid "Services"
+msgstr "Servicios"
+
+#: admin/custom-post-types/class-cideapps-gp-services-post-type.php:35
+msgctxt "Post Type Singular Name"
+msgid "Service"
+msgstr "Servicio"
+
+#: admin/custom-post-types/class-cideapps-gp-services-post-type.php:36
+msgid "Services"
+msgstr "Servicios"
+
+#: admin/custom-post-types/class-cideapps-gp-services-post-type.php:37
+#: admin/custom-post-types/class-cideapps-gp-services-post-type.php:63
+msgid "Service"
+msgstr "Servicio"
+
+#: admin/custom-post-types/class-cideapps-gp-services-post-type.php:38
+msgid "Service Archives"
+msgstr "Archivo de Servicio"
+
+#: admin/custom-post-types/class-cideapps-gp-services-post-type.php:39
+msgid "Service Attributes"
+msgstr "Atributos del Servicio"
+
+#: admin/custom-post-types/class-cideapps-gp-services-post-type.php:40
+msgid "Parent Service:"
+msgstr "Padre del Servicio:"
+
+#: admin/custom-post-types/class-cideapps-gp-services-post-type.php:41
+msgid "All Services"
+msgstr "Todos los servicios"
+
+#: admin/custom-post-types/class-cideapps-gp-services-post-type.php:42
+msgid "Add New Service"
+msgstr "Agregar nuevo"
+
+#: admin/custom-post-types/class-cideapps-gp-services-post-type.php:43
+#: admin/custom-post-types/class-cideapps-gp-testimonial-post-type.php:43
+msgid "Add New"
+msgstr "Agregar nuevo"
+
+#: admin/custom-post-types/class-cideapps-gp-services-post-type.php:44
+msgid "New Service"
+msgstr "Nuevo Servicio"
+
+#: admin/custom-post-types/class-cideapps-gp-services-post-type.php:45
+msgid "Edit Service"
+msgstr "Editar Servicio"
+
+#: admin/custom-post-types/class-cideapps-gp-services-post-type.php:46
+msgid "Update Service"
+msgstr "Actualizar Servicio"
+
+#: admin/custom-post-types/class-cideapps-gp-services-post-type.php:47
+msgid "View Service"
+msgstr "Ver Servicio"
+
+#: admin/custom-post-types/class-cideapps-gp-services-post-type.php:48
+msgid "View Services"
+msgstr "Ver Servicios"
+
+#: admin/custom-post-types/class-cideapps-gp-services-post-type.php:49
+msgid "Search Service"
+msgstr "Buscar Servicio"
+
+#: admin/custom-post-types/class-cideapps-gp-services-post-type.php:50
+#: admin/custom-post-types/class-cideapps-gp-testimonial-post-type.php:50
+msgid "Not found"
+msgstr "No encontrado"
+
+#: admin/custom-post-types/class-cideapps-gp-services-post-type.php:51
+#: admin/custom-post-types/class-cideapps-gp-testimonial-post-type.php:51
+msgid "Not found in Trash"
+msgstr "No encontrado en la Papelera"
+
+#: admin/custom-post-types/class-cideapps-gp-services-post-type.php:52
+#: admin/custom-post-types/class-cideapps-gp-testimonial-post-type.php:52
+msgid "Featured Image"
+msgstr "Imagen destacada"
+
+#: admin/custom-post-types/class-cideapps-gp-services-post-type.php:53
+#: admin/custom-post-types/class-cideapps-gp-testimonial-post-type.php:53
+msgid "Set featured image"
+msgstr "Establecer imagen destacada"
+
+#: admin/custom-post-types/class-cideapps-gp-services-post-type.php:54
+#: admin/custom-post-types/class-cideapps-gp-testimonial-post-type.php:54
+msgid "Remove featured image"
+msgstr "Eliminar imagen destacada"
+
+#: admin/custom-post-types/class-cideapps-gp-services-post-type.php:55
+#: admin/custom-post-types/class-cideapps-gp-testimonial-post-type.php:55
+msgid "Use as featured image"
+msgstr "Usar como imagen destacada"
+
+#: admin/custom-post-types/class-cideapps-gp-services-post-type.php:56
+#: admin/custom-post-types/class-cideapps-gp-testimonial-post-type.php:56
+msgid "Insert into item"
+msgstr "Insertar en el artículo"
+
+#: admin/custom-post-types/class-cideapps-gp-services-post-type.php:57
+#: admin/custom-post-types/class-cideapps-gp-testimonial-post-type.php:57
+msgid "Uploaded to this item"
+msgstr "Subido a este artículo"
+
+#: admin/custom-post-types/class-cideapps-gp-services-post-type.php:58
+msgid "Services list"
+msgstr "Filtrar lista de Servicios"
+
+#: admin/custom-post-types/class-cideapps-gp-services-post-type.php:59
+msgid "Services list navigation"
+msgstr "Lista de navegación de Servicios"
+
+#: admin/custom-post-types/class-cideapps-gp-services-post-type.php:60
+#: admin/custom-post-types/class-cideapps-gp-testimonial-post-type.php:60
+msgid "Filter items list"
+msgstr "Filtrar lista de artículos"
+
+#: admin/custom-post-types/class-cideapps-gp-services-post-type.php:64
+msgid "Service Description"
+msgstr "Descripción del Servicio"
+
 #: admin/custom-post-types/class-cideapps-gp-testimonial-post-type.php:34
 msgctxt "Post Type General Name"
 msgid "Testimonials"
@@ -258,10 +383,6 @@ msgstr "Todos los Testimonios"
 msgid "Add New Testimonial"
 msgstr "Agregar nuevo Testimonio"
 
-#: admin/custom-post-types/class-cideapps-gp-testimonial-post-type.php:43
-msgid "Add New"
-msgstr "Agregar nuevo"
-
 #: admin/custom-post-types/class-cideapps-gp-testimonial-post-type.php:44
 msgid "New Testimonial"
 msgstr "Nuevo Testimonio"
@@ -286,38 +407,6 @@ msgstr "Ver Testimonios"
 msgid "Search Testimonial"
 msgstr "Buscar Testimonios"
 
-#: admin/custom-post-types/class-cideapps-gp-testimonial-post-type.php:50
-msgid "Not found"
-msgstr "No encontrado"
-
-#: admin/custom-post-types/class-cideapps-gp-testimonial-post-type.php:51
-msgid "Not found in Trash"
-msgstr "No encontrado en la Papelera"
-
-#: admin/custom-post-types/class-cideapps-gp-testimonial-post-type.php:52
-msgid "Featured Image"
-msgstr "Imagen destacada"
-
-#: admin/custom-post-types/class-cideapps-gp-testimonial-post-type.php:53
-msgid "Set featured image"
-msgstr "Establecer imagen destacada"
-
-#: admin/custom-post-types/class-cideapps-gp-testimonial-post-type.php:54
-msgid "Remove featured image"
-msgstr "Eliminar imagen destacada"
-
-#: admin/custom-post-types/class-cideapps-gp-testimonial-post-type.php:55
-msgid "Use as featured image"
-msgstr "Usar como imagen destacada"
-
-#: admin/custom-post-types/class-cideapps-gp-testimonial-post-type.php:56
-msgid "Insert into item"
-msgstr "Insertar en el artículo"
-
-#: admin/custom-post-types/class-cideapps-gp-testimonial-post-type.php:57
-msgid "Uploaded to this item"
-msgstr "Subido a este artículo"
-
 #: admin/custom-post-types/class-cideapps-gp-testimonial-post-type.php:58
 msgid "Testimonials list"
 msgstr "Lista de Testimonios"
@@ -325,10 +414,6 @@ msgstr "Lista de Testimonios"
 #: admin/custom-post-types/class-cideapps-gp-testimonial-post-type.php:59
 msgid "Testimonials list navigation"
 msgstr "Lista de navegación de Testimonios"
-
-#: admin/custom-post-types/class-cideapps-gp-testimonial-post-type.php:60
-msgid "Filter items list"
-msgstr "Filtrar lista de artículos"
 
 #: admin/custom-post-types/class-cideapps-gp-testimonial-post-type.php:64
 msgid "Testimonial Description"
