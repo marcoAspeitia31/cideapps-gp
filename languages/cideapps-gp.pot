@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Cideapps WordPress Pot v1.0.0\n"
 "Report-Msgid-Bugs-To: Cideapps <developers@cide-apps.com>\n"
-"POT-Creation-Date: 2024-05-20 12:41-0600\n"
+"POT-Creation-Date: 2024-05-20 12:59-0600\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Marco Aspeitia <maspeitiap@cide-apps.com>\n"
 "Language-Team: Cideapps <developers@cide-apps.com>\n"
@@ -26,16 +26,19 @@ msgstr ""
 "X-Poedit-SearchPath-0: .\n"
 
 #: admin/class-cideapps-gp-admin.php:124
+msgctxt "cideapps-gp"
 msgid "This is your default term of your custom category"
 msgstr ""
 
 #: admin/class-cideapps-gp-admin.php:153
+msgctxt "cideapps-gp"
 msgid ""
 "This term needs to relate the main services that will appear in "
 "the website frontend"
 msgstr ""
 
 #: admin/class-cideapps-gp-admin.php:168
+msgctxt "cideapps-gp"
 msgid ""
 "This term needs to relate the featured services that will appear "
 "in the website frontend"
