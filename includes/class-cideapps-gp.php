@@ -77,6 +77,9 @@ class Cideapps_Gp {
 		$this->load_dependencies();
 		$this->set_locale();
 		$this->define_admin_hooks();
+		$this->define_testimonial_hooks();
+		$this->define_services_hooks();
+		$this->define_options_menu_page_fields_hooks();
 		$this->define_public_hooks();
 
 	}
@@ -112,9 +115,33 @@ class Cideapps_Gp {
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-cideapps-gp-i18n.php';
 
 		/**
+		 * The class responsible for defining metaboxes with cmb2 framework functionality.
+		 */
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/cmb2-functions.php';
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/cmb_field_map/cmb-field-map.php';
+
+		/**
+		 * Register custom taxonomies
+		 */
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/custom-taxonomies/class-cideapps-gp-taxonomies.php';
+
+		/**
+		 * The classes responsible for defining all custom post types
+		 */
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/custom-post-types/class-cideapps-gp-testimonial-post-type.php';
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/custom-post-types/class-cideapps-gp-services-post-type.php';
+
+		/**
+		 * The classes responsibles for defining custom metaboxes.
+		 */
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/custom-fields/class-cideapps-gp-options-menu-page-fields.php';
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/custom-fields/class-cideapps-gp-testimonial-fields.php';
+
+		/**
 		 * The class responsible for defining all actions that occur in the admin area.
 		 */
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/class-cideapps-gp-admin.php';
+
 
 		/**
 		 * The class responsible for defining all actions that occur in the public-facing
@@ -156,6 +183,41 @@ class Cideapps_Gp {
 
 		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_styles' );
 		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_scripts' );
+		$this->loader->add_action( 'registered_taxonomy_service_category', $plugin_admin, 'create_uncategorized_term_in_custom_taxonomy', 10, 3 );
+		$this->loader->add_action( 'registered_taxonomy_service_category', $plugin_admin, 'create_service_category_default_terms', 10, 3 );
+
+		// Custom Taxonomies.
+		$plugin_custom_taxonomies = new Cideapps_Gp_Taxonomies();
+		$this->loader->add_action( 'init', $plugin_custom_taxonomies, 'service_category', 0 );
+
+	}
+
+	private function define_testimonial_hooks() {
+
+		$plugin_testimonial_post_type = new Cideapps_Gp_Testimonial_Post_Type();
+
+		$this->loader->add_action( 'init', $plugin_testimonial_post_type, 'testimonial_post_type', 0 );
+
+		$plugin_testimonial_fields = new Cideapps_Gp_Testimonial_Fields();
+
+		$this->loader->add_action( 'cmb2_init', $plugin_testimonial_fields, 'testimonial_metabox', 0 );
+
+	}
+
+	private function define_services_hooks() {
+
+		$plugin_services_post_type = new Cideapps_Gp_Services_Post_Type();
+
+		$this->loader->add_action( 'init', $plugin_services_post_type, 'services_post_type', 0 );
+
+	}
+
+	private function define_options_menu_page_fields_hooks() {
+
+		$plugin_options_menu_page_fields = new Cideapps_Gp_Options_Menu_Page_Fields();
+
+		$this->loader->add_action( 'cmb2_admin_init', $plugin_options_menu_page_fields, 'menu_page_metabox', 10, 0 );
+		$this->loader->add_action( 'updated_option', $plugin_options_menu_page_fields, 'geocode_business_address', 10, 3 );
 
 	}
 
