@@ -1,14 +1,14 @@
-# Cideapps WordPress Pot
-# Copyright 2024 ...
+# Blank WordPress Pot
+# Copyright 2014 ...
 # This file is distributed under the GNU General Public License v3 or later.
 msgid ""
 msgstr ""
-"Project-Id-Version: Cideapps WordPress Pot v1.0.0\n"
-"Report-Msgid-Bugs-To: Cideapps <developers@cide-apps.com>\n"
-"POT-Creation-Date: 2024-05-20 00:00-0600\n"
+"Project-Id-Version: Cide Apps GP v1.0.0\n"
+"Report-Msgid-Bugs-To: Translator Name <translations@example.com>\n"
+"POT-Creation-Date: 2024-05-23 11:57-0600\n"
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
-"Language-Team: Cideapps <developers@cide-apps.com>\n"
+"Language-Team: CideApps <devs@cide-apps.com>\n"
 "Language: es\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -22,6 +22,30 @@ msgstr ""
 "X-Poedit-Basepath: ..\n"
 "X-Generator: Poedit 3.4.3\n"
 "X-Poedit-SearchPath-0: .\n"
+"X-Poedit-SearchPathExcluded-0: includes/cmb2\n"
+
+#: admin/class-cideapps-gp-admin.php:124
+msgctxt "cideapps-gp"
+msgid "This is your default term of your custom category"
+msgstr "Este es el término predeterminado de su categoría personalizada"
+
+#: admin/class-cideapps-gp-admin.php:153
+msgctxt "cideapps-gp"
+msgid ""
+"This term needs to relate the main services that will appear in the website "
+"frontend"
+msgstr ""
+"Este término debe relacionar los principales servicios que aparecerán en el "
+"frontend del sitio web"
+
+#: admin/class-cideapps-gp-admin.php:168
+msgctxt "cideapps-gp"
+msgid ""
+"This term needs to relate the featured services that will appear in the "
+"website frontend"
+msgstr ""
+"Este término debe relacionar los servicios destacados que aparecerán en la "
+"interfaz del sitio web"
 
 #: admin/custom-fields/class-cideapps-gp-options-menu-page-fields.php:33
 #: admin/custom-fields/class-cideapps-gp-options-menu-page-fields.php:37
@@ -29,7 +53,6 @@ msgid "Theme options"
 msgstr "Opciones del tema"
 
 #: admin/custom-fields/class-cideapps-gp-options-menu-page-fields.php:41
-#: includes/cmb2/includes/helper-functions.php:308
 msgid "Save"
 msgstr "Guardar"
 
@@ -38,154 +61,165 @@ msgid "Branding"
 msgstr "Marca"
 
 #: admin/custom-fields/class-cideapps-gp-options-menu-page-fields.php:51
-msgid "This is the logo branding section"
-msgstr "Esta es la sección de marca del logo"
+msgid "This is the branding section logo and description"
+msgstr "Esta es la sección de la marca, logotipos y descripción"
 
 #: admin/custom-fields/class-cideapps-gp-options-menu-page-fields.php:60
 msgid "Menu logo"
-msgstr "Logo del menú"
+msgstr "Logotipo del menú"
 
 #: admin/custom-fields/class-cideapps-gp-options-menu-page-fields.php:61
 #: admin/custom-fields/class-cideapps-gp-options-menu-page-fields.php:79
-#: includes/cmb2-functions.php:432 includes/cmb2/example-functions.php:432
+#: includes/cmb2-functions.php:434
 msgid "Upload an image or enter a URL."
-msgstr "Sube una imagen o ingresa una URL."
+msgstr "Cargue una imagen o introduzca una URL."
 
 #: admin/custom-fields/class-cideapps-gp-options-menu-page-fields.php:78
 msgid "Footer logo"
 msgstr "Logotipo de pie de página"
 
-#: admin/custom-fields/class-cideapps-gp-options-menu-page-fields.php:97
+#: admin/custom-fields/class-cideapps-gp-options-menu-page-fields.php:95
+msgid "About Business"
+msgstr "Acerca del negocio"
+
+#: admin/custom-fields/class-cideapps-gp-options-menu-page-fields.php:96
+msgid ""
+"Write something interesting about your business (e.g. Atention schedule, "
+"Description, etc.)"
+msgstr ""
+"Escriba algo interesante sobre su empresa (por ejemplo, horario de atención, "
+"descripción, etc.)"
+
+#: admin/custom-fields/class-cideapps-gp-options-menu-page-fields.php:118
 msgid "Contact information"
 msgstr "Información de contacto"
 
-#: admin/custom-fields/class-cideapps-gp-options-menu-page-fields.php:98
+#: admin/custom-fields/class-cideapps-gp-options-menu-page-fields.php:119
 msgid "Section to configure the main contact information"
-msgstr "Sección para configurar la información principal de contacto"
+msgstr "Sección para configurar la información de contacto principal"
 
-#: admin/custom-fields/class-cideapps-gp-options-menu-page-fields.php:105
+#: admin/custom-fields/class-cideapps-gp-options-menu-page-fields.php:126
 msgid "Business phone"
-msgstr "Teléfono del negocio"
+msgstr "Teléfono de empresa"
 
-#: admin/custom-fields/class-cideapps-gp-options-menu-page-fields.php:106
+#: admin/custom-fields/class-cideapps-gp-options-menu-page-fields.php:127
 msgid "Add your phone number (optional)"
-msgstr "Añade tu número de teléfono (opcional)"
+msgstr "Agrega tu número telefónico (opcional)"
 
-#: admin/custom-fields/class-cideapps-gp-options-menu-page-fields.php:116
+#: admin/custom-fields/class-cideapps-gp-options-menu-page-fields.php:137
 msgid "Whatsapp"
 msgstr "Whatsapp"
 
-#: admin/custom-fields/class-cideapps-gp-options-menu-page-fields.php:117
+#: admin/custom-fields/class-cideapps-gp-options-menu-page-fields.php:138
 msgid ""
 "The Whatsapp number must have the country prefix code (e.g. +52 55 4506 2592)"
 msgstr ""
-"El número de Whatsapp debe tener el prefijo del país (ej. +52 55 4506 2592)"
+"El número de Whatsapp debe tener el código de país (ejemplo +52 55 4506 2592)"
 
-#: admin/custom-fields/class-cideapps-gp-options-menu-page-fields.php:124
+#: admin/custom-fields/class-cideapps-gp-options-menu-page-fields.php:145
 msgid "Contact e-mail"
-msgstr "Email de contacto"
+msgstr "E-mail de contacto"
 
-#: admin/custom-fields/class-cideapps-gp-options-menu-page-fields.php:125
+#: admin/custom-fields/class-cideapps-gp-options-menu-page-fields.php:146
 msgid "Add your corporate email (optional)"
-msgstr "Añade tu correo electrónico corporativo (opcional)"
+msgstr "Agrega tu email corporativo (opcional)"
 
-#: admin/custom-fields/class-cideapps-gp-options-menu-page-fields.php:132
+#: admin/custom-fields/class-cideapps-gp-options-menu-page-fields.php:153
 msgid "Location"
 msgstr "Ubicación"
 
-#: admin/custom-fields/class-cideapps-gp-options-menu-page-fields.php:133
+#: admin/custom-fields/class-cideapps-gp-options-menu-page-fields.php:154
 msgid "Drag the marker to set the exact location"
-msgstr "Arrastre el marcador para establecer la ubicación exacta"
+msgstr "Arrastra el marcador para establecer la ubicación exacta"
 
-#: admin/custom-fields/class-cideapps-gp-options-menu-page-fields.php:141
+#: admin/custom-fields/class-cideapps-gp-options-menu-page-fields.php:162
 msgid "Business address"
-msgstr "Dirección del Negocio"
+msgstr "Dirección de negocio"
 
-#: admin/custom-fields/class-cideapps-gp-options-menu-page-fields.php:142
+#: admin/custom-fields/class-cideapps-gp-options-menu-page-fields.php:163
 msgid "This address will be autocompleted after modifying and saving this page"
 msgstr ""
-"Esta dirección se completará automáticamente después de modificar y guardar "
-"esta página"
+"Ésta ubicación será autocompletada después de modificar y guardar esta página"
 
-#: admin/custom-fields/class-cideapps-gp-options-menu-page-fields.php:149
+#: admin/custom-fields/class-cideapps-gp-options-menu-page-fields.php:170
 msgid "Main contact form shortcode"
-msgstr "Código abreviado del formulario de contacto principal"
+msgstr "Shortcode del formulario principal"
 
-#: admin/custom-fields/class-cideapps-gp-options-menu-page-fields.php:150
+#: admin/custom-fields/class-cideapps-gp-options-menu-page-fields.php:171
 msgid ""
 "Add the main contact form 7 shortcode (e.g. [contact-form-7 id=\"c7de0b7\" "
 "title=\"Contact form 1\"] )"
 msgstr ""
-"Agregue el código corto del formulario de contacto principal 7 (por ejemplo, "
-"[contact-form-7 id=\"c7de0b7\" title=\"Formulario de contacto 1\"])"
+"Agregar el shortcode del formulario principal de contact form 7 (ejemplo  "
+"[contact-form-7 id=\"c7de0b7\" title=\"Contact form 1\"])"
 
-#: admin/custom-fields/class-cideapps-gp-options-menu-page-fields.php:159
+#: admin/custom-fields/class-cideapps-gp-options-menu-page-fields.php:180
 msgid "Social Media"
 msgstr "Redes sociales"
 
-#: admin/custom-fields/class-cideapps-gp-options-menu-page-fields.php:160
+#: admin/custom-fields/class-cideapps-gp-options-menu-page-fields.php:181
 msgid "Section to add the URL links of your social media profiles"
 msgstr "Sección para añadir los enlaces URL de tus perfiles de redes sociales"
 
-#: admin/custom-fields/class-cideapps-gp-options-menu-page-fields.php:167
+#: admin/custom-fields/class-cideapps-gp-options-menu-page-fields.php:188
 msgid "Facebook"
 msgstr "Facebook"
 
-#: admin/custom-fields/class-cideapps-gp-options-menu-page-fields.php:168
+#: admin/custom-fields/class-cideapps-gp-options-menu-page-fields.php:189
 msgid "Add your Facebook profile URL"
 msgstr "Añade la URL de tu perfil de Facebook"
 
-#: admin/custom-fields/class-cideapps-gp-options-menu-page-fields.php:176
+#: admin/custom-fields/class-cideapps-gp-options-menu-page-fields.php:197
 msgid "Instagram"
 msgstr "Instagram"
 
-#: admin/custom-fields/class-cideapps-gp-options-menu-page-fields.php:177
+#: admin/custom-fields/class-cideapps-gp-options-menu-page-fields.php:198
 msgid "Add your Instagram profile URL"
 msgstr "Añade la URL de tu perfil de Instagram"
 
-#: admin/custom-fields/class-cideapps-gp-options-menu-page-fields.php:185
+#: admin/custom-fields/class-cideapps-gp-options-menu-page-fields.php:206
 msgid "Youtube"
 msgstr "Youtube"
 
-#: admin/custom-fields/class-cideapps-gp-options-menu-page-fields.php:186
+#: admin/custom-fields/class-cideapps-gp-options-menu-page-fields.php:207
 msgid "Add your Youtube profile URL"
 msgstr "Añade la URL de tu perfil de Youtube"
 
-#: admin/custom-fields/class-cideapps-gp-options-menu-page-fields.php:194
+#: admin/custom-fields/class-cideapps-gp-options-menu-page-fields.php:215
 msgid "Twitter/X"
 msgstr "Twitter/X"
 
-#: admin/custom-fields/class-cideapps-gp-options-menu-page-fields.php:195
+#: admin/custom-fields/class-cideapps-gp-options-menu-page-fields.php:216
 msgid "Add your Twitter/X profile URL"
-msgstr "Añade la URL de tu perfil de Twitter/X"
+msgstr "Añade la URL de tu perfil de Twitter"
 
-#: admin/custom-fields/class-cideapps-gp-options-menu-page-fields.php:203
+#: admin/custom-fields/class-cideapps-gp-options-menu-page-fields.php:224
 msgid "Tiktok"
 msgstr "Tiktok"
 
-#: admin/custom-fields/class-cideapps-gp-options-menu-page-fields.php:204
+#: admin/custom-fields/class-cideapps-gp-options-menu-page-fields.php:225
 msgid "Add your tiktok profile URL"
 msgstr "Añade la URL de tu perfil de Tiktok"
 
-#: admin/custom-fields/class-cideapps-gp-options-menu-page-fields.php:215
+#: admin/custom-fields/class-cideapps-gp-options-menu-page-fields.php:236
 msgid "Settings"
 msgstr "Configuración"
 
-#: admin/custom-fields/class-cideapps-gp-options-menu-page-fields.php:223
+#: admin/custom-fields/class-cideapps-gp-options-menu-page-fields.php:244
 msgid "Addons"
 msgstr "Complementos"
 
-#: admin/custom-fields/class-cideapps-gp-options-menu-page-fields.php:224
+#: admin/custom-fields/class-cideapps-gp-options-menu-page-fields.php:245
 msgid "This section is the responsible to storage some plugins functionality"
 msgstr ""
 "Esta sección es responsable de almacenar la funcionalidad de algunos "
 "complementos"
 
-#: admin/custom-fields/class-cideapps-gp-options-menu-page-fields.php:231
+#: admin/custom-fields/class-cideapps-gp-options-menu-page-fields.php:252
 msgid "Google Maps API Key"
 msgstr "Clave API de Google Maps"
 
-#: admin/custom-fields/class-cideapps-gp-options-menu-page-fields.php:232
+#: admin/custom-fields/class-cideapps-gp-options-menu-page-fields.php:253
 msgid "Add a your Google Maps API key"
 msgstr "Agregue su clave API de Google Maps"
 
@@ -217,7 +251,7 @@ msgstr "Opinión"
 
 #: admin/custom-fields/class-cideapps-gp-testimonial-fields.php:64
 msgid "Write the testimonial opinion"
-msgstr "Escribe la opinión del testimonio"
+msgstr "Escribe la opinión testimonial"
 
 #: admin/custom-post-types/class-cideapps-gp-services-post-type.php:34
 msgctxt "Post Type General Name"
@@ -240,19 +274,19 @@ msgstr "Servicio"
 
 #: admin/custom-post-types/class-cideapps-gp-services-post-type.php:38
 msgid "Service Archives"
-msgstr "Archivo de Servicio"
+msgstr "Archivos de Servicio"
 
 #: admin/custom-post-types/class-cideapps-gp-services-post-type.php:39
 msgid "Service Attributes"
-msgstr "Atributos del Servicio"
+msgstr "Atributos de Servicio"
 
 #: admin/custom-post-types/class-cideapps-gp-services-post-type.php:40
 msgid "Parent Service:"
-msgstr "Padre del Servicio:"
+msgstr "Padre de Servicio:"
 
 #: admin/custom-post-types/class-cideapps-gp-services-post-type.php:41
 msgid "All Services"
-msgstr "Todos los servicios"
+msgstr "Todos los Servicios"
 
 #: admin/custom-post-types/class-cideapps-gp-services-post-type.php:42
 msgid "Add New Service"
@@ -365,11 +399,11 @@ msgstr "Testimonio"
 
 #: admin/custom-post-types/class-cideapps-gp-testimonial-post-type.php:38
 msgid "Testimonial Archives"
-msgstr "Archivo de Testimonio"
+msgstr "Archivos de Testimonio"
 
 #: admin/custom-post-types/class-cideapps-gp-testimonial-post-type.php:39
 msgid "Testimonial Attributes"
-msgstr "Atributos del Testimonio"
+msgstr "Atributos de Testimonio"
 
 #: admin/custom-post-types/class-cideapps-gp-testimonial-post-type.php:40
 msgid "Parent Testimonial:"
@@ -381,7 +415,7 @@ msgstr "Todos los Testimonios"
 
 #: admin/custom-post-types/class-cideapps-gp-testimonial-post-type.php:42
 msgid "Add New Testimonial"
-msgstr "Agregar nuevo Testimonio"
+msgstr "Agregar Testimonio"
 
 #: admin/custom-post-types/class-cideapps-gp-testimonial-post-type.php:44
 msgid "New Testimonial"
@@ -419,761 +453,396 @@ msgstr "Lista de navegación de Testimonios"
 msgid "Testimonial Description"
 msgstr "Descripción del Testimonio"
 
-#: includes/cmb2-functions.php:115 includes/cmb2/example-functions.php:115
+#: admin/custom-taxonomies/class-cideapps-gp-taxonomies.php:14
+msgctxt "Taxonomy General Name"
+msgid "Service categories"
+msgstr "Categorías de Servicio"
+
+#: admin/custom-taxonomies/class-cideapps-gp-taxonomies.php:15
+msgctxt "Taxonomy Singular Name"
+msgid "Service category"
+msgstr "Descripción de la categoría de Servicio"
+
+#: admin/custom-taxonomies/class-cideapps-gp-taxonomies.php:16
+msgid "Service category"
+msgstr "Categoría de Servicio"
+
+#: admin/custom-taxonomies/class-cideapps-gp-taxonomies.php:17
+msgid "All Service categories"
+msgstr "Todas las categorías de Servicios"
+
+#: admin/custom-taxonomies/class-cideapps-gp-taxonomies.php:18
+msgid "Parent Service category"
+msgstr "Padre de la categoría de Servicio"
+
+#: admin/custom-taxonomies/class-cideapps-gp-taxonomies.php:19
+msgid "Parent Service category:"
+msgstr "Padre de la categoría de Servicio:"
+
+#: admin/custom-taxonomies/class-cideapps-gp-taxonomies.php:20
+msgid "New Service category Name"
+msgstr "Nuevo nombre de categoría de servicio"
+
+#: admin/custom-taxonomies/class-cideapps-gp-taxonomies.php:21
+msgid "Add New Service category"
+msgstr "Agregar nueva categoría de servicio"
+
+#: admin/custom-taxonomies/class-cideapps-gp-taxonomies.php:22
+msgid "Edit Service category"
+msgstr "Editar categoría de Servicio"
+
+#: admin/custom-taxonomies/class-cideapps-gp-taxonomies.php:23
+msgid "Update Service category"
+msgstr "Actualizar categoría de Servicio"
+
+#: admin/custom-taxonomies/class-cideapps-gp-taxonomies.php:24
+msgid "View Service category"
+msgstr "Ver categoría de Servicio"
+
+#: admin/custom-taxonomies/class-cideapps-gp-taxonomies.php:25
+msgid "Separate Service categories with commas"
+msgstr "Separar  con comas las categorías de servicio"
+
+#: admin/custom-taxonomies/class-cideapps-gp-taxonomies.php:26
+msgid "Add or remove Service category"
+msgstr "Agregar o remover la categoría de servicio"
+
+#: admin/custom-taxonomies/class-cideapps-gp-taxonomies.php:27
+msgid "Choose from the most used"
+msgstr "Elegir de las más usadas"
+
+#: admin/custom-taxonomies/class-cideapps-gp-taxonomies.php:28
+msgid "Popular Service categories"
+msgstr "Categoría de servicios populares"
+
+#: admin/custom-taxonomies/class-cideapps-gp-taxonomies.php:29
+msgid "Search Service categories"
+msgstr "Buscar categorías de Servicio"
+
+#: admin/custom-taxonomies/class-cideapps-gp-taxonomies.php:30
+msgid "Not Found"
+msgstr "No encontrado"
+
+#: admin/custom-taxonomies/class-cideapps-gp-taxonomies.php:31
+msgid "No Service categories"
+msgstr "Sin categoría de servicio"
+
+#: admin/custom-taxonomies/class-cideapps-gp-taxonomies.php:32
+msgid "Service categories list"
+msgstr "Filtrar lista de categoría de Servicio"
+
+#: admin/custom-taxonomies/class-cideapps-gp-taxonomies.php:33
+msgid "Service categories list navigation"
+msgstr "Lista de navegación de categoría de Servicio"
+
+#: includes/cmb2-functions.php:117
 msgid "Test Metabox"
 msgstr ""
 
-#: includes/cmb2-functions.php:148 includes/cmb2-functions.php:492
-#: includes/cmb2/example-functions.php:148
-#: includes/cmb2/example-functions.php:492
+#: includes/cmb2-functions.php:150 includes/cmb2-functions.php:494
 msgid "Test Text"
 msgstr ""
 
-#: includes/cmb2-functions.php:149 includes/cmb2-functions.php:162
-#: includes/cmb2-functions.php:175 includes/cmb2-functions.php:182
-#: includes/cmb2-functions.php:195 includes/cmb2-functions.php:203
-#: includes/cmb2-functions.php:212 includes/cmb2-functions.php:220
-#: includes/cmb2-functions.php:235 includes/cmb2-functions.php:243
-#: includes/cmb2-functions.php:251 includes/cmb2-functions.php:268
-#: includes/cmb2-functions.php:277 includes/cmb2-functions.php:293
-#: includes/cmb2-functions.php:300 includes/cmb2-functions.php:307
-#: includes/cmb2-functions.php:332 includes/cmb2-functions.php:345
-#: includes/cmb2-functions.php:358 includes/cmb2-functions.php:370
-#: includes/cmb2-functions.php:384 includes/cmb2-functions.php:392
-#: includes/cmb2-functions.php:401 includes/cmb2-functions.php:408
-#: includes/cmb2-functions.php:422 includes/cmb2-functions.php:493
-#: includes/cmb2-functions.php:583 includes/cmb2-functions.php:591
-#: includes/cmb2-functions.php:598 includes/cmb2-functions.php:605
-#: includes/cmb2-functions.php:612 includes/cmb2-functions.php:619
-#: includes/cmb2-functions.php:626 includes/cmb2-functions.php:652
-#: includes/cmb2-functions.php:660 includes/cmb2-functions.php:667
-#: includes/cmb2-functions.php:717 includes/cmb2/example-functions.php:149
-#: includes/cmb2/example-functions.php:162
-#: includes/cmb2/example-functions.php:175
-#: includes/cmb2/example-functions.php:182
-#: includes/cmb2/example-functions.php:195
-#: includes/cmb2/example-functions.php:203
-#: includes/cmb2/example-functions.php:212
-#: includes/cmb2/example-functions.php:220
-#: includes/cmb2/example-functions.php:235
-#: includes/cmb2/example-functions.php:243
-#: includes/cmb2/example-functions.php:251
-#: includes/cmb2/example-functions.php:268
-#: includes/cmb2/example-functions.php:277
-#: includes/cmb2/example-functions.php:293
-#: includes/cmb2/example-functions.php:300
-#: includes/cmb2/example-functions.php:307
-#: includes/cmb2/example-functions.php:332
-#: includes/cmb2/example-functions.php:345
-#: includes/cmb2/example-functions.php:358
-#: includes/cmb2/example-functions.php:370
-#: includes/cmb2/example-functions.php:384
-#: includes/cmb2/example-functions.php:392
-#: includes/cmb2/example-functions.php:401
-#: includes/cmb2/example-functions.php:408
-#: includes/cmb2/example-functions.php:422
-#: includes/cmb2/example-functions.php:493
-#: includes/cmb2/example-functions.php:583
-#: includes/cmb2/example-functions.php:591
-#: includes/cmb2/example-functions.php:598
-#: includes/cmb2/example-functions.php:605
-#: includes/cmb2/example-functions.php:612
-#: includes/cmb2/example-functions.php:619
-#: includes/cmb2/example-functions.php:626
-#: includes/cmb2/example-functions.php:652
-#: includes/cmb2/example-functions.php:660
-#: includes/cmb2/example-functions.php:667
-#: includes/cmb2/example-functions.php:717
+#: includes/cmb2-functions.php:151 includes/cmb2-functions.php:164
+#: includes/cmb2-functions.php:177 includes/cmb2-functions.php:184
+#: includes/cmb2-functions.php:197 includes/cmb2-functions.php:205
+#: includes/cmb2-functions.php:214 includes/cmb2-functions.php:222
+#: includes/cmb2-functions.php:237 includes/cmb2-functions.php:245
+#: includes/cmb2-functions.php:253 includes/cmb2-functions.php:270
+#: includes/cmb2-functions.php:279 includes/cmb2-functions.php:295
+#: includes/cmb2-functions.php:302 includes/cmb2-functions.php:309
+#: includes/cmb2-functions.php:334 includes/cmb2-functions.php:347
+#: includes/cmb2-functions.php:360 includes/cmb2-functions.php:372
+#: includes/cmb2-functions.php:386 includes/cmb2-functions.php:394
+#: includes/cmb2-functions.php:403 includes/cmb2-functions.php:410
+#: includes/cmb2-functions.php:424 includes/cmb2-functions.php:495
+#: includes/cmb2-functions.php:585 includes/cmb2-functions.php:593
+#: includes/cmb2-functions.php:600 includes/cmb2-functions.php:607
+#: includes/cmb2-functions.php:614 includes/cmb2-functions.php:621
+#: includes/cmb2-functions.php:628 includes/cmb2-functions.php:654
+#: includes/cmb2-functions.php:662 includes/cmb2-functions.php:669
+#: includes/cmb2-functions.php:719
 msgid "field description (optional)"
 msgstr ""
 
-#: includes/cmb2-functions.php:161 includes/cmb2/example-functions.php:161
+#: includes/cmb2-functions.php:163
 msgid "Test Text Small"
 msgstr ""
 
-#: includes/cmb2-functions.php:174 includes/cmb2/example-functions.php:174
+#: includes/cmb2-functions.php:176
 msgid "Test Text Medium"
 msgstr ""
 
-#: includes/cmb2-functions.php:181 includes/cmb2/example-functions.php:181
+#: includes/cmb2-functions.php:183
 msgid "Read-only Disabled Field"
 msgstr ""
 
-#: includes/cmb2-functions.php:185 includes/cmb2/example-functions.php:185
+#: includes/cmb2-functions.php:187
 msgid "Hey there, I'm a read-only field"
 msgstr ""
 
-#: includes/cmb2-functions.php:194 includes/cmb2/example-functions.php:194
+#: includes/cmb2-functions.php:196
 msgid "Custom Rendered Field"
 msgstr ""
 
-#: includes/cmb2-functions.php:202 includes/cmb2/example-functions.php:202
+#: includes/cmb2-functions.php:204
 msgid "Website URL"
 msgstr ""
 
-#: includes/cmb2-functions.php:211 includes/cmb2/example-functions.php:211
+#: includes/cmb2-functions.php:213
 msgid "Test Text Email"
 msgstr ""
 
-#: includes/cmb2-functions.php:219 includes/cmb2/example-functions.php:219
+#: includes/cmb2-functions.php:221
 msgid "Test Time"
 msgstr ""
 
-#: includes/cmb2-functions.php:227 includes/cmb2-functions.php:228
-#: includes/cmb2/example-functions.php:227
-#: includes/cmb2/example-functions.php:228
+#: includes/cmb2-functions.php:229 includes/cmb2-functions.php:230
 msgid "Time zone"
 msgstr ""
 
-#: includes/cmb2-functions.php:234 includes/cmb2/example-functions.php:234
+#: includes/cmb2-functions.php:236
 msgid "Test Date Picker"
 msgstr ""
 
-#: includes/cmb2-functions.php:242 includes/cmb2/example-functions.php:242
+#: includes/cmb2-functions.php:244
 msgid "Test Date Picker (UNIX timestamp)"
 msgstr ""
 
-#: includes/cmb2-functions.php:250 includes/cmb2/example-functions.php:250
+#: includes/cmb2-functions.php:252
 msgid "Test Date/Time Picker Combo (UNIX timestamp)"
 msgstr ""
 
-#: includes/cmb2-functions.php:267 includes/cmb2/example-functions.php:267
+#: includes/cmb2-functions.php:269
 msgid "Test Money"
 msgstr ""
 
-#: includes/cmb2-functions.php:276 includes/cmb2/example-functions.php:276
+#: includes/cmb2-functions.php:278
 msgid "Test Color Picker"
 msgstr ""
 
-#: includes/cmb2-functions.php:292 includes/cmb2/example-functions.php:292
+#: includes/cmb2-functions.php:294
 msgid "Test Text Area"
 msgstr ""
 
-#: includes/cmb2-functions.php:299 includes/cmb2/example-functions.php:299
+#: includes/cmb2-functions.php:301
 msgid "Test Text Area Small"
 msgstr ""
 
-#: includes/cmb2-functions.php:306 includes/cmb2/example-functions.php:306
+#: includes/cmb2-functions.php:308
 msgid "Test Text Area for Code"
 msgstr ""
 
-#: includes/cmb2-functions.php:324 includes/cmb2/example-functions.php:324
+#: includes/cmb2-functions.php:326
 msgid "Test Title Weeeee"
 msgstr ""
 
-#: includes/cmb2-functions.php:325 includes/cmb2/example-functions.php:325
+#: includes/cmb2-functions.php:327
 msgid "This is a title description"
 msgstr ""
 
-#: includes/cmb2-functions.php:331 includes/cmb2/example-functions.php:331
+#: includes/cmb2-functions.php:333
 msgid "Test Select"
 msgstr ""
 
-#: includes/cmb2-functions.php:337 includes/cmb2-functions.php:350
-#: includes/cmb2-functions.php:362 includes/cmb2/example-functions.php:337
-#: includes/cmb2/example-functions.php:350
-#: includes/cmb2/example-functions.php:362
+#: includes/cmb2-functions.php:339 includes/cmb2-functions.php:352
+#: includes/cmb2-functions.php:364
 msgid "Option One"
 msgstr ""
 
-#: includes/cmb2-functions.php:338 includes/cmb2-functions.php:351
-#: includes/cmb2-functions.php:363 includes/cmb2/example-functions.php:338
-#: includes/cmb2/example-functions.php:351
-#: includes/cmb2/example-functions.php:363
+#: includes/cmb2-functions.php:340 includes/cmb2-functions.php:353
+#: includes/cmb2-functions.php:365
 msgid "Option Two"
 msgstr ""
 
-#: includes/cmb2-functions.php:339 includes/cmb2-functions.php:352
-#: includes/cmb2-functions.php:364 includes/cmb2/example-functions.php:339
-#: includes/cmb2/example-functions.php:352
-#: includes/cmb2/example-functions.php:364
+#: includes/cmb2-functions.php:341 includes/cmb2-functions.php:354
+#: includes/cmb2-functions.php:366
 msgid "Option Three"
 msgstr ""
 
-#: includes/cmb2-functions.php:344 includes/cmb2/example-functions.php:344
+#: includes/cmb2-functions.php:346
 msgid "Test Radio inline"
 msgstr ""
 
-#: includes/cmb2-functions.php:357 includes/cmb2/example-functions.php:357
+#: includes/cmb2-functions.php:359
 msgid "Test Radio"
 msgstr ""
 
-#: includes/cmb2-functions.php:369 includes/cmb2/example-functions.php:369
+#: includes/cmb2-functions.php:371
 msgid "Test Taxonomy Radio"
 msgstr ""
 
-#: includes/cmb2-functions.php:383 includes/cmb2/example-functions.php:383
+#: includes/cmb2-functions.php:385
 msgid "Test Taxonomy Select"
 msgstr ""
 
-#: includes/cmb2-functions.php:391 includes/cmb2/example-functions.php:391
+#: includes/cmb2-functions.php:393
 msgid "Test Taxonomy Multi Checkbox"
 msgstr ""
 
-#: includes/cmb2-functions.php:400 includes/cmb2/example-functions.php:400
+#: includes/cmb2-functions.php:402
 msgid "Test Checkbox"
 msgstr ""
 
-#: includes/cmb2-functions.php:407 includes/cmb2/example-functions.php:407
+#: includes/cmb2-functions.php:409
 msgid "Test Multi Checkbox"
 msgstr ""
 
-#: includes/cmb2-functions.php:413 includes/cmb2/example-functions.php:413
+#: includes/cmb2-functions.php:415
 msgid "Check One"
 msgstr ""
 
-#: includes/cmb2-functions.php:414 includes/cmb2/example-functions.php:414
+#: includes/cmb2-functions.php:416
 msgid "Check Two"
 msgstr ""
 
-#: includes/cmb2-functions.php:415 includes/cmb2/example-functions.php:415
+#: includes/cmb2-functions.php:417
 msgid "Check Three"
 msgstr ""
 
-#: includes/cmb2-functions.php:421 includes/cmb2/example-functions.php:421
+#: includes/cmb2-functions.php:423
 msgid "Test wysiwyg"
 msgstr ""
 
-#: includes/cmb2-functions.php:431 includes/cmb2/example-functions.php:431
+#: includes/cmb2-functions.php:433
 msgid "Test Image"
 msgstr ""
 
-#: includes/cmb2-functions.php:438 includes/cmb2/example-functions.php:438
+#: includes/cmb2-functions.php:440
 msgid "Multiple Files"
 msgstr ""
 
-#: includes/cmb2-functions.php:439 includes/cmb2/example-functions.php:439
+#: includes/cmb2-functions.php:441
 msgid "Upload or add multiple images/attachments."
 msgstr ""
 
-#: includes/cmb2-functions.php:446 includes/cmb2/example-functions.php:446
+#: includes/cmb2-functions.php:448
 msgid "oEmbed"
 msgstr ""
 
-#: includes/cmb2-functions.php:449 includes/cmb2/example-functions.php:449
+#: includes/cmb2-functions.php:451
 #, php-format
 msgid ""
 "Enter a youtube, twitter, or instagram URL. Supports services listed at %s."
 msgstr ""
 
-#: includes/cmb2-functions.php:481 includes/cmb2/example-functions.php:481
+#: includes/cmb2-functions.php:483
 msgid "About Page Metabox"
 msgstr ""
 
-#: includes/cmb2-functions.php:511 includes/cmb2/example-functions.php:511
+#: includes/cmb2-functions.php:513
 msgid "Repeating Field Group"
 msgstr ""
 
-#: includes/cmb2-functions.php:519 includes/cmb2/example-functions.php:519
+#: includes/cmb2-functions.php:521
 msgid "Generates reusable form entries"
 msgstr ""
 
-#: includes/cmb2-functions.php:521 includes/cmb2/example-functions.php:521
+#: includes/cmb2-functions.php:523
 msgid "Entry {#}"
 msgstr ""
 
-#: includes/cmb2-functions.php:522 includes/cmb2/example-functions.php:522
+#: includes/cmb2-functions.php:524
 msgid "Add Another Entry"
 msgstr ""
 
-#: includes/cmb2-functions.php:523 includes/cmb2/example-functions.php:523
+#: includes/cmb2-functions.php:525
 msgid "Remove Entry"
 msgstr ""
 
-#: includes/cmb2-functions.php:537 includes/cmb2/example-functions.php:537
+#: includes/cmb2-functions.php:539
 msgid "Entry Title"
 msgstr ""
 
-#: includes/cmb2-functions.php:544 includes/cmb2/example-functions.php:544
+#: includes/cmb2-functions.php:546
 msgid "Description"
 msgstr ""
 
-#: includes/cmb2-functions.php:545 includes/cmb2/example-functions.php:545
+#: includes/cmb2-functions.php:547
 msgid "Write a short description for this entry"
 msgstr ""
 
-#: includes/cmb2-functions.php:551 includes/cmb2/example-functions.php:551
+#: includes/cmb2-functions.php:553
 msgid "Entry Image"
 msgstr ""
 
-#: includes/cmb2-functions.php:557 includes/cmb2/example-functions.php:557
+#: includes/cmb2-functions.php:559
 msgid "Image Caption"
 msgstr ""
 
-#: includes/cmb2-functions.php:575 includes/cmb2/example-functions.php:575
+#: includes/cmb2-functions.php:577
 msgid "User Profile Metabox"
 msgstr ""
 
-#: includes/cmb2-functions.php:582 includes/cmb2-functions.php:651
-#: includes/cmb2/example-functions.php:582
-#: includes/cmb2/example-functions.php:651
+#: includes/cmb2-functions.php:584 includes/cmb2-functions.php:653
 msgid "Extra Info"
 msgstr ""
 
-#: includes/cmb2-functions.php:590 includes/cmb2/example-functions.php:590
+#: includes/cmb2-functions.php:592
 msgid "Avatar"
 msgstr ""
 
-#: includes/cmb2-functions.php:597 includes/cmb2/example-functions.php:597
+#: includes/cmb2-functions.php:599
 msgid "Facebook URL"
 msgstr ""
 
-#: includes/cmb2-functions.php:604 includes/cmb2/example-functions.php:604
+#: includes/cmb2-functions.php:606
 msgid "Twitter URL"
 msgstr ""
 
-#: includes/cmb2-functions.php:611 includes/cmb2/example-functions.php:611
+#: includes/cmb2-functions.php:613
 msgid "Google+ URL"
 msgstr ""
 
-#: includes/cmb2-functions.php:618 includes/cmb2/example-functions.php:618
+#: includes/cmb2-functions.php:620
 msgid "Linkedin URL"
 msgstr ""
 
-#: includes/cmb2-functions.php:625 includes/cmb2/example-functions.php:625
+#: includes/cmb2-functions.php:627
 msgid "User Field"
 msgstr ""
 
-#: includes/cmb2-functions.php:644 includes/cmb2/example-functions.php:644
+#: includes/cmb2-functions.php:646
 msgid "Category Metabox"
 msgstr ""
 
-#: includes/cmb2-functions.php:659 includes/cmb2/example-functions.php:659
+#: includes/cmb2-functions.php:661
 msgid "Term Image"
 msgstr ""
 
-#: includes/cmb2-functions.php:666 includes/cmb2/example-functions.php:666
+#: includes/cmb2-functions.php:668
 msgid "Arbitrary Term Field"
 msgstr ""
 
-#: includes/cmb2-functions.php:685 includes/cmb2/example-functions.php:685
+#: includes/cmb2-functions.php:687
 msgid "Theme Options"
 msgstr ""
 
-#: includes/cmb2-functions.php:716 includes/cmb2/example-functions.php:716
+#: includes/cmb2-functions.php:718
 msgid "Site Background Color"
 msgstr ""
 
-#: includes/cmb2-functions.php:753 includes/cmb2/example-functions.php:753
+#: includes/cmb2-functions.php:755
 #, php-format
 msgid "%s &mdash; Updated!"
 msgstr ""
 
-#: includes/cmb2-functions.php:785 includes/cmb2/example-functions.php:785
+#: includes/cmb2-functions.php:787
 msgid "REST Test Box"
 msgstr ""
 
-#: includes/cmb2-functions.php:794 includes/cmb2/example-functions.php:794
+#: includes/cmb2-functions.php:796
 msgid "REST Test Text"
 msgstr ""
 
-#: includes/cmb2-functions.php:795 includes/cmb2/example-functions.php:795
+#: includes/cmb2-functions.php:797
 msgid "Will show in the REST API for this box and for pages."
 msgstr ""
 
-#: includes/cmb2-functions.php:801 includes/cmb2/example-functions.php:801
+#: includes/cmb2-functions.php:803
 msgid "REST Editable Test Text"
 msgstr ""
 
-#: includes/cmb2-functions.php:802 includes/cmb2/example-functions.php:802
+#: includes/cmb2-functions.php:804
 msgid "Will show in REST API \"editable\" contexts only (`POST` requests)."
-msgstr ""
-
-#: includes/cmb2/includes/CMB2.php:199
-msgid "Metabox configuration is required to have an ID parameter."
-msgstr ""
-
-#: includes/cmb2/includes/CMB2.php:618
-msgid "Click to toggle"
-msgstr ""
-
-#: includes/cmb2/includes/CMB2_Ajax.php:75
-msgid "Please Try Again"
-msgstr ""
-
-#: includes/cmb2/includes/CMB2_Ajax.php:181
-msgid "Remove Embed"
-msgstr ""
-
-#: includes/cmb2/includes/CMB2_Ajax.php:189
-#: includes/cmb2/includes/helper-functions.php:107
-#, php-format
-msgid "No oEmbed Results Found for %1$s. View more info at %2$s."
-msgstr ""
-
-#: includes/cmb2/includes/CMB2_Base.php:423
-#, php-format
-msgid ""
-"The \"%1$s\" field parameter has been deprecated in favor of the \"%2$s\" "
-"parameter."
-msgstr ""
-
-#: includes/cmb2/includes/CMB2_Base.php:427
-#, php-format
-msgid ""
-"Using the \"%1$s\" field parameter as a callback has been deprecated in "
-"favor of the \"%2$s\" parameter."
-msgstr ""
-
-#: includes/cmb2/includes/CMB2_Base.php:457
-#, php-format
-msgid ""
-"%1$s was called with a parameter that is <strong>deprecated</strong> since "
-"version %2$s! %3$s"
-msgstr ""
-
-#: includes/cmb2/includes/CMB2_Base.php:459
-#, php-format
-msgid ""
-"%1$s was called with a parameter that is <strong>deprecated</strong> since "
-"version %2$s with no alternative available."
-msgstr ""
-
-#: includes/cmb2/includes/CMB2_Base.php:492
-#: includes/cmb2/includes/CMB2_Hookup_Base.php:102
-#: includes/cmb2/includes/CMB2_Options.php:247
-#: includes/cmb2/includes/CMB2_Options_Hookup.php:369
-#: includes/cmb2/includes/types/CMB2_Type_Base.php:173
-#, php-format
-msgid "Invalid %1$s property: %2$s"
-msgstr ""
-
-#: includes/cmb2/includes/CMB2_Base.php:510
-#: includes/cmb2/includes/types/CMB2_Type_Base.php:157
-#, php-format
-msgid "Invalid %1$s method: %2$s"
-msgstr ""
-
-#: includes/cmb2/includes/CMB2_Field.php:1443
-msgid "Add Group"
-msgstr ""
-
-#: includes/cmb2/includes/CMB2_Field.php:1444
-msgid "Remove Group"
-msgstr ""
-
-#: includes/cmb2/includes/CMB2_Field.php:1476
-#: includes/cmb2/includes/CMB2_Field.php:1480
-msgid "None"
-msgstr ""
-
-#: includes/cmb2/includes/CMB2_Field.php:1594
-msgid "Sorry, this field does not have a cmb_id specified."
-msgstr ""
-
-#: includes/cmb2/includes/CMB2_Field_Display.php:453
-#: includes/cmb2/includes/CMB2_JS.php:242
-#: includes/cmb2/includes/types/CMB2_Type_File_Base.php:90
-msgid "File:"
-msgstr ""
-
-#: includes/cmb2/includes/CMB2_Hookup.php:188
-msgid ""
-"Term Metadata is a WordPress 4.4+ feature. Please upgrade your WordPress "
-"install."
-msgstr ""
-
-#: includes/cmb2/includes/CMB2_Hookup.php:192
-msgid "Term metaboxes configuration requires a \"taxonomies\" parameter."
-msgstr ""
-
-#: includes/cmb2/includes/CMB2_Hookup.php:560
-#, php-format
-msgid "Toggle panel: %s"
-msgstr ""
-
-#: includes/cmb2/includes/CMB2_Hookup_Base.php:44
-#, php-format
-msgid "%1$s should be implemented by the extended class."
-msgstr ""
-
-#: includes/cmb2/includes/CMB2_JS.php:177
-#: includes/cmb2/includes/CMB2_JS.php:222
-msgid "Clear"
-msgstr ""
-
-#: includes/cmb2/includes/CMB2_JS.php:178
-msgid "Default"
-msgstr ""
-
-#: includes/cmb2/includes/CMB2_JS.php:179
-msgid "Select Color"
-msgstr ""
-
-#: includes/cmb2/includes/CMB2_JS.php:180
-msgid "Current Color"
-msgstr ""
-
-#: includes/cmb2/includes/CMB2_JS.php:212
-msgctxt "Valid formatDate string for jquery-ui datepicker"
-msgid "mm/dd/yy"
-msgstr ""
-
-#: includes/cmb2/includes/CMB2_JS.php:213
-msgid "Sunday, Monday, Tuesday, Wednesday, Thursday, Friday, Saturday"
-msgstr ""
-
-#: includes/cmb2/includes/CMB2_JS.php:214
-msgid "Su, Mo, Tu, We, Th, Fr, Sa"
-msgstr ""
-
-#: includes/cmb2/includes/CMB2_JS.php:215
-msgid "Sun, Mon, Tue, Wed, Thu, Fri, Sat"
-msgstr ""
-
-#: includes/cmb2/includes/CMB2_JS.php:216
-msgid ""
-"January, February, March, April, May, June, July, August, September, "
-"October, November, December"
-msgstr ""
-
-#: includes/cmb2/includes/CMB2_JS.php:217
-msgid "Jan, Feb, Mar, Apr, May, Jun, Jul, Aug, Sep, Oct, Nov, Dec"
-msgstr ""
-
-#: includes/cmb2/includes/CMB2_JS.php:218
-msgid "Next"
-msgstr ""
-
-#: includes/cmb2/includes/CMB2_JS.php:219
-msgid "Prev"
-msgstr ""
-
-#: includes/cmb2/includes/CMB2_JS.php:220
-msgid "Today"
-msgstr ""
-
-#: includes/cmb2/includes/CMB2_JS.php:221
-#: includes/cmb2/includes/CMB2_JS.php:231
-msgid "Done"
-msgstr ""
-
-#: includes/cmb2/includes/CMB2_JS.php:225
-msgid "Choose Time"
-msgstr ""
-
-#: includes/cmb2/includes/CMB2_JS.php:226
-msgid "Time"
-msgstr ""
-
-#: includes/cmb2/includes/CMB2_JS.php:227
-msgid "Hour"
-msgstr ""
-
-#: includes/cmb2/includes/CMB2_JS.php:228
-msgid "Minute"
-msgstr ""
-
-#: includes/cmb2/includes/CMB2_JS.php:229
-msgid "Second"
-msgstr ""
-
-#: includes/cmb2/includes/CMB2_JS.php:230
-msgid "Now"
-msgstr ""
-
-#: includes/cmb2/includes/CMB2_JS.php:232
-msgctxt ""
-"Valid formatting string, as per http://trentrichardson.com/examples/"
-"timepicker/"
-msgid "hh:mm TT"
-msgstr ""
-
-#: includes/cmb2/includes/CMB2_JS.php:238
-msgid "Use this file"
-msgstr ""
-
-#: includes/cmb2/includes/CMB2_JS.php:239
-msgid "Use these files"
-msgstr ""
-
-#: includes/cmb2/includes/CMB2_JS.php:240
-#: includes/cmb2/includes/types/CMB2_Type_File_Base.php:75
-msgid "Remove Image"
-msgstr ""
-
-#: includes/cmb2/includes/CMB2_JS.php:241
-#: includes/cmb2/includes/CMB2_Types.php:408
-#: includes/cmb2/includes/types/CMB2_Type_File_Base.php:95
-msgid "Remove"
-msgstr ""
-
-#: includes/cmb2/includes/CMB2_JS.php:243
-#: includes/cmb2/includes/types/CMB2_Type_File_Base.php:93
-msgid "Download"
-msgstr ""
-
-#: includes/cmb2/includes/CMB2_JS.php:244
-msgid "Select / Deselect All"
-msgstr ""
-
-#: includes/cmb2/includes/CMB2_Options_Hookup.php:139
-msgid "Nothing to update."
-msgstr ""
-
-#: includes/cmb2/includes/CMB2_Options_Hookup.php:143
-msgid "Settings updated."
-msgstr ""
-
-#: includes/cmb2/includes/CMB2_Types.php:226
-msgid "Custom CMB2 field type classes must extend CMB2_Type_Base."
-msgstr ""
-
-#: includes/cmb2/includes/CMB2_Types.php:344
-msgid "Add Row"
-msgstr ""
-
-#: includes/cmb2/includes/CMB2_Types.php:408
-msgid "Remove Row"
-msgstr ""
-
-#: includes/cmb2/includes/rest-api/CMB2_REST_Controller.php:257
-msgid "This box does not have read permissions."
-msgstr ""
-
-#: includes/cmb2/includes/rest-api/CMB2_REST_Controller.php:277
-msgid "This box does not have write permissions."
-msgstr ""
-
-#: includes/cmb2/includes/rest-api/CMB2_REST_Controller.php:300
-msgid ""
-"No box found by that id. A box needs to be registered with the \"show_in_rest"
-"\" parameter configured."
-msgstr ""
-
-#: includes/cmb2/includes/rest-api/CMB2_REST_Controller.php:378
-msgid "A human-readable description of the object."
-msgstr ""
-
-#: includes/cmb2/includes/rest-api/CMB2_REST_Controller.php:385
-msgid "The id for the object."
-msgstr ""
-
-#: includes/cmb2/includes/rest-api/CMB2_REST_Controller.php:392
-msgid "The title for the object."
-msgstr ""
-
-#: includes/cmb2/includes/rest-api/CMB2_REST_Controller_Boxes.php:51
-msgid "Includes the registered fields for the box in the response."
-msgstr ""
-
-#: includes/cmb2/includes/rest-api/CMB2_REST_Controller_Boxes.php:72
-msgid ""
-"Includes the fully rendered attributes, 'form_open', 'form_close', as well "
-"as the enqueued 'js_dependencies' script handles, and 'css_dependencies' "
-"stylesheet handles."
-msgstr ""
-
-#: includes/cmb2/includes/rest-api/CMB2_REST_Controller_Boxes.php:122
-msgid "No boxes found."
-msgstr ""
-
-#: includes/cmb2/includes/rest-api/CMB2_REST_Controller_Fields.php:27
-msgid ""
-"Includes the box object which the fields are registered to in the response."
-msgstr ""
-
-#: includes/cmb2/includes/rest-api/CMB2_REST_Controller_Fields.php:30
-msgid ""
-"When the '_rendered' argument is passed, the renderable field attributes "
-"will be returned fully rendered. By default, the names of the callback "
-"handers for the renderable attributes will be returned."
-msgstr ""
-
-#: includes/cmb2/includes/rest-api/CMB2_REST_Controller_Fields.php:33
-#: includes/cmb2/includes/rest-api/CMB2_REST_Controller_Fields.php:36
-msgid ""
-"To view or modify the field's value, the 'object_id' and 'object_type' "
-"arguments are required."
-msgstr ""
-
-#: includes/cmb2/includes/rest-api/CMB2_REST_Controller_Fields.php:236
-msgid ""
-"CMB2 Field value cannot be updated without the value parameter specified."
-msgstr ""
-
-#: includes/cmb2/includes/rest-api/CMB2_REST_Controller_Fields.php:297
-msgid ""
-"CMB2 Field value cannot be modified without the object_id and object_type "
-"parameters specified."
-msgstr ""
-
-#: includes/cmb2/includes/rest-api/CMB2_REST_Controller_Fields.php:312
-#: includes/cmb2/includes/rest-api/CMB2_REST_Controller_Fields.php:341
-msgid "No field found by that id."
-msgstr ""
-
-#: includes/cmb2/includes/rest-api/CMB2_REST_Controller_Fields.php:415
-#, php-format
-msgid "Value Error for %s"
-msgstr ""
-
-#: includes/cmb2/includes/shim/WP_REST_Controller.php:25
-#, php-format
-msgid "Method '%s' must be overridden."
-msgstr ""
-
-#: includes/cmb2/includes/shim/WP_REST_Controller.php:35
-#: includes/cmb2/includes/shim/WP_REST_Controller.php:47
-#: includes/cmb2/includes/shim/WP_REST_Controller.php:59
-#: includes/cmb2/includes/shim/WP_REST_Controller.php:71
-#: includes/cmb2/includes/shim/WP_REST_Controller.php:83
-#: includes/cmb2/includes/shim/WP_REST_Controller.php:95
-#: includes/cmb2/includes/shim/WP_REST_Controller.php:107
-#: includes/cmb2/includes/shim/WP_REST_Controller.php:119
-#: includes/cmb2/includes/shim/WP_REST_Controller.php:131
-#: includes/cmb2/includes/shim/WP_REST_Controller.php:143
-#: includes/cmb2/includes/shim/WP_REST_Controller.php:155
-#: includes/cmb2/includes/shim/WP_REST_Controller.php:168
-#, php-format
-msgid "Method '%s' not implemented. Must be overridden in subclass."
-msgstr ""
-
-#: includes/cmb2/includes/shim/WP_REST_Controller.php:273
-msgid "Current page of the collection."
-msgstr ""
-
-#: includes/cmb2/includes/shim/WP_REST_Controller.php:281
-msgid "Maximum number of items to be returned in result set."
-msgstr ""
-
-#: includes/cmb2/includes/shim/WP_REST_Controller.php:290
-msgid "Limit results to those matching a string."
-msgstr ""
-
-#: includes/cmb2/includes/shim/WP_REST_Controller.php:308
-msgid ""
-"Scope under which the request is made; determines fields present in response."
-msgstr ""
-
-#: includes/cmb2/includes/types/CMB2_Type_Counter_Base.php:50
-msgid "Words left"
-msgstr ""
-
-#: includes/cmb2/includes/types/CMB2_Type_Counter_Base.php:51
-msgid "Words"
-msgstr ""
-
-#: includes/cmb2/includes/types/CMB2_Type_Counter_Base.php:56
-msgid "Characters left"
-msgstr ""
-
-#: includes/cmb2/includes/types/CMB2_Type_Counter_Base.php:57
-msgid "Characters"
-msgstr ""
-
-#: includes/cmb2/includes/types/CMB2_Type_Counter_Base.php:62
-msgid "Your text may be truncated."
-msgstr ""
-
-#: includes/cmb2/includes/types/CMB2_Type_File.php:76
-msgid "Add or Upload File"
-msgstr ""
-
-#: includes/cmb2/includes/types/CMB2_Type_File_List.php:41
-msgid "Add or Upload Files"
-msgstr ""
-
-#: includes/cmb2/includes/types/CMB2_Type_Taxonomy_Base.php:115
-msgid "No terms"
 msgstr ""
