@@ -79,6 +79,7 @@ class Cideapps_Gp {
 		$this->define_admin_hooks();
 		$this->define_testimonial_hooks();
 		$this->define_services_hooks();
+		$this->define_projects_hooks();
 		$this->define_options_menu_page_fields_hooks();
 		$this->define_public_hooks();
 
@@ -130,6 +131,7 @@ class Cideapps_Gp {
 		 */
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/custom-post-types/class-cideapps-gp-testimonial-post-type.php';
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/custom-post-types/class-cideapps-gp-services-post-type.php';
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/custom-post-types/class-cideapps-gp-projects-post-type.php';
 
 		/**
 		 * The classes responsibles for defining custom metaboxes.
@@ -209,6 +211,14 @@ class Cideapps_Gp {
 		$plugin_services_post_type = new Cideapps_Gp_Services_Post_Type();
 
 		$this->loader->add_action( 'init', $plugin_services_post_type, 'services_post_type', 0 );
+
+	}
+
+	private function define_projects_hooks() {
+
+		$plugin_projects_post_type = new Cideapps_Gp_Projects_Post_Type();
+
+		$this->loader->add_action( 'init', $plugin_projects_post_type, 'projects_post_type', 0 );
 
 	}
 
