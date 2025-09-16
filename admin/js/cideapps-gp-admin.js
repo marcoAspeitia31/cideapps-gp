@@ -31,10 +31,32 @@
 	$(document).on('ready', () => {
 	
 		$(":input").inputmask();
-		$("#business_phone").inputmask({"mask": "+99 99 9999 9999"});
-		$("#whatsapp_phone").inputmask({"mask": "+99 99 9999 9999"});
+		$("#business_main_phone").inputmask( { "mask": "999 999 9999", "show-mask-on-hover": false } );
+		$("#whatsapp_phone").inputmask( { "mask": "+99 99 9999 9999" } );
 		
-  	})
+  	});
+
+	$(function () {
+		const maskOpts = { mask: '999 999 9999', showMaskOnHover: false };
+
+		// Aplica al enfocar (sirve para inputs nuevos también)
+		$(document).on('focusin', 'input[id^="business_secondary_phones_"]', function () {
+			const $el = $(this);
+			if (!$el.data('mask-init')) {
+				$el.inputmask(maskOpts);
+				$el.data('mask-init', true); // evita re-inicializar
+			}
+		});
+
+		// Inicializa los que ya existen en el DOM
+		$('input[id^="business_secondary_phones_"]').each(function () {
+			const $el = $(this);
+			if (!$el.data('mask-init')) {
+				$el.inputmask(maskOpts);
+				$el.data('mask-init', true);
+			}
+		});
+  });
 
 
 })( jQuery );

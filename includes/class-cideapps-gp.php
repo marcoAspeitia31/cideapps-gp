@@ -79,6 +79,7 @@ class Cideapps_Gp {
 		$this->define_admin_hooks();
 		$this->define_testimonial_hooks();
 		$this->define_services_hooks();
+		$this->define_services_taxonomy_hooks();
 		$this->define_options_menu_page_fields_hooks();
 		$this->define_public_hooks();
 
@@ -136,6 +137,8 @@ class Cideapps_Gp {
 		 */
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/custom-fields/class-cideapps-gp-options-menu-page-fields.php';
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/custom-fields/class-cideapps-gp-testimonial-fields.php';
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/custom-fields/class-cideapps-gp-service-fields.php';
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/custom-fields/class-cideapps-gp-service-taxonomy-fields.php';
 
 		/**
 		 * The class responsible for defining all actions that occur in the admin area.
@@ -209,6 +212,18 @@ class Cideapps_Gp {
 		$plugin_services_post_type = new Cideapps_Gp_Services_Post_Type();
 
 		$this->loader->add_action( 'init', $plugin_services_post_type, 'services_post_type', 0 );
+
+		$plugin_services_fields = new Cideapps_Gp_Service_Fields();
+
+		$this->loader->add_action( 'cmb2_init', $plugin_services_fields, 'service_metabox', 0 );
+
+	}
+
+	private function define_services_taxonomy_hooks() {
+
+		$plugin_services_taxonomy = new Cideapps_Gp_Service_Taxonomy_Fields();
+
+		$this->loader->add_action( 'cmb2_init', $plugin_services_taxonomy, 'service_taxonomy_metabox', 0 );
 
 	}
 
