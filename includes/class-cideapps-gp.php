@@ -137,6 +137,7 @@ class Cideapps_Gp {
 		 */
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/custom-fields/class-cideapps-gp-options-menu-page-fields.php';
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/custom-fields/class-cideapps-gp-testimonial-fields.php';
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/custom-fields/class-cideapps-gp-service-fields.php';
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/custom-fields/class-cideapps-gp-service-taxonomy-fields.php';
 
 		/**
@@ -211,6 +212,10 @@ class Cideapps_Gp {
 		$plugin_services_post_type = new Cideapps_Gp_Services_Post_Type();
 
 		$this->loader->add_action( 'init', $plugin_services_post_type, 'services_post_type', 0 );
+
+		$plugin_services_fields = new Cideapps_Gp_Service_Fields();
+
+		$this->loader->add_action( 'cmb2_init', $plugin_services_fields, 'service_metabox', 0 );
 
 	}
 
