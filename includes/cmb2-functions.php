@@ -21,7 +21,7 @@ if ( file_exists( dirname( __FILE__ ) . '/cmb2/init.php' ) ) {
 	require_once dirname( __FILE__ ) . '/CMB2/init.php';
 }
 
-return;
+//return;
 
 /**
  * Conditionally displays a metabox when used as a callback in the 'show_on_cb' cmb2_box parameter
