@@ -123,13 +123,19 @@ class Cideapps_Gp_Options_Menu_Page_Fields {
 
         // Phone.
         $cagp_metabox->add_field( array(
-            'name' => esc_html__( 'Business phone', 'cideapps-gp' ),
-            'desc' => esc_html__( 'Add your phone number (optional)', 'cideapps-gp' ),
-            'id'   => 'business_phone',
+            'name' => esc_html__( 'Business main phone', 'cideapps-gp' ),
+            'desc' => esc_html__( 'Add your main business phone number (optional)', 'cideapps-gp' ),
+            'id'   => 'business_main_phone',
             'type' => 'text',
-           /*  'attributes' => array(
-                'type' => 'number',
-            ), */
+        ) );
+
+        // Secondary Phones.
+        $cagp_metabox->add_field( array(
+            'name' => esc_html__( 'Business secondary phones', 'cideapps-gp' ),
+            'desc' => esc_html__( 'Add your secondary business phone numbers (optional)', 'cideapps-gp' ),
+            'id'   => 'business_secondary_phones',
+            'type' => 'text',
+            'repeatable' => true,
         ) );
 
         // Whatsapp.
@@ -163,6 +169,15 @@ class Cideapps_Gp_Options_Menu_Page_Fields {
             'desc' => esc_html__( 'This address will be autocompleted after modifying and saving this page', 'cideapps-gp' ),
             'id'   => 'business_address',
             'type' => 'textarea_small',
+        ) );
+
+        // Business working hours
+        $cagp_metabox->add_field( array(
+            'name' => esc_html__( 'Business working hours', 'cideapps-gp' ),
+            'desc' => esc_html__( 'Write your business working hours', 'cideapps-gp' ),
+            'id'   => 'business_working_hours',
+            'type' => 'text',
+            'repeatable' => true
         ) );
 
         // Contact form shortcode
