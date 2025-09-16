@@ -1,114 +1,113 @@
-=== Plugin Name ===
-Contributors: (this should be a list of wordpress.org userid's)
-Donate link: https://github.com/marcoAspeitia31//
-Tags: comments, spam
-Requires at least: 3.0.1
-Tested up to: 3.4
-Stable tag: 4.3
-License: GPLv2 or later
-License URI: http://www.gnu.org/licenses/gpl-2.0.html
+# Cideapps GP
 
-Here is a short description of the plugin.  This should be no more than 150 characters.  No markup here.
+Plugin genérico para iniciar el desarrollo de proyectos en WordPress.  
+Incluye integración con **CMB2**, creación de **Custom Post Types (CPT)**, **taxonomías personalizadas** y **opciones de tema** para centralizar información de negocio.  
 
-== Description ==
+Este plugin está basado en la plantilla generada con [WordPress Plugin Boilerplate (wppb.me)](http://wppb.me/).
 
-This is the long description.  No limit, and you can use Markdown (as well as in the following sections).
+---
 
-For backwards compatibility, if this section is missing, the full length of the short description will be used, and
-Markdown parsed.
+## 🚀 Características principales
 
-A few notes about the sections above:
+- **CMB2 integrado**  
+  Campos personalizados y metaboxes listos para extender en CPTs y taxonomías.
+  
+- **Custom Post Types incluidos**  
+  - **Services** (`services`)  
+  - **Testimonials** (`testimonials`)  
 
-*   "Contributors" is a comma separated list of wp.org/wp-plugins.org usernames
-*   "Tags" is a comma separated list of tags that apply to the plugin
-*   "Requires at least" is the lowest version that the plugin will work on
-*   "Tested up to" is the highest version that you've *successfully used to test the plugin*. Note that it might work on
-higher versions... this is just the highest one you've verified.
-*   Stable tag should indicate the Subversion "tag" of the latest stable version, or "trunk," if you use `/trunk/` for
-stable.
+- **Taxonomías personalizadas**  
+  - `service_category` (asociada al CPT `services`).  
 
-    Note that the `readme.txt` of the stable tag is the one that is considered the defining one for the plugin, so
-if the `/trunk/readme.txt` file says that the stable tag is `4.3`, then it is `/tags/4.3/readme.txt` that'll be used
-for displaying information about the plugin.  In this situation, the only thing considered from the trunk `readme.txt`
-is the stable tag pointer.  Thus, if you develop in trunk, you can update the trunk `readme.txt` to reflect changes in
-your in-development version, without having that information incorrectly disclosed about the current stable version
-that lacks those changes -- as long as the trunk's `readme.txt` points to the correct stable tag.
+- **Opciones de tema**  
+  Página en el admin para agregar información del negocio (por ejemplo, datos de contacto o branding).
 
-    If no stable tag is provided, it is assumed that trunk is stable, but you should specify "trunk" if that's where
-you put the stable version, in order to eliminate any doubt.
+- **Internacionalización (i18n)**  
+  Archivos `.po` y `.mo` en `/languages` para traducciones.
 
-== Installation ==
+- **Estructura clara**  
+  Separación de lógica en carpetas `admin`, `public` e `includes` siguiendo buenas prácticas.
 
-This section describes how to install the plugin and get it working.
+---
 
-e.g.
+## 📂 Estructura del plugin
 
-1. Upload `cideapps-gp.php` to the `/wp-content/plugins/` directory
-1. Activate the plugin through the 'Plugins' menu in WordPress
-1. Place `<?php do_action('plugin_name_hook'); ?>` in your templates
+```
+cideapps-gp/
+├── admin/                 # Código específico para el área de administración
+│   ├── custom-fields/      # Metaboxes con CMB2
+│   ├── custom-post-types/  # CPTs (services, testimonials)
+│   ├── custom-taxonomies/  # Taxonomías personalizadas
+│   ├── css/ js/ img/       # Assets para el admin
+│
+├── public/                # Código para el frontend
+│   ├── css/ js/ partials/
+│
+├── includes/              # Clases principales, loader, activador/desactivador
+│   └── cmb2-functions.php # Funciones de integración con CMB2
+│
+├── languages/             # Archivos de traducción
+├── cideapps-gp.php        # Bootstrap del plugin
+├── uninstall.php          # Limpieza al desinstalar
+├── LICENSE.txt
+└── README.md
+```
 
-== Frequently Asked Questions ==
+---
 
-= A question that someone might have =
+## ⚙️ Instalación
 
-An answer to that question.
+1. Descarga este repositorio o clónalo en tu carpeta `wp-content/plugins`:
+   ```bash
+   git clone https://github.com/marcoAspeitia31/cideapps-gp.git
+   ```
+2. Activa el plugin desde el panel de administración de WordPress:  
+   **Plugins → Activar "Cideapps GP"**  
+3. Una vez activo:
+   - Revisa los CPTs "Services" y "Testimonials".  
+   - Configura los metaboxes con CMB2.  
+   - Agrega categorías en `service_category`.  
+   - Ajusta las opciones de negocio desde el menú correspondiente.  
 
-= What about foo bar? =
+---
 
-Answer to foo bar dilemma.
+## 📦 Requisitos
 
-== Screenshots ==
+- WordPress 6.0 o superior  
+- PHP 7.4+  
+- [CMB2](https://cmb2.io/) (ya integrado en el plugin)  
 
-1. This screen shot description corresponds to screenshot-1.(png|jpg|jpeg|gif). Note that the screenshot is taken from
-the /assets directory or the directory that contains the stable readme.txt (tags or trunk). Screenshots in the /assets
-directory take precedence. For example, `/assets/screenshot-1.png` would win over `/tags/4.3/screenshot-1.png`
-(or jpg, jpeg, gif).
-2. This is the second screen shot
+---
 
-== Changelog ==
+## 👨‍💻 Desarrollo
 
-= 1.0 =
-* A change since the previous version.
-* Another change.
+Este plugin está diseñado como base para proyectos personalizados.  
+Puedes extenderlo agregando:
 
-= 0.5 =
-* List versions from most recent at top to oldest at bottom.
+- Nuevos **CPTs** en `/admin/custom-post-types/`  
+- Nuevas **taxonomías** en `/admin/custom-taxonomies/`  
+- Campos adicionales con **CMB2** en `/admin/custom-fields/`  
 
-== Upgrade Notice ==
+---
 
-= 1.0 =
-Upgrade notices describe the reason a user should upgrade.  No more than 300 characters.
+## 🌍 Traducciones
 
-= 0.5 =
-This version fixes a security related bug.  Upgrade immediately.
+El plugin incluye soporte de internacionalización:  
 
-== Arbitrary section ==
+- Español (`es`, `es_MX`)  
+- Plantilla base `cideapps-gp.pot` para generar otros idiomas  
 
-You may provide arbitrary sections, in the same format as the ones above.  This may be of use for extremely complicated
-plugins where more information needs to be conveyed that doesn't fit into the categories of "description" or
-"installation."  Arbitrary sections will be shown below the built-in sections outlined above.
+---
 
-== A brief Markdown Example ==
+## 📜 Licencia
 
-Ordered list:
+Distribuido bajo la licencia **GPL-2.0+**.  
+Consulta el archivo [LICENSE.txt](./LICENSE.txt) para más información.  
 
-1. Some feature
-1. Another feature
-1. Something else about the plugin
+---
 
-Unordered list:
+## ✨ Autor
 
-* something
-* something else
-* third thing
-
-Here's a link to [WordPress](http://wordpress.org/ "Your favorite software") and one to [Markdown's Syntax Documentation][markdown syntax].
-Titles are optional, naturally.
-
-[markdown syntax]: http://daringfireball.net/projects/markdown/syntax
-            "Markdown is what the parser uses to process much of the readme file"
-
-Markdown uses email style notation for blockquotes and I've been told:
-> Asterisks for *emphasis*. Double it up  for **strong**.
-
-`<?php code(); // goes in backticks ?>`
+**Marco Aspeitia**  
+- GitHub: [@marcoAspeitia31](https://github.com/marcoAspeitia31)  
+- Proyecto: [Cideapps](https://github.com/marcoAspeitia31/)  
