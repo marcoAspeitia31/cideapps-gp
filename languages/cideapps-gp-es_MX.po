@@ -5,9 +5,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Cide Apps GP v1.0.0\n"
 "Report-Msgid-Bugs-To: Translator Name <translations@example.com>\n"
-"POT-Creation-Date: 2024-05-23 11:55-0600\n"
+"POT-Creation-Date: 2025-09-20 21:49-0600\n"
 "PO-Revision-Date: \n"
-"Last-Translator: \n"
+"Last-Translator: Marco Aspeitia <marco.aspeitia@cideapps.com>\n"
 "Language-Team: CideApps <devs@cide-apps.com>\n"
 "Language: es_MX\n"
 "MIME-Version: 1.0\n"
@@ -16,11 +16,10 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Textdomain-Support: yesX-Generator: Poedit 1.6.4\n"
 "X-Poedit-SourceCharset: UTF-8\n"
-"X-Poedit-KeywordsList: __;_e;esc_html_e;esc_html_x:1,2c;esc_html__;"
-"esc_attr_e;esc_attr_x:1,2c;esc_attr__;_ex:1,2c;_nx:4c,1,2;_nx_noop:4c,1,2;"
-"_x:1,2c;_n:1,2;_n_noop:1,2;__ngettext:1,2;__ngettext_noop:1,2;_c,_nc:4c,1,2\n"
+"X-Poedit-KeywordsList: "
+"__;_e;esc_html_e;esc_html_x:1,2c;esc_html__;esc_attr_e;esc_attr_x:1,2c;esc_attr__;_ex:1,2c;_nx:4c,1,2;_nx_noop:4c,1,2;_x:1,2c;_n:1,2;_n_noop:1,2;__ngettext:1,2;__ngettext_noop:1,2;_c,_nc:4c,1,2\n"
 "X-Poedit-Basepath: ..\n"
-"X-Generator: Poedit 3.4.3\n"
+"X-Generator: Poedit 3.7\n"
 "X-Poedit-SearchPath-0: .\n"
 "X-Poedit-SearchPathExcluded-0: includes/cmb2\n"
 
@@ -99,53 +98,69 @@ msgid "Section to configure the main contact information"
 msgstr "Sección para configurar la información de contacto principal"
 
 #: admin/custom-fields/class-cideapps-gp-options-menu-page-fields.php:126
-msgid "Business phone"
-msgstr "Teléfono de empresa"
+msgid "Business main phone"
+msgstr "Teléfono principal del negocio"
 
 #: admin/custom-fields/class-cideapps-gp-options-menu-page-fields.php:127
-msgid "Add your phone number (optional)"
-msgstr "Agrega tu número telefónico (opcional)"
+msgid "Add your main business phone number (optional)"
+msgstr "Agrega el número telefónico principal de tu negocio (opcional)"
 
-#: admin/custom-fields/class-cideapps-gp-options-menu-page-fields.php:137
+#: admin/custom-fields/class-cideapps-gp-options-menu-page-fields.php:134
+msgid "Business secondary phones"
+msgstr "Teléfonos secundarios del negocio"
+
+#: admin/custom-fields/class-cideapps-gp-options-menu-page-fields.php:135
+msgid "Add your secondary business phone numbers (optional)"
+msgstr "Agrega tus números telefónicos secundarios del negocio (opcional)"
+
+#: admin/custom-fields/class-cideapps-gp-options-menu-page-fields.php:143
 msgid "Whatsapp"
 msgstr "Whatsapp"
 
-#: admin/custom-fields/class-cideapps-gp-options-menu-page-fields.php:138
+#: admin/custom-fields/class-cideapps-gp-options-menu-page-fields.php:144
 msgid ""
 "The Whatsapp number must have the country prefix code (e.g. +52 55 4506 2592)"
 msgstr ""
 "El número de Whatsapp debe tener el código de país (ejemplo +52 55 4506 2592)"
 
-#: admin/custom-fields/class-cideapps-gp-options-menu-page-fields.php:145
+#: admin/custom-fields/class-cideapps-gp-options-menu-page-fields.php:151
 msgid "Contact e-mail"
 msgstr "E-mail de contacto"
 
-#: admin/custom-fields/class-cideapps-gp-options-menu-page-fields.php:146
+#: admin/custom-fields/class-cideapps-gp-options-menu-page-fields.php:152
 msgid "Add your corporate email (optional)"
 msgstr "Agrega tu email corporativo (opcional)"
 
-#: admin/custom-fields/class-cideapps-gp-options-menu-page-fields.php:153
+#: admin/custom-fields/class-cideapps-gp-options-menu-page-fields.php:159
 msgid "Location"
 msgstr "Ubicación"
 
-#: admin/custom-fields/class-cideapps-gp-options-menu-page-fields.php:154
+#: admin/custom-fields/class-cideapps-gp-options-menu-page-fields.php:160
 msgid "Drag the marker to set the exact location"
 msgstr "Arrastra el marcador para establecer la ubicación exacta"
 
-#: admin/custom-fields/class-cideapps-gp-options-menu-page-fields.php:162
+#: admin/custom-fields/class-cideapps-gp-options-menu-page-fields.php:168
 msgid "Business address"
 msgstr "Dirección de negocio"
 
-#: admin/custom-fields/class-cideapps-gp-options-menu-page-fields.php:163
+#: admin/custom-fields/class-cideapps-gp-options-menu-page-fields.php:169
 msgid "This address will be autocompleted after modifying and saving this page"
 msgstr ""
 "Ésta ubicación será autocompletada después de modificar y guardar esta página"
 
-#: admin/custom-fields/class-cideapps-gp-options-menu-page-fields.php:170
+#: admin/custom-fields/class-cideapps-gp-options-menu-page-fields.php:176
+msgid "Business working hours"
+msgstr "Horarios de laborales del negocio"
+
+#: admin/custom-fields/class-cideapps-gp-options-menu-page-fields.php:177
+msgid "Write your business working hours"
+msgstr "Escribe los horarios laborales de tu negocio"
+
+#: admin/custom-fields/class-cideapps-gp-options-menu-page-fields.php:185
 msgid "Main contact form shortcode"
 msgstr "Shortcode del formulario principal"
 
-#: admin/custom-fields/class-cideapps-gp-options-menu-page-fields.php:171
+#: admin/custom-fields/class-cideapps-gp-options-menu-page-fields.php:186
 msgid ""
 "Add the main contact form 7 shortcode (e.g. [contact-form-7 id=\"c7de0b7\" "
 "title=\"Contact form 1\"] )"
@@ -153,83 +168,113 @@ msgstr ""
 "Agregar el shortcode del formulario principal de contact form 7 (ejemplo  "
 "[contact-form-7 id=\"c7de0b7\" title=\"Contact form 1\"])"
 
-#: admin/custom-fields/class-cideapps-gp-options-menu-page-fields.php:180
+#: admin/custom-fields/class-cideapps-gp-options-menu-page-fields.php:195
 msgid "Social Media"
 msgstr "Redes sociales"
 
-#: admin/custom-fields/class-cideapps-gp-options-menu-page-fields.php:181
+#: admin/custom-fields/class-cideapps-gp-options-menu-page-fields.php:196
 msgid "Section to add the URL links of your social media profiles"
 msgstr "Sección para añadir los enlaces URL de tus perfiles de redes sociales"
 
-#: admin/custom-fields/class-cideapps-gp-options-menu-page-fields.php:188
+#: admin/custom-fields/class-cideapps-gp-options-menu-page-fields.php:203
 msgid "Facebook"
 msgstr "Facebook"
 
-#: admin/custom-fields/class-cideapps-gp-options-menu-page-fields.php:189
+#: admin/custom-fields/class-cideapps-gp-options-menu-page-fields.php:204
 msgid "Add your Facebook profile URL"
 msgstr "Añade la URL de tu perfil de Facebook"
 
-#: admin/custom-fields/class-cideapps-gp-options-menu-page-fields.php:197
+#: admin/custom-fields/class-cideapps-gp-options-menu-page-fields.php:212
 msgid "Instagram"
 msgstr "Instagram"
 
-#: admin/custom-fields/class-cideapps-gp-options-menu-page-fields.php:198
+#: admin/custom-fields/class-cideapps-gp-options-menu-page-fields.php:213
 msgid "Add your Instagram profile URL"
 msgstr "Añade la URL de tu perfil de Instagram"
 
-#: admin/custom-fields/class-cideapps-gp-options-menu-page-fields.php:206
+#: admin/custom-fields/class-cideapps-gp-options-menu-page-fields.php:221
 msgid "Youtube"
 msgstr "Youtube"
 
-#: admin/custom-fields/class-cideapps-gp-options-menu-page-fields.php:207
+#: admin/custom-fields/class-cideapps-gp-options-menu-page-fields.php:222
 msgid "Add your Youtube profile URL"
 msgstr "Añade la URL de tu perfil de Youtube"
 
-#: admin/custom-fields/class-cideapps-gp-options-menu-page-fields.php:215
+#: admin/custom-fields/class-cideapps-gp-options-menu-page-fields.php:230
 msgid "Twitter/X"
 msgstr "Twitter/X"
 
-#: admin/custom-fields/class-cideapps-gp-options-menu-page-fields.php:216
+#: admin/custom-fields/class-cideapps-gp-options-menu-page-fields.php:231
 msgid "Add your Twitter/X profile URL"
 msgstr "Añade la URL de tu perfil de Twitter"
 
-#: admin/custom-fields/class-cideapps-gp-options-menu-page-fields.php:224
+#: admin/custom-fields/class-cideapps-gp-options-menu-page-fields.php:239
 msgid "Tiktok"
 msgstr "Tiktok"
 
-#: admin/custom-fields/class-cideapps-gp-options-menu-page-fields.php:225
+#: admin/custom-fields/class-cideapps-gp-options-menu-page-fields.php:240
 msgid "Add your tiktok profile URL"
 msgstr "Añade la URL de tu perfil de Tiktok"
 
-#: admin/custom-fields/class-cideapps-gp-options-menu-page-fields.php:236
+#: admin/custom-fields/class-cideapps-gp-options-menu-page-fields.php:251
 msgid "Settings"
 msgstr "Configuración"
 
-#: admin/custom-fields/class-cideapps-gp-options-menu-page-fields.php:244
+#: admin/custom-fields/class-cideapps-gp-options-menu-page-fields.php:259
 msgid "Addons"
 msgstr "Complementos"
 
-#: admin/custom-fields/class-cideapps-gp-options-menu-page-fields.php:245
+#: admin/custom-fields/class-cideapps-gp-options-menu-page-fields.php:260
 msgid "This section is the responsible to storage some plugins functionality"
 msgstr ""
 "Esta sección es responsable de almacenar la funcionalidad de algunos "
 "complementos"
 
-#: admin/custom-fields/class-cideapps-gp-options-menu-page-fields.php:252
+#: admin/custom-fields/class-cideapps-gp-options-menu-page-fields.php:267
 msgid "Google Maps API Key"
 msgstr "Clave API de Google Maps"
 
-#: admin/custom-fields/class-cideapps-gp-options-menu-page-fields.php:253
+#: admin/custom-fields/class-cideapps-gp-options-menu-page-fields.php:268
 msgid "Add a your Google Maps API key"
 msgstr "Agregue su clave API de Google Maps"
+
+#: admin/custom-fields/class-cideapps-gp-service-fields.php:31
+msgid "Services pricing and generic details"
+msgstr "Precios y detalles generales del servicio"
+
+#: admin/custom-fields/class-cideapps-gp-service-fields.php:40
+msgid "Pricing"
+msgstr "Precios"
+
+#: admin/custom-fields/class-cideapps-gp-service-fields.php:41
+msgid "Write the service pricing (e.g. 200)"
+msgstr "Escribe el precio del servicio (Ejemplo 200)"
+
+#: admin/custom-fields/class-cideapps-gp-service-fields.php:48
+msgid "Slogan"
+msgstr "Eslogan"
+
+#: admin/custom-fields/class-cideapps-gp-service-fields.php:49
+msgid "Write the service slogan (e.g. The best slogan for a service)"
+msgstr ""
+"Escribe el eslogan del servicio (Ejemplo, El mejor eslogan de un servicio)"
+
+#: admin/custom-fields/class-cideapps-gp-service-taxonomy-fields.php:31
+msgid "Service Category Metabox"
+msgstr "Metabox de categoría de Servicio"
+
+#: admin/custom-fields/class-cideapps-gp-service-taxonomy-fields.php:41
+#: admin/custom-fields/class-cideapps-gp-testimonial-fields.php:40
+msgid "Main image"
+msgstr "Imagen principal"
+
+#: admin/custom-fields/class-cideapps-gp-service-taxonomy-fields.php:42
+msgid "Suggested size 512 x 512 pixels."
+msgstr "Tamaño sugerido 512 x 512 píxeles."
 
 #: admin/custom-fields/class-cideapps-gp-testimonial-fields.php:31
 msgid "Testimonial details"
 msgstr "Detalles del testimonio"
-
-#: admin/custom-fields/class-cideapps-gp-testimonial-fields.php:40
-msgid "Main image"
-msgstr "Imagen principal"
 
 #: admin/custom-fields/class-cideapps-gp-testimonial-fields.php:41
 msgid "Suggested size 256 x 256 pixels."

@@ -8,9 +8,9 @@ msgstr ""
 "Report-Msgid-Bugs-To: Cideapps <developers@cide-apps.com>\n"
 "POT-Creation-Date: 2025-09-20 21:45-0600\n"
 "PO-Revision-Date: \n"
-"Last-Translator: Marco Aspeitia <maspeitiap@cide-apps.com>\n"
+"Last-Translator: Marco Aspeitia <marco.aspeitia@cideapps.com>\n"
 "Language-Team: Cideapps <developers@cide-apps.com>\n"
-"Language: en_US\n"
+"Language: es_ES\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -29,546 +29,868 @@ msgstr ""
 #: admin/class-cideapps-gp-admin.php:124
 msgctxt "cideapps-gp"
 msgid "This is your default term of your custom category"
-msgstr ""
+msgstr "Este es el término predeterminado de su categoría personalizada"
 
 #: admin/class-cideapps-gp-admin.php:153
 msgctxt "cideapps-gp"
 msgid ""
-"This term needs to relate the main services that will appear in "
-"the website frontend"
+"This term needs to relate the main services that will appear in the website "
+"frontend"
 msgstr ""
+"Este término debe relacionar los principales servicios que aparecerán en el "
+"frontend del sitio web"
 
 #: admin/class-cideapps-gp-admin.php:168
 msgctxt "cideapps-gp"
 msgid ""
-"This term needs to relate the featured services that will appear "
-"in the website frontend"
+"This term needs to relate the featured services that will appear in the "
+"website frontend"
 msgstr ""
+"Este término debe relacionar los servicios destacados que aparecerán en la "
+"interfaz del sitio web"
 
 #: admin/custom-fields/class-cideapps-gp-options-menu-page-fields.php:33
 #: admin/custom-fields/class-cideapps-gp-options-menu-page-fields.php:37
 msgid "Theme options"
-msgstr ""
+msgstr "Opciones del tema"
 
 #: admin/custom-fields/class-cideapps-gp-options-menu-page-fields.php:41
 msgid "Save"
-msgstr ""
+msgstr "Guardar"
 
 #: admin/custom-fields/class-cideapps-gp-options-menu-page-fields.php:50
 msgid "Branding"
-msgstr ""
+msgstr "Marca"
 
 #: admin/custom-fields/class-cideapps-gp-options-menu-page-fields.php:51
 msgid "This is the branding section logo and description"
-msgstr ""
+msgstr "Esta es la sección de la marca, logotipos y descripción"
 
 #: admin/custom-fields/class-cideapps-gp-options-menu-page-fields.php:60
 msgid "Menu logo"
-msgstr ""
+msgstr "Logotipo del menú"
 
 #: admin/custom-fields/class-cideapps-gp-options-menu-page-fields.php:61
 #: admin/custom-fields/class-cideapps-gp-options-menu-page-fields.php:79
+#: includes/cmb2-functions.php:434
 msgid "Upload an image or enter a URL."
-msgstr ""
+msgstr "Cargue una imagen o introduzca una URL."
 
 #: admin/custom-fields/class-cideapps-gp-options-menu-page-fields.php:78
 msgid "Footer logo"
-msgstr ""
+msgstr "Logotipo de pie de página"
 
 #: admin/custom-fields/class-cideapps-gp-options-menu-page-fields.php:95
 msgid "About Business"
-msgstr ""
+msgstr "Acerca del negocio"
 
 #: admin/custom-fields/class-cideapps-gp-options-menu-page-fields.php:96
 msgid ""
-"Write something interesting about your business (e.g. Atention "
-"schedule, Description, etc.)"
+"Write something interesting about your business (e.g. Atention schedule, "
+"Description, etc.)"
 msgstr ""
+"Escriba algo interesante sobre su empresa (por ejemplo, horario de atención, "
+"descripción, etc.)"
 
 #: admin/custom-fields/class-cideapps-gp-options-menu-page-fields.php:118
 msgid "Contact information"
-msgstr ""
+msgstr "Información de contacto"
 
 #: admin/custom-fields/class-cideapps-gp-options-menu-page-fields.php:119
 msgid "Section to configure the main contact information"
-msgstr ""
+msgstr "Sección para configurar la información de contacto principal"
 
 #: admin/custom-fields/class-cideapps-gp-options-menu-page-fields.php:126
 msgid "Business main phone"
-msgstr ""
+msgstr "Teléfono principal del negocio"
 
 #: admin/custom-fields/class-cideapps-gp-options-menu-page-fields.php:127
 msgid "Add your main business phone number (optional)"
-msgstr ""
+msgstr "Agrega el número telefónico principal de tu negocio (opcional)"
 
 #: admin/custom-fields/class-cideapps-gp-options-menu-page-fields.php:134
 msgid "Business secondary phones"
-msgstr ""
+msgstr "Teléfonos secundarios del negocio"
 
 #: admin/custom-fields/class-cideapps-gp-options-menu-page-fields.php:135
 msgid "Add your secondary business phone numbers (optional)"
-msgstr ""
+msgstr "Agrega tus números telefónicos secundarios del negocio (opcional)"
 
 #: admin/custom-fields/class-cideapps-gp-options-menu-page-fields.php:143
 msgid "Whatsapp"
-msgstr ""
+msgstr "Whatsapp"
 
 #: admin/custom-fields/class-cideapps-gp-options-menu-page-fields.php:144
 msgid ""
-"The Whatsapp number must have the country prefix code (e.g. +52 55 "
-"4506 2592)"
+"The Whatsapp number must have the country prefix code (e.g. +52 55 4506 2592)"
 msgstr ""
+"El número de Whatsapp debe tener el código de país (ejemplo +52 55 4506 2592)"
 
 #: admin/custom-fields/class-cideapps-gp-options-menu-page-fields.php:151
 msgid "Contact e-mail"
-msgstr ""
+msgstr "E-mail de contacto"
 
 #: admin/custom-fields/class-cideapps-gp-options-menu-page-fields.php:152
 msgid "Add your corporate email (optional)"
-msgstr ""
+msgstr "Agrega tu email corporativo (opcional)"
 
 #: admin/custom-fields/class-cideapps-gp-options-menu-page-fields.php:159
 msgid "Location"
-msgstr ""
+msgstr "Ubicación"
 
 #: admin/custom-fields/class-cideapps-gp-options-menu-page-fields.php:160
 msgid "Drag the marker to set the exact location"
-msgstr ""
+msgstr "Arrastra el marcador para establecer la ubicación exacta"
 
 #: admin/custom-fields/class-cideapps-gp-options-menu-page-fields.php:168
 msgid "Business address"
-msgstr ""
+msgstr "Dirección de negocio"
 
 #: admin/custom-fields/class-cideapps-gp-options-menu-page-fields.php:169
-msgid ""
-"This address will be autocompleted after modifying and saving this "
-"page"
+msgid "This address will be autocompleted after modifying and saving this page"
 msgstr ""
+"Ésta ubicación será autocompletada después de modificar y guardar esta página"
 
 #: admin/custom-fields/class-cideapps-gp-options-menu-page-fields.php:176
 msgid "Business working hours"
-msgstr ""
+msgstr "Horarios de laborales del negocio"
 
 #: admin/custom-fields/class-cideapps-gp-options-menu-page-fields.php:177
 msgid "Write your business working hours"
-msgstr ""
+msgstr "Escribe los horarios laborales de tu negocio"
 
 #: admin/custom-fields/class-cideapps-gp-options-menu-page-fields.php:185
 msgid "Main contact form shortcode"
-msgstr ""
+msgstr "Shortcode del formulario principal"
 
 #: admin/custom-fields/class-cideapps-gp-options-menu-page-fields.php:186
 msgid ""
-"Add the main contact form 7 shortcode (e.g. [contact-form-7 "
-"id=\"c7de0b7\" title=\"Contact form 1\"] )"
+"Add the main contact form 7 shortcode (e.g. [contact-form-7 id=\"c7de0b7\" "
+"title=\"Contact form 1\"] )"
 msgstr ""
+"Agregar el shortcode del formulario principal de contact form 7 (ejemplo  "
+"[contact-form-7 id=\"c7de0b7\" title=\"Contact form 1\"])"
 
 #: admin/custom-fields/class-cideapps-gp-options-menu-page-fields.php:195
 msgid "Social Media"
-msgstr ""
+msgstr "Redes sociales"
 
 #: admin/custom-fields/class-cideapps-gp-options-menu-page-fields.php:196
 msgid "Section to add the URL links of your social media profiles"
-msgstr ""
+msgstr "Sección para añadir los enlaces URL de tus perfiles de redes sociales"
 
 #: admin/custom-fields/class-cideapps-gp-options-menu-page-fields.php:203
 msgid "Facebook"
-msgstr ""
+msgstr "Facebook"
 
 #: admin/custom-fields/class-cideapps-gp-options-menu-page-fields.php:204
 msgid "Add your Facebook profile URL"
-msgstr ""
+msgstr "Añade la URL de tu perfil de Facebook"
 
 #: admin/custom-fields/class-cideapps-gp-options-menu-page-fields.php:212
 msgid "Instagram"
-msgstr ""
+msgstr "Instagram"
 
 #: admin/custom-fields/class-cideapps-gp-options-menu-page-fields.php:213
 msgid "Add your Instagram profile URL"
-msgstr ""
+msgstr "Añade la URL de tu perfil de Instagram"
 
 #: admin/custom-fields/class-cideapps-gp-options-menu-page-fields.php:221
 msgid "Youtube"
-msgstr ""
+msgstr "Youtube"
 
 #: admin/custom-fields/class-cideapps-gp-options-menu-page-fields.php:222
 msgid "Add your Youtube profile URL"
-msgstr ""
+msgstr "Añade la URL de tu perfil de Youtube"
 
 #: admin/custom-fields/class-cideapps-gp-options-menu-page-fields.php:230
 msgid "Twitter/X"
-msgstr ""
+msgstr "Twitter/X"
 
 #: admin/custom-fields/class-cideapps-gp-options-menu-page-fields.php:231
 msgid "Add your Twitter/X profile URL"
-msgstr ""
+msgstr "Añade la URL de tu perfil de Twitter"
 
 #: admin/custom-fields/class-cideapps-gp-options-menu-page-fields.php:239
 msgid "Tiktok"
-msgstr ""
+msgstr "Tiktok"
 
 #: admin/custom-fields/class-cideapps-gp-options-menu-page-fields.php:240
 msgid "Add your tiktok profile URL"
-msgstr ""
+msgstr "Añade la URL de tu perfil de Tiktok"
 
 #: admin/custom-fields/class-cideapps-gp-options-menu-page-fields.php:251
 msgid "Settings"
-msgstr ""
+msgstr "Configuración"
 
 #: admin/custom-fields/class-cideapps-gp-options-menu-page-fields.php:259
 msgid "Addons"
-msgstr ""
+msgstr "Complementos"
 
 #: admin/custom-fields/class-cideapps-gp-options-menu-page-fields.php:260
-msgid ""
-"This section is the responsible to storage some plugins "
-"functionality"
+msgid "This section is the responsible to storage some plugins functionality"
 msgstr ""
+"Esta sección es responsable de almacenar la funcionalidad de algunos "
+"complementos"
 
 #: admin/custom-fields/class-cideapps-gp-options-menu-page-fields.php:267
 msgid "Google Maps API Key"
-msgstr ""
+msgstr "Clave API de Google Maps"
 
 #: admin/custom-fields/class-cideapps-gp-options-menu-page-fields.php:268
 msgid "Add a your Google Maps API key"
-msgstr ""
+msgstr "Agregue su clave API de Google Maps"
 
 #: admin/custom-fields/class-cideapps-gp-service-fields.php:31
 msgid "Services pricing and generic details"
-msgstr ""
+msgstr "Precios y detalles generales del servicio"
 
 #: admin/custom-fields/class-cideapps-gp-service-fields.php:40
 msgid "Pricing"
-msgstr ""
+msgstr "Precios"
 
 #: admin/custom-fields/class-cideapps-gp-service-fields.php:41
 msgid "Write the service pricing (e.g. 200)"
-msgstr ""
+msgstr "Escribe el precio del servicio (Ejemplo 200)"
 
 #: admin/custom-fields/class-cideapps-gp-service-fields.php:48
 msgid "Slogan"
-msgstr ""
+msgstr "Eslogan"
 
 #: admin/custom-fields/class-cideapps-gp-service-fields.php:49
 msgid "Write the service slogan (e.g. The best slogan for a service)"
 msgstr ""
+"Escribe el eslogan del servicio (Ejemplo, El mejor eslogan de un servicio)"
 
 #: admin/custom-fields/class-cideapps-gp-service-taxonomy-fields.php:31
 msgid "Service Category Metabox"
-msgstr ""
+msgstr "Metabox de categoría de Servicio"
 
 #: admin/custom-fields/class-cideapps-gp-service-taxonomy-fields.php:41
 #: admin/custom-fields/class-cideapps-gp-testimonial-fields.php:40
 msgid "Main image"
-msgstr ""
+msgstr "Imagen principal"
 
 #: admin/custom-fields/class-cideapps-gp-service-taxonomy-fields.php:42
 msgid "Suggested size 512 x 512 pixels."
-msgstr ""
+msgstr "Tamaño sugerido 512 x 512 píxeles."
 
 #: admin/custom-fields/class-cideapps-gp-testimonial-fields.php:31
 msgid "Testimonial details"
-msgstr ""
+msgstr "Detalles del testimonio"
 
 #: admin/custom-fields/class-cideapps-gp-testimonial-fields.php:41
 msgid "Suggested size 256 x 256 pixels."
-msgstr ""
+msgstr "Tamaño sugerido 256 x 256 píxeles."
 
 #: admin/custom-fields/class-cideapps-gp-testimonial-fields.php:56
 msgid "Job"
-msgstr ""
+msgstr "Trabajo"
 
 #: admin/custom-fields/class-cideapps-gp-testimonial-fields.php:57
-msgid ""
-"Write the testimonial job (e.g. Sales manager, Marketing manager)"
+msgid "Write the testimonial job (e.g. Sales manager, Marketing manager)"
 msgstr ""
+"Escriba el trabajo testimonial (por ejemplo, gerente de ventas, gerente de "
+"marketing)"
 
 #: admin/custom-fields/class-cideapps-gp-testimonial-fields.php:63
 msgid "Opinion"
-msgstr ""
+msgstr "Opinión"
 
 #: admin/custom-fields/class-cideapps-gp-testimonial-fields.php:64
 msgid "Write the testimonial opinion"
-msgstr ""
+msgstr "Escribe la opinión testimonial"
 
 #: admin/custom-post-types/class-cideapps-gp-services-post-type.php:34
 msgctxt "Post Type General Name"
 msgid "Services"
-msgstr ""
+msgstr "Servicios"
 
 #: admin/custom-post-types/class-cideapps-gp-services-post-type.php:35
 msgctxt "Post Type Singular Name"
 msgid "Service"
-msgstr ""
+msgstr "Servicio"
 
 #: admin/custom-post-types/class-cideapps-gp-services-post-type.php:36
 msgid "Services"
-msgstr ""
+msgstr "Servicios"
 
 #: admin/custom-post-types/class-cideapps-gp-services-post-type.php:37
 #: admin/custom-post-types/class-cideapps-gp-services-post-type.php:63
 msgid "Service"
-msgstr ""
+msgstr "Servicio"
 
 #: admin/custom-post-types/class-cideapps-gp-services-post-type.php:38
 msgid "Service Archives"
-msgstr ""
+msgstr "Archivos de Servicio"
 
 #: admin/custom-post-types/class-cideapps-gp-services-post-type.php:39
 msgid "Service Attributes"
-msgstr ""
+msgstr "Atributos de Servicio"
 
 #: admin/custom-post-types/class-cideapps-gp-services-post-type.php:40
 msgid "Parent Service:"
-msgstr ""
+msgstr "Padre de Servicio:"
 
 #: admin/custom-post-types/class-cideapps-gp-services-post-type.php:41
 msgid "All Services"
-msgstr ""
+msgstr "Todos los Servicios"
 
 #: admin/custom-post-types/class-cideapps-gp-services-post-type.php:42
 msgid "Add New Service"
-msgstr ""
+msgstr "Agregar nuevo"
 
 #: admin/custom-post-types/class-cideapps-gp-services-post-type.php:43
 #: admin/custom-post-types/class-cideapps-gp-testimonial-post-type.php:43
 msgid "Add New"
-msgstr ""
+msgstr "Agregar nuevo"
 
 #: admin/custom-post-types/class-cideapps-gp-services-post-type.php:44
 msgid "New Service"
-msgstr ""
+msgstr "Nuevo Servicio"
 
 #: admin/custom-post-types/class-cideapps-gp-services-post-type.php:45
 msgid "Edit Service"
-msgstr ""
+msgstr "Editar Servicio"
 
 #: admin/custom-post-types/class-cideapps-gp-services-post-type.php:46
 msgid "Update Service"
-msgstr ""
+msgstr "Actualizar Servicio"
 
 #: admin/custom-post-types/class-cideapps-gp-services-post-type.php:47
 msgid "View Service"
-msgstr ""
+msgstr "Ver Servicio"
 
 #: admin/custom-post-types/class-cideapps-gp-services-post-type.php:48
 msgid "View Services"
-msgstr ""
+msgstr "Ver Servicios"
 
 #: admin/custom-post-types/class-cideapps-gp-services-post-type.php:49
 msgid "Search Service"
-msgstr ""
+msgstr "Buscar Servicio"
 
 #: admin/custom-post-types/class-cideapps-gp-services-post-type.php:50
 #: admin/custom-post-types/class-cideapps-gp-testimonial-post-type.php:50
 msgid "Not found"
-msgstr ""
+msgstr "No encontrado"
 
 #: admin/custom-post-types/class-cideapps-gp-services-post-type.php:51
 #: admin/custom-post-types/class-cideapps-gp-testimonial-post-type.php:51
 msgid "Not found in Trash"
-msgstr ""
+msgstr "No encontrado en la Papelera"
 
 #: admin/custom-post-types/class-cideapps-gp-services-post-type.php:52
 #: admin/custom-post-types/class-cideapps-gp-testimonial-post-type.php:52
 msgid "Featured Image"
-msgstr ""
+msgstr "Imagen destacada"
 
 #: admin/custom-post-types/class-cideapps-gp-services-post-type.php:53
 #: admin/custom-post-types/class-cideapps-gp-testimonial-post-type.php:53
 msgid "Set featured image"
-msgstr ""
+msgstr "Establecer imagen destacada"
 
 #: admin/custom-post-types/class-cideapps-gp-services-post-type.php:54
 #: admin/custom-post-types/class-cideapps-gp-testimonial-post-type.php:54
 msgid "Remove featured image"
-msgstr ""
+msgstr "Eliminar imagen destacada"
 
 #: admin/custom-post-types/class-cideapps-gp-services-post-type.php:55
 #: admin/custom-post-types/class-cideapps-gp-testimonial-post-type.php:55
 msgid "Use as featured image"
-msgstr ""
+msgstr "Usar como imagen destacada"
 
 #: admin/custom-post-types/class-cideapps-gp-services-post-type.php:56
 #: admin/custom-post-types/class-cideapps-gp-testimonial-post-type.php:56
 msgid "Insert into item"
-msgstr ""
+msgstr "Insertar en el artículo"
 
 #: admin/custom-post-types/class-cideapps-gp-services-post-type.php:57
 #: admin/custom-post-types/class-cideapps-gp-testimonial-post-type.php:57
 msgid "Uploaded to this item"
-msgstr ""
+msgstr "Subido a este artículo"
 
 #: admin/custom-post-types/class-cideapps-gp-services-post-type.php:58
 msgid "Services list"
-msgstr ""
+msgstr "Filtrar lista de Servicios"
 
 #: admin/custom-post-types/class-cideapps-gp-services-post-type.php:59
 msgid "Services list navigation"
-msgstr ""
+msgstr "Lista de navegación de Servicios"
 
 #: admin/custom-post-types/class-cideapps-gp-services-post-type.php:60
 #: admin/custom-post-types/class-cideapps-gp-testimonial-post-type.php:60
 msgid "Filter items list"
-msgstr ""
+msgstr "Filtrar lista de artículos"
 
 #: admin/custom-post-types/class-cideapps-gp-services-post-type.php:64
 msgid "Service Description"
-msgstr ""
+msgstr "Descripción del Servicio"
 
 #: admin/custom-post-types/class-cideapps-gp-testimonial-post-type.php:34
 msgctxt "Post Type General Name"
 msgid "Testimonials"
-msgstr ""
+msgstr "Testimonios"
 
 #: admin/custom-post-types/class-cideapps-gp-testimonial-post-type.php:35
 msgctxt "Post Type Singular Name"
 msgid "Testimonial"
-msgstr ""
+msgstr "Testimonio"
 
 #: admin/custom-post-types/class-cideapps-gp-testimonial-post-type.php:36
 msgid "Testimonials"
-msgstr ""
+msgstr "Testimonios"
 
 #: admin/custom-post-types/class-cideapps-gp-testimonial-post-type.php:37
 #: admin/custom-post-types/class-cideapps-gp-testimonial-post-type.php:63
 msgid "Testimonial"
-msgstr ""
+msgstr "Testimonio"
 
 #: admin/custom-post-types/class-cideapps-gp-testimonial-post-type.php:38
 msgid "Testimonial Archives"
-msgstr ""
+msgstr "Archivos de Testimonio"
 
 #: admin/custom-post-types/class-cideapps-gp-testimonial-post-type.php:39
 msgid "Testimonial Attributes"
-msgstr ""
+msgstr "Atributos de Testimonio"
 
 #: admin/custom-post-types/class-cideapps-gp-testimonial-post-type.php:40
 msgid "Parent Testimonial:"
-msgstr ""
+msgstr "Padre del Testimonio:"
 
 #: admin/custom-post-types/class-cideapps-gp-testimonial-post-type.php:41
 msgid "All Testimonials"
-msgstr ""
+msgstr "Todos los Testimonios"
 
 #: admin/custom-post-types/class-cideapps-gp-testimonial-post-type.php:42
 msgid "Add New Testimonial"
-msgstr ""
+msgstr "Agregar Testimonio"
 
 #: admin/custom-post-types/class-cideapps-gp-testimonial-post-type.php:44
 msgid "New Testimonial"
-msgstr ""
+msgstr "Nuevo Testimonio"
 
 #: admin/custom-post-types/class-cideapps-gp-testimonial-post-type.php:45
 msgid "Edit Testimonial"
-msgstr ""
+msgstr "Editar Testimonio"
 
 #: admin/custom-post-types/class-cideapps-gp-testimonial-post-type.php:46
 msgid "Update Testimonial"
-msgstr ""
+msgstr "Actualizar Testimonio"
 
 #: admin/custom-post-types/class-cideapps-gp-testimonial-post-type.php:47
 msgid "View Testimonial"
-msgstr ""
+msgstr "Ver Testimonio"
 
 #: admin/custom-post-types/class-cideapps-gp-testimonial-post-type.php:48
 msgid "View Testimonials"
-msgstr ""
+msgstr "Ver Testimonios"
 
 #: admin/custom-post-types/class-cideapps-gp-testimonial-post-type.php:49
 msgid "Search Testimonial"
-msgstr ""
+msgstr "Buscar Testimonios"
 
 #: admin/custom-post-types/class-cideapps-gp-testimonial-post-type.php:58
 msgid "Testimonials list"
-msgstr ""
+msgstr "Lista de Testimonios"
 
 #: admin/custom-post-types/class-cideapps-gp-testimonial-post-type.php:59
 msgid "Testimonials list navigation"
-msgstr ""
+msgstr "Lista de navegación de Testimonios"
 
 #: admin/custom-post-types/class-cideapps-gp-testimonial-post-type.php:64
 msgid "Testimonial Description"
-msgstr ""
+msgstr "Descripción del Testimonio"
 
 #: admin/custom-taxonomies/class-cideapps-gp-taxonomies.php:14
 msgctxt "Taxonomy General Name"
 msgid "Service categories"
-msgstr ""
+msgstr "Categorías de Servicio"
 
 #: admin/custom-taxonomies/class-cideapps-gp-taxonomies.php:15
 msgctxt "Taxonomy Singular Name"
 msgid "Service category"
-msgstr ""
+msgstr "Descripción de la categoría de Servicio"
 
 #: admin/custom-taxonomies/class-cideapps-gp-taxonomies.php:16
 msgid "Service category"
-msgstr ""
+msgstr "Categoría de Servicio"
 
 #: admin/custom-taxonomies/class-cideapps-gp-taxonomies.php:17
 msgid "All Service categories"
-msgstr ""
+msgstr "Todas las categorías de Servicios"
 
 #: admin/custom-taxonomies/class-cideapps-gp-taxonomies.php:18
 msgid "Parent Service category"
-msgstr ""
+msgstr "Padre de la categoría de Servicio"
 
 #: admin/custom-taxonomies/class-cideapps-gp-taxonomies.php:19
 msgid "Parent Service category:"
-msgstr ""
+msgstr "Padre de la categoría de Servicio:"
 
 #: admin/custom-taxonomies/class-cideapps-gp-taxonomies.php:20
 msgid "New Service category Name"
-msgstr ""
+msgstr "Nuevo nombre de categoría de servicio"
 
 #: admin/custom-taxonomies/class-cideapps-gp-taxonomies.php:21
 msgid "Add New Service category"
-msgstr ""
+msgstr "Agregar nueva categoría de servicio"
 
 #: admin/custom-taxonomies/class-cideapps-gp-taxonomies.php:22
 msgid "Edit Service category"
-msgstr ""
+msgstr "Editar categoría de Servicio"
 
 #: admin/custom-taxonomies/class-cideapps-gp-taxonomies.php:23
 msgid "Update Service category"
-msgstr ""
+msgstr "Actualizar categoría de Servicio"
 
 #: admin/custom-taxonomies/class-cideapps-gp-taxonomies.php:24
 msgid "View Service category"
-msgstr ""
+msgstr "Ver categoría de Servicio"
 
 #: admin/custom-taxonomies/class-cideapps-gp-taxonomies.php:25
 msgid "Separate Service categories with commas"
-msgstr ""
+msgstr "Separar  con comas las categorías de servicio"
 
 #: admin/custom-taxonomies/class-cideapps-gp-taxonomies.php:26
 msgid "Add or remove Service category"
-msgstr ""
+msgstr "Agregar o remover la categoría de servicio"
 
 #: admin/custom-taxonomies/class-cideapps-gp-taxonomies.php:27
 msgid "Choose from the most used"
-msgstr ""
+msgstr "Elegir de las más usadas"
 
 #: admin/custom-taxonomies/class-cideapps-gp-taxonomies.php:28
 msgid "Popular Service categories"
-msgstr ""
+msgstr "Categoría de servicios populares"
 
 #: admin/custom-taxonomies/class-cideapps-gp-taxonomies.php:29
 msgid "Search Service categories"
-msgstr ""
+msgstr "Buscar categorías de Servicio"
 
 #: admin/custom-taxonomies/class-cideapps-gp-taxonomies.php:30
 msgid "Not Found"
-msgstr ""
+msgstr "No encontrado"
 
 #: admin/custom-taxonomies/class-cideapps-gp-taxonomies.php:31
 msgid "No Service categories"
-msgstr ""
+msgstr "Sin categoría de servicio"
 
 #: admin/custom-taxonomies/class-cideapps-gp-taxonomies.php:32
 msgid "Service categories list"
-msgstr ""
+msgstr "Filtrar lista de categoría de Servicio"
 
 #: admin/custom-taxonomies/class-cideapps-gp-taxonomies.php:33
 msgid "Service categories list navigation"
+msgstr "Lista de navegación de categoría de Servicio"
+
+#: includes/cmb2-functions.php:117
+msgid "Test Metabox"
+msgstr ""
+
+#: includes/cmb2-functions.php:150 includes/cmb2-functions.php:494
+msgid "Test Text"
+msgstr ""
+
+#: includes/cmb2-functions.php:151 includes/cmb2-functions.php:164
+#: includes/cmb2-functions.php:177 includes/cmb2-functions.php:184
+#: includes/cmb2-functions.php:197 includes/cmb2-functions.php:205
+#: includes/cmb2-functions.php:214 includes/cmb2-functions.php:222
+#: includes/cmb2-functions.php:237 includes/cmb2-functions.php:245
+#: includes/cmb2-functions.php:253 includes/cmb2-functions.php:270
+#: includes/cmb2-functions.php:279 includes/cmb2-functions.php:295
+#: includes/cmb2-functions.php:302 includes/cmb2-functions.php:309
+#: includes/cmb2-functions.php:334 includes/cmb2-functions.php:347
+#: includes/cmb2-functions.php:360 includes/cmb2-functions.php:372
+#: includes/cmb2-functions.php:386 includes/cmb2-functions.php:394
+#: includes/cmb2-functions.php:403 includes/cmb2-functions.php:410
+#: includes/cmb2-functions.php:424 includes/cmb2-functions.php:495
+#: includes/cmb2-functions.php:585 includes/cmb2-functions.php:593
+#: includes/cmb2-functions.php:600 includes/cmb2-functions.php:607
+#: includes/cmb2-functions.php:614 includes/cmb2-functions.php:621
+#: includes/cmb2-functions.php:628 includes/cmb2-functions.php:654
+#: includes/cmb2-functions.php:662 includes/cmb2-functions.php:669
+#: includes/cmb2-functions.php:719
+msgid "field description (optional)"
+msgstr ""
+
+#: includes/cmb2-functions.php:163
+msgid "Test Text Small"
+msgstr ""
+
+#: includes/cmb2-functions.php:176
+msgid "Test Text Medium"
+msgstr ""
+
+#: includes/cmb2-functions.php:183
+msgid "Read-only Disabled Field"
+msgstr ""
+
+#: includes/cmb2-functions.php:187
+msgid "Hey there, I'm a read-only field"
+msgstr ""
+
+#: includes/cmb2-functions.php:196
+msgid "Custom Rendered Field"
+msgstr ""
+
+#: includes/cmb2-functions.php:204
+msgid "Website URL"
+msgstr ""
+
+#: includes/cmb2-functions.php:213
+msgid "Test Text Email"
+msgstr ""
+
+#: includes/cmb2-functions.php:221
+msgid "Test Time"
+msgstr ""
+
+#: includes/cmb2-functions.php:229 includes/cmb2-functions.php:230
+msgid "Time zone"
+msgstr ""
+
+#: includes/cmb2-functions.php:236
+msgid "Test Date Picker"
+msgstr ""
+
+#: includes/cmb2-functions.php:244
+msgid "Test Date Picker (UNIX timestamp)"
+msgstr ""
+
+#: includes/cmb2-functions.php:252
+msgid "Test Date/Time Picker Combo (UNIX timestamp)"
+msgstr ""
+
+#: includes/cmb2-functions.php:269
+msgid "Test Money"
+msgstr ""
+
+#: includes/cmb2-functions.php:278
+msgid "Test Color Picker"
+msgstr ""
+
+#: includes/cmb2-functions.php:294
+msgid "Test Text Area"
+msgstr ""
+
+#: includes/cmb2-functions.php:301
+msgid "Test Text Area Small"
+msgstr ""
+
+#: includes/cmb2-functions.php:308
+msgid "Test Text Area for Code"
+msgstr ""
+
+#: includes/cmb2-functions.php:326
+msgid "Test Title Weeeee"
+msgstr ""
+
+#: includes/cmb2-functions.php:327
+msgid "This is a title description"
+msgstr ""
+
+#: includes/cmb2-functions.php:333
+msgid "Test Select"
+msgstr ""
+
+#: includes/cmb2-functions.php:339 includes/cmb2-functions.php:352
+#: includes/cmb2-functions.php:364
+msgid "Option One"
+msgstr ""
+
+#: includes/cmb2-functions.php:340 includes/cmb2-functions.php:353
+#: includes/cmb2-functions.php:365
+msgid "Option Two"
+msgstr ""
+
+#: includes/cmb2-functions.php:341 includes/cmb2-functions.php:354
+#: includes/cmb2-functions.php:366
+msgid "Option Three"
+msgstr ""
+
+#: includes/cmb2-functions.php:346
+msgid "Test Radio inline"
+msgstr ""
+
+#: includes/cmb2-functions.php:359
+msgid "Test Radio"
+msgstr ""
+
+#: includes/cmb2-functions.php:371
+msgid "Test Taxonomy Radio"
+msgstr ""
+
+#: includes/cmb2-functions.php:385
+msgid "Test Taxonomy Select"
+msgstr ""
+
+#: includes/cmb2-functions.php:393
+msgid "Test Taxonomy Multi Checkbox"
+msgstr ""
+
+#: includes/cmb2-functions.php:402
+msgid "Test Checkbox"
+msgstr ""
+
+#: includes/cmb2-functions.php:409
+msgid "Test Multi Checkbox"
+msgstr ""
+
+#: includes/cmb2-functions.php:415
+msgid "Check One"
+msgstr ""
+
+#: includes/cmb2-functions.php:416
+msgid "Check Two"
+msgstr ""
+
+#: includes/cmb2-functions.php:417
+msgid "Check Three"
+msgstr ""
+
+#: includes/cmb2-functions.php:423
+msgid "Test wysiwyg"
+msgstr ""
+
+#: includes/cmb2-functions.php:433
+msgid "Test Image"
+msgstr ""
+
+#: includes/cmb2-functions.php:440
+msgid "Multiple Files"
+msgstr ""
+
+#: includes/cmb2-functions.php:441
+msgid "Upload or add multiple images/attachments."
+msgstr ""
+
+#: includes/cmb2-functions.php:448
+msgid "oEmbed"
+msgstr ""
+
+#: includes/cmb2-functions.php:451
+#, php-format
+msgid ""
+"Enter a youtube, twitter, or instagram URL. Supports services listed at %s."
+msgstr ""
+
+#: includes/cmb2-functions.php:483
+msgid "About Page Metabox"
+msgstr ""
+
+#: includes/cmb2-functions.php:513
+msgid "Repeating Field Group"
+msgstr ""
+
+#: includes/cmb2-functions.php:521
+msgid "Generates reusable form entries"
+msgstr ""
+
+#: includes/cmb2-functions.php:523
+msgid "Entry {#}"
+msgstr ""
+
+#: includes/cmb2-functions.php:524
+msgid "Add Another Entry"
+msgstr ""
+
+#: includes/cmb2-functions.php:525
+msgid "Remove Entry"
+msgstr ""
+
+#: includes/cmb2-functions.php:539
+msgid "Entry Title"
+msgstr ""
+
+#: includes/cmb2-functions.php:546
+msgid "Description"
+msgstr ""
+
+#: includes/cmb2-functions.php:547
+msgid "Write a short description for this entry"
+msgstr ""
+
+#: includes/cmb2-functions.php:553
+msgid "Entry Image"
+msgstr ""
+
+#: includes/cmb2-functions.php:559
+msgid "Image Caption"
+msgstr ""
+
+#: includes/cmb2-functions.php:577
+msgid "User Profile Metabox"
+msgstr ""
+
+#: includes/cmb2-functions.php:584 includes/cmb2-functions.php:653
+msgid "Extra Info"
+msgstr ""
+
+#: includes/cmb2-functions.php:592
+msgid "Avatar"
+msgstr ""
+
+#: includes/cmb2-functions.php:599
+msgid "Facebook URL"
+msgstr ""
+
+#: includes/cmb2-functions.php:606
+msgid "Twitter URL"
+msgstr ""
+
+#: includes/cmb2-functions.php:613
+msgid "Google+ URL"
+msgstr ""
+
+#: includes/cmb2-functions.php:620
+msgid "Linkedin URL"
+msgstr ""
+
+#: includes/cmb2-functions.php:627
+msgid "User Field"
+msgstr ""
+
+#: includes/cmb2-functions.php:646
+msgid "Category Metabox"
+msgstr ""
+
+#: includes/cmb2-functions.php:661
+msgid "Term Image"
+msgstr ""
+
+#: includes/cmb2-functions.php:668
+msgid "Arbitrary Term Field"
+msgstr ""
+
+#: includes/cmb2-functions.php:687
+msgid "Theme Options"
+msgstr ""
+
+#: includes/cmb2-functions.php:718
+msgid "Site Background Color"
+msgstr ""
+
+#: includes/cmb2-functions.php:755
+#, php-format
+msgid "%s &mdash; Updated!"
+msgstr ""
+
+#: includes/cmb2-functions.php:787
+msgid "REST Test Box"
+msgstr ""
+
+#: includes/cmb2-functions.php:796
+msgid "REST Test Text"
+msgstr ""
+
+#: includes/cmb2-functions.php:797
+msgid "Will show in the REST API for this box and for pages."
+msgstr ""
+
+#: includes/cmb2-functions.php:803
+msgid "REST Editable Test Text"
+msgstr ""
+
+#: includes/cmb2-functions.php:804
+msgid "Will show in REST API \"editable\" contexts only (`POST` requests)."
 msgstr ""
