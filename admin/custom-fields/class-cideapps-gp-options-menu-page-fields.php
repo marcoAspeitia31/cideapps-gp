@@ -188,6 +188,14 @@ class Cideapps_Gp_Options_Menu_Page_Fields {
             'type' => 'text',
         ) );
 
+        // Contact form shortcode
+        $cagp_metabox->add_field( array(
+            'name' => esc_html__( 'Main CTA URL', 'cideapps-gp' ),
+            'desc' => esc_html__( 'Add the URL of your main CTA button', 'cideapps-gp' ),
+            'id'   => 'main_cta_url',
+            'type' => 'text_url',
+        ) );
+
         /**
          * Social Media Title.
          */

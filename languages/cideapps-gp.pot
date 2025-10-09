@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Cideapps WordPress Pot v1.0.0\n"
 "Report-Msgid-Bugs-To: Cideapps <developers@cide-apps.com>\n"
-"POT-Creation-Date: 2025-09-20 21:45-0600\n"
+"POT-Creation-Date: 2025-10-09 12:19-0600\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Marco Aspeitia <maspeitiap@cide-apps.com>\n"
 "Language-Team: Cideapps <developers@cide-apps.com>\n"
@@ -163,73 +163,81 @@ msgid ""
 "id=\"c7de0b7\" title=\"Contact form 1\"] )"
 msgstr ""
 
-#: admin/custom-fields/class-cideapps-gp-options-menu-page-fields.php:195
-msgid "Social Media"
+#: admin/custom-fields/class-cideapps-gp-options-menu-page-fields.php:193
+msgid "Main CTA URL"
 msgstr ""
 
-#: admin/custom-fields/class-cideapps-gp-options-menu-page-fields.php:196
-msgid "Section to add the URL links of your social media profiles"
+#: admin/custom-fields/class-cideapps-gp-options-menu-page-fields.php:194
+msgid "Add the URL of your main CTA button"
 msgstr ""
 
 #: admin/custom-fields/class-cideapps-gp-options-menu-page-fields.php:203
-msgid "Facebook"
+msgid "Social Media"
 msgstr ""
 
 #: admin/custom-fields/class-cideapps-gp-options-menu-page-fields.php:204
-msgid "Add your Facebook profile URL"
+msgid "Section to add the URL links of your social media profiles"
+msgstr ""
+
+#: admin/custom-fields/class-cideapps-gp-options-menu-page-fields.php:211
+msgid "Facebook"
 msgstr ""
 
 #: admin/custom-fields/class-cideapps-gp-options-menu-page-fields.php:212
+msgid "Add your Facebook profile URL"
+msgstr ""
+
+#: admin/custom-fields/class-cideapps-gp-options-menu-page-fields.php:220
 msgid "Instagram"
 msgstr ""
 
-#: admin/custom-fields/class-cideapps-gp-options-menu-page-fields.php:213
+#: admin/custom-fields/class-cideapps-gp-options-menu-page-fields.php:221
 msgid "Add your Instagram profile URL"
 msgstr ""
 
-#: admin/custom-fields/class-cideapps-gp-options-menu-page-fields.php:221
+#: admin/custom-fields/class-cideapps-gp-options-menu-page-fields.php:229
 msgid "Youtube"
 msgstr ""
 
-#: admin/custom-fields/class-cideapps-gp-options-menu-page-fields.php:222
+#: admin/custom-fields/class-cideapps-gp-options-menu-page-fields.php:230
 msgid "Add your Youtube profile URL"
 msgstr ""
 
-#: admin/custom-fields/class-cideapps-gp-options-menu-page-fields.php:230
+#: admin/custom-fields/class-cideapps-gp-options-menu-page-fields.php:238
 msgid "Twitter/X"
 msgstr ""
 
-#: admin/custom-fields/class-cideapps-gp-options-menu-page-fields.php:231
+#: admin/custom-fields/class-cideapps-gp-options-menu-page-fields.php:239
 msgid "Add your Twitter/X profile URL"
 msgstr ""
 
-#: admin/custom-fields/class-cideapps-gp-options-menu-page-fields.php:239
+#: admin/custom-fields/class-cideapps-gp-options-menu-page-fields.php:247
 msgid "Tiktok"
 msgstr ""
 
-#: admin/custom-fields/class-cideapps-gp-options-menu-page-fields.php:240
+#: admin/custom-fields/class-cideapps-gp-options-menu-page-fields.php:248
 msgid "Add your tiktok profile URL"
 msgstr ""
 
-#: admin/custom-fields/class-cideapps-gp-options-menu-page-fields.php:251
+#: admin/custom-fields/class-cideapps-gp-options-menu-page-fields.php:259
 msgid "Settings"
 msgstr ""
 
-#: admin/custom-fields/class-cideapps-gp-options-menu-page-fields.php:259
+#: admin/custom-fields/class-cideapps-gp-options-menu-page-fields.php:267
 msgid "Addons"
 msgstr ""
 
-#: admin/custom-fields/class-cideapps-gp-options-menu-page-fields.php:260
+#: admin/custom-fields/class-cideapps-gp-options-menu-page-fields.php:268
 msgid ""
 "This section is the responsible to storage some plugins "
 "functionality"
 msgstr ""
 
-#: admin/custom-fields/class-cideapps-gp-options-menu-page-fields.php:267
+#: admin/custom-fields/class-cideapps-gp-options-menu-page-fields.php:275
 msgid "Google Maps API Key"
 msgstr ""
 
-#: admin/custom-fields/class-cideapps-gp-options-menu-page-fields.php:268
+#: admin/custom-fields/class-cideapps-gp-options-menu-page-fields.php:276
 msgid "Add a your Google Maps API key"
 msgstr ""
 
