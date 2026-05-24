@@ -74,6 +74,16 @@ abstract class Cideapps_Gp_Metabox_Base {
 	abstract protected function get_fields();
 
 	/**
+	 * Metabox title.
+	 *
+	 * @since 1.1.0
+	 * @return string
+	 */
+	protected function get_metabox_title() {
+		return $this->metabox_title;
+	}
+
+	/**
 	 * Register the metabox with WordPress.
 	 *
 	 * @since 1.1.0
@@ -81,7 +91,7 @@ abstract class Cideapps_Gp_Metabox_Base {
 	public function add_meta_box() {
 		add_meta_box(
 			$this->metabox_id,
-			$this->metabox_title,
+			$this->get_metabox_title(),
 			array( $this, 'render' ),
 			$this->post_type,
 			$this->context,

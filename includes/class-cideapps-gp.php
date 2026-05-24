@@ -178,7 +178,7 @@ class Cideapps_Gp {
 
 		$plugin_i18n = new Cideapps_Gp_i18n();
 
-		$this->loader->add_action( 'plugins_loaded', $plugin_i18n, 'load_plugin_textdomain' );
+		$this->loader->add_action( 'init', $plugin_i18n, 'load_plugin_textdomain', 0 );
 
 	}
 
@@ -212,7 +212,7 @@ class Cideapps_Gp {
 
 		$plugin_testimonial_fields = new Cideapps_Gp_Testimonial_Fields();
 
-		$plugin_testimonial_fields->register();
+		$this->loader->add_action( 'init', $plugin_testimonial_fields, 'register', 10 );
 		$this->loader->add_action( 'cmb2_init', $plugin_testimonial_fields, 'testimonial_image_metabox', 0 );
 
 	}
@@ -225,7 +225,7 @@ class Cideapps_Gp {
 
 		$plugin_services_fields = new Cideapps_Gp_Service_Fields();
 
-		$plugin_services_fields->register();
+		$this->loader->add_action( 'init', $plugin_services_fields, 'register', 10 );
 
 	}
 

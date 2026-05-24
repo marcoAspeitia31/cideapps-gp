@@ -36,15 +36,11 @@ class Cideapps_Gp_Testimonial_Fields extends Cideapps_Gp_Metabox_Base {
 	/**
 	 * Metabox title.
 	 *
-	 * @var string
+	 * @since 1.1.0
+	 * @return string
 	 */
-	protected $metabox_title = '';
-
-	/**
-	 * Constructor.
-	 */
-	public function __construct() {
-		$this->metabox_title = esc_html__( 'Testimonial details', 'cideapps-gp' );
+	protected function get_metabox_title() {
+		return esc_html__( 'Testimonial details', 'cideapps-gp' );
 	}
 
 	/**

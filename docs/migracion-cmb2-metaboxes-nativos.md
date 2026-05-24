@@ -249,4 +249,4 @@ docs/migracion-cmb2-metaboxes-nativos.md           (este archivo)
 
 ---
 
-*Última actualización: Fases 0 y 1 completadas.*
+*Última actualización: Fases 0 y 1 completadas. Corrección i18n WP 6.7+ (textdomain en `init`, traducciones lazy en metaboxes).*
