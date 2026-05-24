@@ -116,6 +116,12 @@ class Cideapps_Gp {
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-cideapps-gp-i18n.php';
 
 		/**
+		 * Native meta infrastructure (Phase 0 migration from CMB2).
+		 */
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/meta/class-cideapps-gp-metabox-base.php';
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/meta/class-cideapps-gp-meta-registry.php';
+
+		/**
 		 * The class responsible for defining metaboxes with cmb2 framework functionality.
 		 */
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/cmb2-functions.php';
@@ -153,6 +159,9 @@ class Cideapps_Gp {
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'public/class-cideapps-gp-public.php';
 
 		$this->loader = new Cideapps_Gp_Loader();
+
+		$plugin_meta_registry = new Cideapps_Gp_Meta_Registry();
+		$this->loader->add_action( 'init', $plugin_meta_registry, 'register', 20 );
 
 	}
 
@@ -203,7 +212,8 @@ class Cideapps_Gp {
 
 		$plugin_testimonial_fields = new Cideapps_Gp_Testimonial_Fields();
 
-		$this->loader->add_action( 'cmb2_init', $plugin_testimonial_fields, 'testimonial_metabox', 0 );
+		$plugin_testimonial_fields->register();
+		$this->loader->add_action( 'cmb2_init', $plugin_testimonial_fields, 'testimonial_image_metabox', 0 );
 
 	}
 
@@ -215,7 +225,7 @@ class Cideapps_Gp {
 
 		$plugin_services_fields = new Cideapps_Gp_Service_Fields();
 
-		$this->loader->add_action( 'cmb2_init', $plugin_services_fields, 'service_metabox', 0 );
+		$plugin_services_fields->register();
 
 	}
 

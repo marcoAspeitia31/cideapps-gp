@@ -2,3 +2,22 @@
  * All of the CSS for your admin-specific functionality should be
  * included in this file.
  */
+
+.cagp-metabox-field {
+	margin-bottom: 1em;
+}
+
+.cagp-metabox-field .description {
+	display: block;
+	margin-top: 0.35em;
+	color: #646970;
+}
+
+.cagp-metabox-currency {
+	font-weight: 600;
+	margin-right: 0.15em;
+}
+
+.cagp-metabox-money {
+	max-width: 12rem;
+}
