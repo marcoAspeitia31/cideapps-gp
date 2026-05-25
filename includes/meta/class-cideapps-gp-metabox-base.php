@@ -63,7 +63,7 @@ abstract class Cideapps_Gp_Metabox_Base {
 	public function register() {
 		add_action( 'add_meta_boxes', array( $this, 'add_meta_box' ) );
 		add_action( 'save_post_' . $this->post_type, array( $this, 'save' ), 10, 2 );
-		add_action( 'admin_enqueue_scripts', array( $this, 'enqueue_admin_assets' ) );
+		add_action( 'admin_enqueue_scripts', array( $this, 'enqueue_admin_assets' ), 20 );
 	}
 
 	/**
@@ -256,8 +256,20 @@ abstract class Cideapps_Gp_Metabox_Base {
 
 		wp_enqueue_media();
 
+		$plugin_file = dirname( dirname( dirname( __FILE__ ) ) ) . '/cideapps-gp.php';
+		$script_url  = plugins_url( 'admin/js/cagp-metabox-file.js', $plugin_file );
+		$version     = defined( 'CIDEAPPS_GP_VERSION' ) ? CIDEAPPS_GP_VERSION : '1.0.0';
+
+		wp_enqueue_script(
+			'cagp-metabox-file',
+			$script_url,
+			array( 'jquery', 'media-upload' ),
+			$version,
+			true
+		);
+
 		wp_localize_script(
-			'cideapps-gp',
+			'cagp-metabox-file',
 			'cagpMetaboxFile',
 			array(
 				'frameTitle'  => esc_html__( 'Select or upload image', 'cideapps-gp' ),

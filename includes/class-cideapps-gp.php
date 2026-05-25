@@ -212,7 +212,7 @@ class Cideapps_Gp {
 
 		$plugin_testimonial_fields = new Cideapps_Gp_Testimonial_Fields();
 
-		$this->loader->add_action( 'init', $plugin_testimonial_fields, 'register', 10 );
+		$plugin_testimonial_fields->register();
 
 	}
 
@@ -224,7 +224,7 @@ class Cideapps_Gp {
 
 		$plugin_services_fields = new Cideapps_Gp_Service_Fields();
 
-		$this->loader->add_action( 'init', $plugin_services_fields, 'register', 10 );
+		$plugin_services_fields->register();
 
 	}
 
