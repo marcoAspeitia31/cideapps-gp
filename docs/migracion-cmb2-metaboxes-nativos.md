@@ -155,7 +155,9 @@ docs/migracion-cmb2-metaboxes-nativos.md           (este archivo)
    - Eliminado metabox CMB2 **Testimonial image**.
    - Testimoniales ya no usan `cmb2_init`.
 
-3. **`admin/js/cideapps-gp-admin.js`**: handler de biblioteca de medios para `.cagp-metabox-file`.
+3. **`admin/js/cagp-metabox-file.js`**: script dedicado con dependencia `media-upload` (fix biblioteca de medios).
+
+4. **`admin/js/cideapps-gp-admin.js`**: lógica de medios movida al script dedicado.
 
 4. **`admin/css/cideapps-gp-admin.css`**: estilos de preview y botones de imagen.
 
@@ -165,6 +167,7 @@ docs/migracion-cmb2-metaboxes-nativos.md           (este archivo)
 includes/meta/class-cideapps-gp-metabox-base.php   (modificado)
 admin/custom-fields/class-cideapps-gp-testimonial-fields.php (modificado)
 includes/class-cideapps-gp.php                     (modificado)
+admin/js/cagp-metabox-file.js                      (nuevo)
 admin/js/cideapps-gp-admin.js                        (modificado)
 admin/css/cideapps-gp-admin.css                      (modificado)
 docs/migracion-cmb2-metaboxes-nativos.md             (modificado)
