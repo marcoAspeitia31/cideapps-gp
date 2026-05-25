@@ -14,7 +14,7 @@ Documento de referencia para la migración gradual del plugin **Cideapps GP** de
 | **Fase 3** | ✅ Completada y validada | Term meta de taxonomía `service_category` |
 | **Fase 4** | ✅ Completada y validada | Páginas de opciones (Settings API) |
 | **Fase 5** | ✅ Completada y validada | Mapa Google nativo en Theme options |
-| **Fase 6** | ⏸️ Pendiente (gate) | Revisión REST + confirmación metaboxes Services |
+| **Fase 6** | ✅ Completada | REST: meta de posts y términos expuesta en API |
 | Fase 7 | Pendiente | Eliminar carpetas `includes/cmb2/` y `cmb_field_map/` del repo |
 | Fase 8 | Pendiente | Preparación WordPress.org (`readme.txt`, PHPCS, etc.) |
 
@@ -120,16 +120,9 @@ Imagen de **categoría** (no del post): taxonomía `service_category` → `servi
 
 ---
 
-## Gate antes de Fase 6 — Acciones a confirmar contigo
+## Siguiente paso: Fase 7
 
-Marca mentalmente o en el chat:
-
-1. **Services (C-S1 a C-S5):** confirmar que el comportamiento actual es el esperado o indicar qué campo falta.
-2. **¿Fase 6 es necesaria para tu tema?** La meta de posts ya usa `register_post_meta()` pero puede no aparecer en JSON REST sin configuración extra (como viste en T-1.18/T-1.19). Fase 6 = decidir si exponer meta/options en REST.
-3. **¿Proceder Fase 7?** Eliminar carpetas CMB2 del disco (recomendado tras confirmar Services).
-4. **¿Proceder Fase 8?** Preparación WordPress.org.
-
-**Recomendación:** con T-4 y T-5 validadas, puedes hacer Fase 7 (limpieza) en paralelo a Fase 6 si no necesitas REST de inmediato.
+Eliminar del repositorio las carpetas `includes/cmb2/` y `includes/cmb_field_map/` (ya no se usan en runtime). Luego Fase 8 (WordPress.org).
 
 ---
 
@@ -167,24 +160,41 @@ Marca mentalmente o en el chat:
 
 ### `includes/meta/class-cideapps-gp-meta-registry.php`
 
-- `register_post_meta()` — `testimonials`, `services`
-- `register_term_meta()` — `service_category` (ya hecho en Fase 3)
+- `register_post_meta()` — `testimonials`, `services` (schema REST `view` + `edit`)
+- `register_term_meta()` — `service_category`
+
+### Fase 6 — REST (requerimiento clave)
+
+WordPress solo incluye el objeto `meta` en el schema REST de un CPT si el post type declara soporte **`custom-fields`**. Sin eso, `register_post_meta( …, show_in_rest )` no basta.
+
+| CPT / taxonomía | Soporte / registro | Objeto REST |
+|-----------------|-------------------|-------------|
+| `testimonials` | `custom-fields` + `register_post_meta` | `meta.testimonials_*` |
+| `services` | `custom-fields` + `register_post_meta` | `meta.service_*`, `meta.cwt_services_*` |
+| `service_category` | `register_term_meta` | `meta.service_taxonomy_*` |
+
+**Options** (`cagp_theme_options`, `cagp_settings_options`): no expuestas en REST; el tema usa `get_option()`. Añadir endpoint propio solo si hace falta headless.
+
+---
+
+## Actividades realizadas — Fase 6
+
+1. **`custom-fields`** añadido a `supports` de CPT `testimonials` y `services`.
+2. **`Cideapps_Gp_Meta_Registry`**: `show_in_rest` con schema explícito (`type`, `context`, `default`).
+3. Verificado en local: `GET /wp-json/wp/v2/services/{id}` devuelve objeto `meta` con todas las claves registradas.
+
+### Archivos tocados (Fase 6)
+
+```
+admin/custom-post-types/class-cideapps-gp-services-post-type.php
+admin/custom-post-types/class-cideapps-gp-testimonial-post-type.php
+includes/meta/class-cideapps-gp-meta-registry.php
+docs/migracion-cmb2-metaboxes-nativos.md
+```
 
 ---
 
 ## Fases restantes (resumen)
-
-### Fase 6 — REST y registro formal (opcional)
-
-**Ya implementado en código (parcial):**
-
-- `register_post_meta` y `register_term_meta` con `show_in_rest => true`
-
-**Pendiente de decidir / validar:**
-
-- Hacer visible la meta en respuestas REST de posts (p. ej. `testimonials`, `services`)
-- Exponer `cagp_theme_options` / `cagp_settings_options` en REST si el tema lo requiere
-- Probar permisos REST (T-6.3)
 
 ### Fase 7 — Limpieza del repositorio
 
@@ -200,9 +210,7 @@ Marca mentalmente o en el chat:
 ## Orden sugerido de commits
 
 ```
-✅ 1–8. Migración funcional (Fases 0–5)
-⏸️ 9. Gate: corroboración Services (C-S1–C-S5)
-10. Fase 6 — REST (si aplica)
+✅ 1–10. Migración funcional (Fases 0–6)
 11. Fase 7 — Eliminar carpetas CMB2 del repo
 12. Fase 8 — WordPress.org
 ```
@@ -231,7 +239,7 @@ Marca mentalmente o en el chat:
 | T-1.8 | Block editor | ⏭️ | |
 | T-1.9 a T-1.14 | Services admin | ✅ | Ver sección corroboración C-S* |
 | T-1.15 a T-1.17 | BD postmeta | ✅ | |
-| T-1.18 a T-1.19 | REST posts meta | ⏭️ | No visible sin CMB2; esperado |
+| T-1.18 a T-1.19 | REST posts meta | ✅ | Resuelto en Fase 6 (`custom-fields`) |
 | T-1.20 | REST PATCH | ⏭️ | |
 | T-1.21 a T-1.26 | Regresión / i18n | ✅ | |
 
@@ -242,7 +250,7 @@ Marca mentalmente o en el chat:
 | ID | Prueba | Estado | Notas |
 |----|--------|--------|-------|
 | T-2.1 a T-2.5, T-2.7 | Imagen nativa testimoniales | ✅ | |
-| T-2.6 | REST imagen | ⏭️ | |
+| T-2.6 | REST imagen | ✅ | Fase 6 |
 
 ---
 
@@ -270,25 +278,23 @@ Marca mentalmente o en el chat:
 
 ---
 
-### Corroboración Services (antes Fase 6)
+### Corroboración Services (completada)
 
 | ID | Prueba | Estado | Notas |
 |----|--------|--------|-------|
-| C-S1 | Metabox pricing + slogan visible | ⬜ | Confirmar contigo |
-| C-S2 | Sin metabox CMB2 en services | ⬜ | |
-| C-S3 | Imagen en post: no existía en plugin | ⬜ | |
-| C-S4 | Imagen en término categoría | ⬜ | |
-| C-S5 | ¿Añadir campos nuevos al post? | ⬜ | Decisión producto |
+| C-S1 a C-S5 | Metaboxes + campos `cwt_*` en plugin | ✅ | Validado por usuario |
 
 ---
 
-### Fase 6 — REST (pendiente)
+### Fase 6 — REST
 
 | ID | Prueba | Estado | Notas |
 |----|--------|--------|-------|
-| T-6.1 | `register_term_meta` activo | ✅ | Hecho en Fase 3 |
-| T-6.2 | Meta posts/términos visible en REST | ⬜ | Opcional |
-| T-6.3 | Permisos REST | ⬜ | Opcional |
+| T-6.1 | `register_term_meta` activo | ✅ | Fase 3 |
+| T-6.2 | Meta posts visible en REST (`meta` en JSON) | ⬜ | Probar en tu entorno |
+| T-6.3 | Meta términos visible en REST | ⬜ | `GET /wp/v2/service_category/{id}` |
+| T-6.4 | Editar meta vía REST (usuario con `edit_post`) | ⬜ | Opcional |
+| T-6.5 | Usuario sin permisos no puede PATCH meta | ⬜ | Opcional |
 
 ---
 
@@ -333,7 +339,7 @@ Marca mentalmente o en el chat:
 |--------|------------|
 | Formato `file` | URL + `{key}_id` en post, term y options |
 | Repeatables | Array en `cagp_theme_options` |
-| REST sin meta visible | `register_post_meta` activo; exposición REST puede requerir trabajo extra en Fase 6 |
+| REST sin meta en posts | CPT debe incluir `custom-fields` en `supports` (Fase 6) |
 | Confundir imagen de categoría vs post servicio | Documentado en sección corroboración |
 | Textdomain temprano | Getters lazy + `register()` en `init` |
 
@@ -349,4 +355,4 @@ Marca mentalmente o en el chat:
 
 ---
 
-*Última actualización: Fases 4–5 validadas (T-4.1–T-5.5). Gate pre-Fase 6 documentado para Services. Fases 1–3 validadas.*
+*Última actualización: Fase 6 completada (REST + `custom-fields`). Services adicionales (`cwt_*`) centralizados en plugin.*

@@ -136,10 +136,32 @@ class Cideapps_Gp_Meta_Registry {
 		return array(
 			'type'              => $type,
 			'single'            => true,
-			'show_in_rest'      => true,
+			'show_in_rest'      => $this->get_show_in_rest_schema( $type ),
 			'auth_callback'     => array( $this, 'auth_edit_terms' ),
 			'sanitize_callback' => $sanitize,
 		);
+	}
+
+	/**
+	 * REST schema for registered meta (view + edit contexts).
+	 *
+	 * @since 1.4.0
+	 * @param string $type Meta value type (string|integer).
+	 * @return array<string, mixed>
+	 */
+	private function get_show_in_rest_schema( $type ) {
+		$schema = array(
+			'type'    => $type,
+			'context' => array( 'view', 'edit' ),
+		);
+
+		if ( 'integer' === $type ) {
+			$schema['default'] = 0;
+		} else {
+			$schema['default'] = '';
+		}
+
+		return array( 'schema' => $schema );
 	}
 
 	/**
@@ -181,7 +203,7 @@ class Cideapps_Gp_Meta_Registry {
 		return array(
 			'type'              => $type,
 			'single'            => true,
-			'show_in_rest'      => true,
+			'show_in_rest'      => $this->get_show_in_rest_schema( $type ),
 			'auth_callback'     => array( $this, 'auth_edit_posts' ),
 			'sanitize_callback' => $sanitize,
 		);
