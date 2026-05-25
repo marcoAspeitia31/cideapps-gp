@@ -15,7 +15,7 @@
  * @wordpress-plugin
  * Plugin Name:       Cideapps GP
  * Plugin URI:        https://github.com/marcoAspeitia31/cideapps-gp/
- * Description:       Plugin genérico para iniciar el desarrollo de temas personalizados, incluye CPT de testimoniales, servicios, tambien metaboxes con CMB2 
+ * Description:       Plugin genérico para iniciar el desarrollo de temas personalizados, incluye CPT de testimoniales, servicios y opciones de tema con metaboxes nativos.
  * Version:           1.0.0
  * Author:            Marco Aspeitia
  * Author URI:        https://github.com/marcoAspeitia31//

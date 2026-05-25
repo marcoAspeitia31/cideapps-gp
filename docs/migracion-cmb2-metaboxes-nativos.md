@@ -11,11 +11,11 @@ Documento de referencia para la migración gradual del plugin **Cideapps GP** de
 | **Fase 0** | ✅ Completada | Infraestructura base (`Metabox_Base`, `Meta_Registry`) |
 | **Fase 1** | ✅ Completada y validada | Campos de texto en testimoniales y servicios |
 | **Fase 2** | ✅ Completada y validada | Campo de imagen en testimoniales |
-| **Fase 3** | ✅ Completada | Term meta de taxonomía `service_category` |
-| Fase 4 | Pendiente | Páginas de opciones (`cagp_theme_options`, `cagp_settings_options`) |
-| Fase 5 | Pendiente | Campo de mapa (Google Maps) nativo |
-| Fase 6 | Pendiente | Registro completo de meta (term meta, options REST) |
-| Fase 7 | Pendiente | Eliminación de CMB2 y `cmb_field_map` |
+| **Fase 3** | ✅ Completada y validada | Term meta de taxonomía `service_category` |
+| **Fase 4** | ✅ Completada | Páginas de opciones + mapa nativo (incl. Fase 5) |
+| **Fase 5** | ✅ Incluida en Fase 4 | Mapa Google nativo en Theme options |
+| Fase 6 | Pendiente | Registro REST de options (opcional) |
+| Fase 7 | Pendiente | Eliminar carpetas `includes/cmb2/` y `cmb_field_map/` del repo |
 | Fase 8 | Pendiente | Preparación WordPress.org (`readme.txt`, PHPCS, etc.) |
 
 ---
@@ -55,7 +55,7 @@ Los temas y cualquier código que use `get_post_meta()`, `get_term_meta()` o `ge
 
 ### Options — `cagp_theme_options`
 
-Branding, contacto, redes sociales, mapa, etc. Ver `class-cideapps-gp-options-menu-page-fields.php`. **Fase 4.**
+Branding, contacto, redes sociales, mapa, etc. Ver `class-cideapps-gp-theme-options-page.php`. **Nativo (Fase 4).**
 
 ### Options — `cagp_settings_options`
 
@@ -229,11 +229,11 @@ docs/migracion-cmb2-metaboxes-nativos.md             (modificado)
 ✅ 3. Services — text fields
 ✅ 4. Testimonials — image field
 ✅ 5. Service taxonomy — image field
-6. Options — Settings API (campos simples)
-7. Options — file fields + wysiwyg + repeatables
-8. Options — mapa nativo + geocoding con wp_remote_get
-9. register_term_meta
-10. Eliminar CMB2 + cmb_field_map
+✅ 6. Options — Settings API completo
+✅ 7. Options — file + wysiwyg + repeatables
+✅ 8. Options — mapa nativo + geocoding con wp_remote_get
+9. register_term_meta / options REST (opcional)
+10. Eliminar carpetas CMB2 del repositorio
 11. readme.txt + ajustes WordPress.org
 ```
 
@@ -346,7 +346,7 @@ Fase 1 — T-1.3 ✅ | T-1.5 ❌ (el valor no persiste al recargar)
 
 ---
 
-### Fase 3 — Term meta `service_category` (completada en código) ← **Probar ahora**
+### Fase 3 — Term meta `service_category` (completada y validada)
 
 | ID | Prueba | Estado | Notas |
 |----|--------|--------|-------|
@@ -359,7 +359,7 @@ Fase 1 — T-1.3 ✅ | T-1.5 ❌ (el valor no persiste al recargar)
 
 ---
 
-### Fase 4 — Páginas de opciones (pendiente implementación)
+### Fase 4 — Páginas de opciones (completada en código) ← **Probar ahora**
 
 | ID | Prueba | Estado | Notas |
 |----|--------|--------|-------|
@@ -374,7 +374,7 @@ Fase 1 — T-1.3 ✅ | T-1.5 ❌ (el valor no persiste al recargar)
 
 ---
 
-### Fase 5 — Mapa nativo (pendiente implementación)
+### Fase 5 — Mapa nativo (incluida en Fase 4)
 
 | ID | Prueba | Estado | Notas |
 |----|--------|--------|-------|
@@ -449,12 +449,19 @@ Copia, completa y envíame en el chat:
 
 ### Qué debes probar ahora (resumen)
 
-Con la **Fase 3** implementada, prioriza:
+Con la **Fase 4** implementada, prioriza:
 
-1. **T-3.1 a T-3.5** — Imagen en categorías de servicio (crear/editar término, guardar, quitar).
-2. Regresión: testimoniales (T-2.x) y Theme options (T-1.22) siguen operativos.
+1. **T-4.1 a T-4.8** — Theme options y Settings (guardar, datos previos, repeatables, wysiwyg).
+2. **T-5.1 a T-5.4** — Mapa y geocoding de dirección.
+3. Regresión: testimoniales, servicios y taxonomía siguen operativos.
 
-Las fases **4 a 8** están listadas para cuando las implementemos.
+Las fases **6 a 8** están listadas para cierre del plugin.
+
+---
+
+## Resultados de testeo — Fase 3
+
+- ✅ OK: T-3.1 a T-3.6
 
 ---
 
@@ -509,4 +516,31 @@ includes/class-cideapps-gp.php                         (modificado)
 
 ---
 
-*Última actualización: Fase 3 completada (term meta service_category). Fases 1–2 validadas.*
+---
+
+## Actividades realizadas — Fase 4 (+ mapa Fase 5)
+
+1. **Settings API** para `cagp_theme_options` y `cagp_settings_options` (mismo array serializado en `wp_options`).
+2. Tipos de campo: título, texto, email, URL, textarea, wysiwyg, file, repeatable, mapa, password.
+3. **Mapa nativo** (`cagp-options-map.js`) sustituye `cmb_field_map`.
+4. **Geocoding** con `wp_remote_get()` vía `pre_update_option_cagp_theme_options`.
+5. **CMB2 dejó de cargarse** en runtime (sin hooks `cmb2_init` / `cmb2_admin_init`).
+
+### Archivos tocados (Fase 4)
+
+```
+includes/meta/class-cideapps-gp-options-field-renderer.php  (nuevo)
+includes/meta/class-cideapps-gp-options-page-base.php         (nuevo)
+admin/custom-fields/class-cideapps-gp-theme-options-page.php  (nuevo)
+admin/custom-fields/class-cideapps-gp-settings-options-page.php (nuevo)
+admin/custom-fields/class-cideapps-gp-options-menu-page-fields.php (reescrito)
+admin/js/cagp-options-repeatable.js                           (nuevo)
+admin/js/cagp-options-map.js                                  (nuevo)
+admin/css/cagp-options-map.css                                (nuevo)
+includes/class-cideapps-gp.php                                (modificado)
+cideapps-gp.php                                               (modificado)
+```
+
+---
+
+*Última actualización: Fase 4 completada. Fases 1–3 validadas. CMB2 ya no se carga en el plugin.*
