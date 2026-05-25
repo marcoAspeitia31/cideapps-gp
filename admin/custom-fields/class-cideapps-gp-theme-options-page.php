@@ -202,6 +202,12 @@ class Cideapps_Gp_Theme_Options_Page extends Cideapps_Gp_Options_Page_Base {
 				'description' => esc_html__( 'Add your tiktok profile URL', 'cideapps-gp' ),
 				'type'        => 'text_url',
 			),
+			array(
+				'id'          => 'linkedin_url',
+				'label'       => esc_html__( 'Linkedin', 'cideapps-gp' ),
+				'description' => esc_html__( 'Add your linkedin profile URL', 'cideapps-gp' ),
+				'type'        => 'text_url',
+			),
 		);
 	}
 }
