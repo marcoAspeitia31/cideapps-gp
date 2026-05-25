@@ -120,7 +120,7 @@ Activate in **Plugins → Cideapps GP**, then open **Theme options**.
 By default, uninstalling the plugin **does not delete** posts, meta, or options (safe for client sites). To remove plugin options on uninstall, use the filter documented in `uninstall.php`:
 
 ```php
-add_filter( 'cagp_uninstall_delete_data', '__return_true' );
+add_filter( 'cideapps_gp_uninstall_delete_data', '__return_true' );
 ```
 
 ---

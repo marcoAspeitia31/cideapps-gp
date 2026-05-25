@@ -341,7 +341,7 @@ function cagp_get_theme_option( $key, $default = '' ) {
 ### Comprobar que el plugin está activo
 
 ```php
-if ( ! function_exists( 'run_cideapps_gp' ) && ! defined( 'CIDEAPPS_GP' ) ) {
+if ( ! function_exists( 'cideapps_gp_run_plugin' ) && ! defined( 'CIDEAPPS_GP' ) ) {
 	return;
 }
 ```

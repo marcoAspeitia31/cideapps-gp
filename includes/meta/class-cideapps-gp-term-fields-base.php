@@ -280,30 +280,27 @@ abstract class Cideapps_Gp_Term_Fields_Base {
 	 * @param array<string, mixed> $field   Field configuration.
 	 */
 	protected function save_field( $term_id, array $field ) {
-		// Nonce and capability verified in can_save() before this runs.
-		// phpcs:disable WordPress.Security.NonceVerification.Missing
-
 		$field_type = isset( $field['type'] ) ? $field['type'] : 'text';
 
 		if ( 'file' === $field_type ) {
 			$this->save_file_field( $term_id, $field );
-			// phpcs:enable WordPress.Security.NonceVerification.Missing
 			return;
 		}
 
 		$field_id = $field['id'];
 
-		if ( ! isset( $_POST[ $field_id ] ) ) {
-			// phpcs:enable WordPress.Security.NonceVerification.Missing
+		if ( ! $this->is_set_in_post( $field_id ) ) {
 			return;
 		}
 
-		// phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized -- sanitized below.
-		$value = sanitize_text_field( wp_unslash( $_POST[ $field_id ] ) );
+		$raw_value = $this->get_unslashed_from_post( $field_id );
+		if ( null === $raw_value ) {
+			return;
+		}
+
+		$value = sanitize_text_field( $raw_value );
 
 		update_term_meta( $term_id, $field_id, $value );
-
-		// phpcs:enable WordPress.Security.NonceVerification.Missing
 	}
 
 	/**
@@ -314,21 +311,18 @@ abstract class Cideapps_Gp_Term_Fields_Base {
 	 * @param array<string, mixed> $field   Field configuration.
 	 */
 	protected function save_file_field( $term_id, array $field ) {
-		// Nonce and capability verified in can_save() before this runs.
-		// phpcs:disable WordPress.Security.NonceVerification.Missing
-
 		$field_id = $field['id'];
 		$id_key   = $field_id . '_id';
 
-		if ( ! isset( $_POST[ $field_id ] ) && ! isset( $_POST[ $id_key ] ) ) {
-			// phpcs:enable WordPress.Security.NonceVerification.Missing
+		if ( ! $this->is_set_in_post( $field_id ) && ! $this->is_set_in_post( $id_key ) ) {
 			return;
 		}
 
-		// phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized -- sanitized below.
-		$url = isset( $_POST[ $field_id ] ) ? esc_url_raw( wp_unslash( $_POST[ $field_id ] ) ) : '';
-		// phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized -- cast to int below.
-		$attachment_id = isset( $_POST[ $id_key ] ) ? absint( wp_unslash( $_POST[ $id_key ] ) ) : 0;
+		$url_raw = $this->get_unslashed_from_post( $field_id );
+		$url     = null !== $url_raw ? esc_url_raw( $url_raw ) : '';
+
+		$id_raw = $this->get_unslashed_from_post( $id_key );
+		$attachment_id = null !== $id_raw ? absint( $id_raw ) : 0;
 
 		if ( $attachment_id ) {
 			$attachment_url = wp_get_attachment_url( $attachment_id );
@@ -341,14 +335,39 @@ abstract class Cideapps_Gp_Term_Fields_Base {
 		if ( $attachment_id || $url ) {
 			update_term_meta( $term_id, $field_id, $url );
 			update_term_meta( $term_id, $id_key, $attachment_id );
-			// phpcs:enable WordPress.Security.NonceVerification.Missing
 			return;
 		}
 
 		delete_term_meta( $term_id, $field_id );
 		delete_term_meta( $term_id, $id_key );
+	}
 
-		// phpcs:enable WordPress.Security.NonceVerification.Missing
+	/**
+	 * Whether a POST key is present (nonce verified in can_save()).
+	 *
+	 * @since 1.3.0
+	 * @param string $key POST key.
+	 * @return bool
+	 */
+	protected function is_set_in_post( $key ) {
+		// phpcs:ignore WordPress.Security.NonceVerification.Missing -- Nonce verified in can_save().
+		return isset( $_POST[ $key ] );
+	}
+
+	/**
+	 * Read an unslashed POST value (nonce verified in can_save()).
+	 *
+	 * @since 1.3.0
+	 * @param string $key POST key.
+	 * @return mixed|null Null when the key is not set.
+	 */
+	protected function get_unslashed_from_post( $key ) {
+		if ( ! $this->is_set_in_post( $key ) ) {
+			return null;
+		}
+
+		// phpcs:ignore WordPress.Security.NonceVerification.Missing, WordPress.Security.ValidatedSanitizedInput.InputNotSanitized -- Nonce verified in can_save(); sanitized by callers.
+		return wp_unslash( $_POST[ $key ] );
 	}
 
 	/**

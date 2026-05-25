@@ -8,7 +8,7 @@
  * To delete plugin options on uninstall (development/staging only), add to the theme
  * or a mu-plugin:
  *
- *   add_filter( 'cagp_uninstall_delete_data', '__return_true' );
+ *   add_filter( 'cideapps_gp_uninstall_delete_data', '__return_true' );
  *
  * @package Cideapps_Gp
  * @link    https://github.com/marcoAspeitia31/cideapps-gp
@@ -24,9 +24,9 @@ if ( ! defined( 'WP_UNINSTALL_PLUGIN' ) ) {
  * @since 1.1.0
  * @param bool $delete Whether to delete data. Default false.
  */
-$cagp_delete_data = (bool) apply_filters( 'cagp_uninstall_delete_data', false );
+$cideapps_gp_delete_data = (bool) apply_filters( 'cideapps_gp_uninstall_delete_data', false );
 
-if ( ! $cagp_delete_data ) {
+if ( ! $cideapps_gp_delete_data ) {
 	return;
 }
 

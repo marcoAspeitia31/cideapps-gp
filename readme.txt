@@ -63,7 +63,7 @@ No. Version 1.0+ uses native WordPress metaboxes and the Settings API.
 
 = Will data be deleted when I uninstall? =
 
-By default, **no**. Post meta, term meta, and options are preserved. Developers can enable removal via the `cagp_uninstall_delete_data` filter (see `uninstall.php`).
+By default, **no**. Post meta, term meta, and options are preserved. Developers can enable removal via the `cideapps_gp_uninstall_delete_data` filter (see `uninstall.php`).
 
 = Can I use the data in the block editor or REST API? =
 

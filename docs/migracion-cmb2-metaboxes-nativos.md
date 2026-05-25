@@ -235,7 +235,7 @@ docs/migracion-cmb2-metaboxes-nativos.md
 - `docs/guia-desarrollo-temas.md` — guía para desarrolladores de temas (referencia pública de meta keys)
 - `README.md` y `docs/README.md` actualizados
 - `readme.txt` para el directorio de plugins (inglés, Google Maps declarado)
-- `uninstall.php` documentado (datos preservados por defecto; filtro `cagp_uninstall_delete_data`)
+- `uninstall.php` documentado (datos preservados por defecto; filtro `cideapps_gp_uninstall_delete_data`)
 - Pendiente antes de publicar en WordPress.org: Plugin Check, PHPCS, bump de versión si aplica
 
 ---

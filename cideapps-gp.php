@@ -41,7 +41,7 @@ define( 'CIDEAPPS_GP_VERSION', '1.0.0' );
  * The code that runs during plugin activation.
  * This action is documented in includes/class-cideapps-gp-activator.php
  */
-function cagp_activate_plugin() {
+function cideapps_gp_activate_plugin() {
 	require_once plugin_dir_path( __FILE__ ) . 'includes/class-cideapps-gp-activator.php';
 	Cideapps_Gp_Activator::activate();
 }
@@ -50,13 +50,13 @@ function cagp_activate_plugin() {
  * The code that runs during plugin deactivation.
  * This action is documented in includes/class-cideapps-gp-deactivator.php
  */
-function cagp_deactivate_plugin() {
+function cideapps_gp_deactivate_plugin() {
 	require_once plugin_dir_path( __FILE__ ) . 'includes/class-cideapps-gp-deactivator.php';
 	Cideapps_Gp_Deactivator::deactivate();
 }
 
-register_activation_hook( __FILE__, 'cagp_activate_plugin' );
-register_deactivation_hook( __FILE__, 'cagp_deactivate_plugin' );
+register_activation_hook( __FILE__, 'cideapps_gp_activate_plugin' );
+register_deactivation_hook( __FILE__, 'cideapps_gp_deactivate_plugin' );
 
 /**
  * The core plugin class that is used to define internationalization,
@@ -73,10 +73,10 @@ require plugin_dir_path( __FILE__ ) . 'includes/class-cideapps-gp.php';
  *
  * @since    1.0.0
  */
-function cagp_run_plugin() {
+function cideapps_gp_run_plugin() {
 
 	$plugin = new Cideapps_Gp();
 	$plugin->run();
 
 }
-cagp_run_plugin();
+cideapps_gp_run_plugin();
