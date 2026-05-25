@@ -362,7 +362,8 @@ abstract class Cideapps_Gp_Term_Fields_Base {
 	 * @return mixed|null Null when the key is not set.
 	 */
 	protected function get_unslashed_from_post( $key ) {
-		if ( ! $this->is_set_in_post( $key ) ) {
+		// phpcs:ignore WordPress.Security.NonceVerification.Missing -- Nonce verified in can_save().
+		if ( ! isset( $_POST[ $key ] ) ) {
 			return null;
 		}
 
