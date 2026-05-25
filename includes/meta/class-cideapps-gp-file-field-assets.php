@@ -39,8 +39,9 @@ class Cideapps_Gp_File_Field_Assets {
 			'cagp-metabox-file',
 			'cagpMetaboxFile',
 			array(
-				'frameTitle'  => esc_html__( 'Select or upload image', 'cideapps-gp' ),
-				'frameButton' => esc_html__( 'Use this image', 'cideapps-gp' ),
+				'frameTitle'        => esc_html__( 'Select or upload image', 'cideapps-gp' ),
+				'frameButton'       => esc_html__( 'Use this file', 'cideapps-gp' ),
+				'mediaUnavailable'  => esc_html__( 'WordPress media library is not available.', 'cideapps-gp' ),
 			)
 		);
 	}

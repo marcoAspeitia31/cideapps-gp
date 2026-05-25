@@ -26,6 +26,26 @@
 	margin: 0.5em 0;
 }
 
+.cagp-metabox-file-preview.is-clickable {
+	display: inline-block;
+	cursor: pointer;
+}
+
+.cagp-metabox-file-preview.is-clickable:focus {
+	outline: 2px solid #2271b1;
+	outline-offset: 2px;
+}
+
+.cagp-metabox-file-preview.is-clickable img {
+	transition: opacity 0.15s ease, box-shadow 0.15s ease;
+}
+
+.cagp-metabox-file-preview.is-clickable:hover img,
+.cagp-metabox-file-preview.is-clickable:focus img {
+	opacity: 0.9;
+	box-shadow: 0 0 0 1px #2271b1;
+}
+
 .cagp-metabox-file-preview img {
 	display: block;
 	max-width: 150px;

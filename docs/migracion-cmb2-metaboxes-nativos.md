@@ -127,6 +127,12 @@ Imagen de **categoría** (no del post): taxonomía `service_category` → `servi
 - Avisos verde/rojo vía `settings_errors()` al guardar.
 - Archivos: `cagp-options-admin.css`, `cagp-options-tabs.js`, cambios en `Cideapps_Gp_Options_Page_Base`.
 
+## Fase 7.3 — Campos file: preview clicable (estilo CMB2)
+
+- Clic en la miniatura abre `wp.media` con el attachment actual preseleccionado.
+- Título del modal = label del campo (`data-frame-title`).
+- Botón del frame: “Use this file”. Aplica a posts, options y term meta.
+
 ## Fase 7.2 — Geocoding al soltar marker (AJAX)
 
 - **Ya no** se geocodifica al guardar `cagp_theme_options` (`pre_update_option` eliminado).

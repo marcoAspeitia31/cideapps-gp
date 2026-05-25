@@ -198,10 +198,18 @@ abstract class Cideapps_Gp_Metabox_Base {
 		$url           = get_post_meta( $post_id, $field_id, true );
 		$attachment_id = (int) get_post_meta( $post_id, $id_key, true );
 		$preview_size  = isset( $field['preview_size'] ) ? $field['preview_size'] : array( 150, 150 );
+		$has_preview   = $attachment_id || ! empty( $url );
+		$field_label   = isset( $field['label'] ) ? $field['label'] : '';
 
-		echo '<div class="cagp-metabox-file" data-field-id="' . esc_attr( $field_id ) . '">';
+		printf(
+			'<div class="cagp-metabox-file" data-field-id="%1$s" data-frame-title="%2$s">',
+			esc_attr( $field_id ),
+			esc_attr( $field_label )
+		);
 
-		echo '<div class="cagp-metabox-file-preview">';
+		echo '<div class="' . esc_attr( $this->get_file_preview_class( $has_preview ) ) . '"';
+		$this->render_file_preview_a11y_attrs( $has_preview, $field_label );
+		echo '>';
 		if ( $attachment_id ) {
 			echo wp_get_attachment_image( $attachment_id, $preview_size );
 		} elseif ( ! empty( $url ) ) {
@@ -231,6 +239,51 @@ abstract class Cideapps_Gp_Metabox_Base {
 		);
 
 		echo '</div>';
+	}
+
+	/**
+	 * CSS class for the file field preview wrapper.
+	 *
+	 * @since 1.5.2
+	 * @param bool $has_preview Whether a preview image is shown.
+	 * @return string
+	 */
+	protected function get_file_preview_class( $has_preview ) {
+		$classes = array( 'cagp-metabox-file-preview' );
+
+		if ( $has_preview ) {
+			$classes[] = 'is-clickable';
+		}
+
+		return implode( ' ', $classes );
+	}
+
+	/**
+	 * Accessibility attributes for a clickable file preview.
+	 *
+	 * @since 1.5.2
+	 * @param bool   $has_preview Whether preview is interactive.
+	 * @param string $field_label Field label for aria-label.
+	 */
+	protected function render_file_preview_a11y_attrs( $has_preview, $field_label ) {
+		if ( ! $has_preview ) {
+			return;
+		}
+
+		echo ' role="button" tabindex="0"';
+
+		if ( $field_label ) {
+			printf(
+				' aria-label="%s"',
+				esc_attr(
+					sprintf(
+						/* translators: %s: field label */
+						__( 'Edit %s', 'cideapps-gp' ),
+						$field_label
+					)
+				)
+			);
+		}
 	}
 
 	/**

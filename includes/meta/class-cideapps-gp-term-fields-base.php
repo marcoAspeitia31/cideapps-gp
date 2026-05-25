@@ -209,10 +209,36 @@ abstract class Cideapps_Gp_Term_Fields_Base {
 		$url           = $term_id ? get_term_meta( $term_id, $field_id, true ) : '';
 		$attachment_id = $term_id ? (int) get_term_meta( $term_id, $id_key, true ) : 0;
 		$preview_size  = isset( $field['preview_size'] ) ? $field['preview_size'] : array( 150, 150 );
+		$has_preview   = $attachment_id || ! empty( $url );
+		$field_label   = isset( $field['label'] ) ? $field['label'] : '';
+		$preview_class = 'cagp-metabox-file-preview' . ( $has_preview ? ' is-clickable' : '' );
 
-		echo '<div class="cagp-metabox-file" data-field-id="' . esc_attr( $field_id ) . '">';
+		printf(
+			'<div class="cagp-metabox-file" data-field-id="%1$s" data-frame-title="%2$s">',
+			esc_attr( $field_id ),
+			esc_attr( $field_label )
+		);
 
-		echo '<div class="cagp-metabox-file-preview">';
+		echo '<div class="' . esc_attr( $preview_class ) . '"';
+
+		if ( $has_preview ) {
+			echo ' role="button" tabindex="0"';
+
+			if ( $field_label ) {
+				printf(
+					' aria-label="%s"',
+					esc_attr(
+						sprintf(
+							/* translators: %s: field label */
+							__( 'Edit %s', 'cideapps-gp' ),
+							$field_label
+						)
+					)
+				);
+			}
+		}
+
+		echo '>';
 		if ( $attachment_id ) {
 			echo wp_get_attachment_image( $attachment_id, $preview_size );
 		} elseif ( ! empty( $url ) ) {
