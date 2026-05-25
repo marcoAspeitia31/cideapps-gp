@@ -17,7 +17,9 @@ Documento de referencia para la migración gradual del plugin **Cideapps GP** de
 | **Fase 6** | ✅ Completada y validada | REST: meta de posts y términos (T-6.2, T-6.3) |
 | **Fase 7** | ✅ Completada | CMB2 y `cmb_field_map` eliminados del repositorio |
 | **Fase 7.1** | ✅ Completada | UI Theme options: tabs + avisos de guardado |
-| Fase 8 | Pendiente | Preparación WordPress.org (`readme.txt`, PHPCS, etc.) |
+| **Fase 7.2** | ✅ Completada | Geocoding AJAX al soltar marker |
+| **Fase 7.3** | ✅ Completada | Preview file clicable + preselección Media Library |
+| **Fase 8** | ✅ Completada | Documentación temas + `readme.txt` + `uninstall.php` |
 
 **CMB2:** eliminado del repositorio (Fase 7). El plugin usa solo metaboxes nativos y Settings API.
 
@@ -140,9 +142,12 @@ Imagen de **categoría** (no del post): taxonomía `service_category` → `servi
 - Al **guardar**: se persiste el texto del textarea tal como lo dejó el usuario.
 - Avisos rojos/verdes junto al mapa vía AJAX (la API key no se expone al front).
 
-## Siguiente paso: Fase 8
+## Publicación en WordPress.org (checklist opcional)
 
-Preparación WordPress.org (`readme.txt`, PHPCS, Plugin Check).
+- [ ] Ejecutar [Plugin Check](https://wordpress.org/plugins/plugin-check/)
+- [ ] PHPCS con WordPress Coding Standards
+- [ ] Subir a SVN de WordPress.org / crear release en GitHub
+- [ ] Bump de versión en `cideapps-gp.php` y `readme.txt` stable tag
 
 ---
 
@@ -225,17 +230,29 @@ docs/migracion-cmb2-metaboxes-nativos.md
 - Eliminado `includes/cmb2-functions.php`
 - `README.md` actualizado (sin referencias a CMB2)
 
-### Fase 8 — WordPress.org
+### Fase 8 — Documentación y WordPress.org ✅
 
-- `readme.txt`, PHPCS, Plugin Check, documentar Google Maps en readme
+- `docs/guia-desarrollo-temas.md` — guía para desarrolladores de temas (referencia pública de meta keys)
+- `README.md` y `docs/README.md` actualizados
+- `readme.txt` para el directorio de plugins (inglés, Google Maps declarado)
+- `uninstall.php` documentado (datos preservados por defecto; filtro `cagp_uninstall_delete_data`)
+- Pendiente antes de publicar en WordPress.org: Plugin Check, PHPCS, bump de versión si aplica
+
+---
+
+## Actividades realizadas — Fase 8
+
+1. Guía profesional de consumo de meta/options para temas personalizados.
+2. `readme.txt` con tags, FAQ, external services (Google Maps).
+3. Política de desinstalación segura documentada en código y guías.
 
 ---
 
 ## Orden sugerido de commits
 
 ```
-✅ 1–11. Migración funcional (Fases 0–7)
-12. Fase 8 — WordPress.org
+✅ 1–12. Migración funcional y documentación (Fases 0–8)
+13. (Opcional) PHPCS + Plugin Check + tag de release
 ```
 
 ---

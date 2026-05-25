@@ -1,31 +1,34 @@
 <?php
-
 /**
  * Fired when the plugin is uninstalled.
  *
- * When populating this file, consider the following flow
- * of control:
+ * By default this plugin does NOT delete posts, post meta, term meta, or options.
+ * That keeps client sites safe if the plugin is removed temporarily or by mistake.
  *
- * - This method should be static
- * - Check if the $_REQUEST content actually is the plugin name
- * - Run an admin referrer check to make sure it goes through authentication
- * - Verify the output of $_GET makes sense
- * - Repeat with other user roles. Best directly by using the links/query string parameters.
- * - Repeat things for multisite. Once for a single site in the network, once sitewide.
+ * To delete plugin options on uninstall (development/staging only), add to the theme
+ * or a mu-plugin:
  *
- * This file may be updated more in future version of the Boilerplate; however, this is the
- * general skeleton and outline for how the file should work.
+ *   add_filter( 'cagp_uninstall_delete_data', '__return_true' );
  *
- * For more information, see the following discussion:
- * https://github.com/tommcfarlin/WordPress-Plugin-Boilerplate/pull/123#issuecomment-28541913
- *
- * @link       https://github.com/marcoAspeitia31/
- * @since      1.0.0
- *
- * @package    Cideapps_Gp
+ * @package Cideapps_Gp
+ * @link    https://github.com/marcoAspeitia31/cideapps-gp
  */
 
-// If uninstall not called from WordPress, then exit.
 if ( ! defined( 'WP_UNINSTALL_PLUGIN' ) ) {
 	exit;
 }
+
+/**
+ * Whether to remove plugin options from wp_options on uninstall.
+ *
+ * @since 1.1.0
+ * @param bool $delete Whether to delete data. Default false.
+ */
+$delete_data = (bool) apply_filters( 'cagp_uninstall_delete_data', false );
+
+if ( ! $delete_data ) {
+	return;
+}
+
+delete_option( 'cagp_theme_options' );
+delete_option( 'cagp_settings_options' );

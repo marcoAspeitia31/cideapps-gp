@@ -4,13 +4,17 @@ Todas las notas de cambios de **Cideapps GP**. Este proyecto sigue [Semantic Ver
 ## [Unreleased]
 
 ### Added
-- (pendiente)
+- Guía para desarrolladores de temas: `docs/guia-desarrollo-temas.md`
+- `readme.txt` para WordPress.org
+- Filtro `cagp_uninstall_delete_data` en desinstalación
 
 ### Changed
-- (pendiente)
+- Migración completa de CMB2 a metaboxes nativos y Settings API
+- Theme options con pestañas, avisos de guardado, geocoding AJAX, preview de imágenes clicable
+- `README.md` reorientado a consumo de datos desde temas
 
 ### Fixed
-- (pendiente)
+- (ninguno pendiente en unreleased)
 
 ---
 
