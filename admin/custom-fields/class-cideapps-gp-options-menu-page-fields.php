@@ -11,7 +11,7 @@
  */
 
 /**
- * Coordinates theme options, settings submenu, and geocoding.
+ * Coordinates theme options, settings submenu, and reverse geocoding AJAX.
  *
  * @since 1.0.0
  * @package Cideapps_Gp
@@ -20,7 +20,7 @@
 class Cideapps_Gp_Options_Menu_Page_Fields {
 
 	/**
-	 * Register options pages and geocoding filter.
+	 * Register options pages and geocoding AJAX.
 	 *
 	 * @since 1.4.0
 	 */
@@ -31,37 +31,76 @@ class Cideapps_Gp_Options_Menu_Page_Fields {
 		$settings_options = new Cideapps_Gp_Settings_Options_Page();
 		$settings_options->register();
 
-		add_filter( 'pre_update_option_cagp_theme_options', array( $this, 'geocode_business_address' ), 10, 2 );
+		add_action( 'wp_ajax_cagp_reverse_geocode', array( $this, 'ajax_reverse_geocode' ) );
 	}
 
 	/**
-	 * Reverse geocode location into business_address when theme options are saved.
+	 * AJAX: reverse geocode coordinates into a formatted address.
 	 *
-	 * @since 1.0.0
-	 * @param mixed $value     New option value.
-	 * @param mixed $old_value Previous option value.
-	 * @return mixed
+	 * @since 1.5.1
 	 */
-	public function geocode_business_address( $value, $old_value ) {
-		unset( $old_value );
+	public function ajax_reverse_geocode() {
+		check_ajax_referer( 'cagp_reverse_geocode', 'nonce' );
 
-		if ( ! is_array( $value ) ) {
-			return $value;
+		if ( ! current_user_can( 'manage_options' ) ) {
+			wp_send_json_error(
+				array(
+					'message' => esc_html__( 'You do not have permission to perform this action.', 'cideapps-gp' ),
+				),
+				403
+			);
 		}
 
+		// phpcs:ignore WordPress.Security.NonceVerification.Missing -- verified above.
+		$latitude  = isset( $_POST['latitude'] ) ? sanitize_text_field( wp_unslash( $_POST['latitude'] ) ) : '';
+		$longitude = isset( $_POST['longitude'] ) ? sanitize_text_field( wp_unslash( $_POST['longitude'] ) ) : '';
+
+		if ( '' === $latitude || '' === $longitude ) {
+			wp_send_json_error(
+				array(
+					'message' => esc_html__( 'Latitude and longitude are required.', 'cideapps-gp' ),
+				),
+				400
+			);
+		}
+
+		$result = $this->reverse_geocode_coordinates( $latitude, $longitude );
+
+		if ( is_wp_error( $result ) ) {
+			wp_send_json_error(
+				array(
+					'message' => $result->get_error_message(),
+				),
+				400
+			);
+		}
+
+		wp_send_json_success(
+			array(
+				'address' => $result,
+			)
+		);
+	}
+
+	/**
+	 * Call Google Geocoding API (reverse) using the stored API key.
+	 *
+	 * @since 1.5.1
+	 * @param string $latitude  Latitude.
+	 * @param string $longitude Longitude.
+	 * @return string|WP_Error Formatted address or error.
+	 */
+	private function reverse_geocode_coordinates( $latitude, $longitude ) {
 		$settings = get_option( 'cagp_settings_options', array() );
 
 		if ( ! is_array( $settings ) || empty( $settings['google_api_key'] ) ) {
-			return $value;
-		}
-
-		if ( empty( $value['location']['latitude'] ) || empty( $value['location']['longitude'] ) ) {
-			return $value;
+			return new WP_Error(
+				'cagp_missing_api_key',
+				esc_html__( 'Google Maps API key is not configured in Settings.', 'cideapps-gp' )
+			);
 		}
 
 		$google_api_key = sanitize_text_field( $settings['google_api_key'] );
-		$latitude       = sanitize_text_field( $value['location']['latitude'] );
-		$longitude      = sanitize_text_field( $value['location']['longitude'] );
 
 		$response = wp_remote_get(
 			add_query_arg(
@@ -77,14 +116,14 @@ class Cideapps_Gp_Options_Menu_Page_Fields {
 		);
 
 		if ( is_wp_error( $response ) ) {
-			$this->add_geocode_settings_error(
+			return new WP_Error(
+				'cagp_geocode_request_failed',
 				sprintf(
 					/* translators: %s: error message */
-					__( 'Could not update the business address: %s', 'cideapps-gp' ),
+					__( 'Could not look up the address: %s', 'cideapps-gp' ),
 					$response->get_error_message()
 				)
 			);
-			return $value;
 		}
 
 		$code = wp_remote_retrieve_response_code( $response );
@@ -99,44 +138,35 @@ class Cideapps_Gp_Options_Menu_Page_Fields {
 				$api_message = sanitize_text_field( $body['status'] );
 			}
 
-			$this->add_geocode_settings_error(
+			return new WP_Error(
+				'cagp_geocode_http_error',
 				sprintf(
 					/* translators: 1: HTTP status code, 2: API message */
-					__( 'Could not update the business address (HTTP %1$d). %2$s', 'cideapps-gp' ),
+					__( 'Could not look up the address (HTTP %1$d). %2$s', 'cideapps-gp' ),
 					(int) $code,
 					$api_message ? $api_message : __( 'Unknown geocoding error.', 'cideapps-gp' )
 				)
 			);
-			return $value;
 		}
 
 		if ( ! empty( $body['results'][0]['formatted_address'] ) ) {
-			$value['business_address'] = sanitize_text_field( $body['results'][0]['formatted_address'] );
-		} elseif ( is_array( $body ) && isset( $body['status'] ) && 'ZERO_RESULTS' !== $body['status'] ) {
-			$this->add_geocode_settings_error(
+			return sanitize_text_field( $body['results'][0]['formatted_address'] );
+		}
+
+		if ( is_array( $body ) && isset( $body['status'] ) ) {
+			return new WP_Error(
+				'cagp_geocode_no_results',
 				sprintf(
 					/* translators: %s: Google Geocoding API status */
-					__( 'Could not update the business address: %s', 'cideapps-gp' ),
+					__( 'Could not look up the address: %s', 'cideapps-gp' ),
 					sanitize_text_field( $body['status'] )
 				)
 			);
 		}
 
-		return $value;
-	}
-
-	/**
-	 * Queue a geocoding error for display on the Theme options screen.
-	 *
-	 * @since 1.5.0
-	 * @param string $message Error message.
-	 */
-	private function add_geocode_settings_error( $message ) {
-		add_settings_error(
-			'cagp_theme_options',
-			'geocode_error',
-			wp_kses_post( $message ),
-			'error'
+		return new WP_Error(
+			'cagp_geocode_empty',
+			esc_html__( 'No address was found for this location.', 'cideapps-gp' )
 		);
 	}
 }

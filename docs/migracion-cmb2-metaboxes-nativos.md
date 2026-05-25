@@ -125,8 +125,14 @@ Imagen de **categoría** (no del post): taxonomía `service_category` → `servi
 
 - Pestañas automáticas por campos `type => title` en Theme options (Branding, Contact, Social Media).
 - Avisos verde/rojo vía `settings_errors()` al guardar.
-- Errores de geocoding mostrados como aviso de error sin bloquear el resto del guardado.
 - Archivos: `cagp-options-admin.css`, `cagp-options-tabs.js`, cambios en `Cideapps_Gp_Options_Page_Base`.
+
+## Fase 7.2 — Geocoding al soltar marker (AJAX)
+
+- **Ya no** se geocodifica al guardar `cagp_theme_options` (`pre_update_option` eliminado).
+- Al **soltar** el marker (`dragend`, debounce 500 ms): `wp_ajax_cagp_reverse_geocode` actualiza `business_address`.
+- Al **guardar**: se persiste el texto del textarea tal como lo dejó el usuario.
+- Avisos rojos/verdes junto al mapa vía AJAX (la API key no se expone al front).
 
 ## Siguiente paso: Fase 8
 

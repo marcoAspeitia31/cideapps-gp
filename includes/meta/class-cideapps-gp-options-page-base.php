@@ -760,5 +760,20 @@ abstract class Cideapps_Gp_Options_Page_Base {
 			$version,
 			true
 		);
+
+		wp_localize_script(
+			'cagp-options-map',
+			'cagpMapGeocode',
+			array(
+				'ajaxUrl'    => admin_url( 'admin-ajax.php' ),
+				'nonce'      => wp_create_nonce( 'cagp_reverse_geocode' ),
+				'debounceMs' => 500,
+				'i18n'       => array(
+					'loading' => esc_html__( 'Looking up address…', 'cideapps-gp' ),
+					'updated' => esc_html__( 'Address updated from map location. You can edit it before saving.', 'cideapps-gp' ),
+					'error'   => esc_html__( 'Could not look up the address.', 'cideapps-gp' ),
+				),
+			)
+		);
 	}
 }

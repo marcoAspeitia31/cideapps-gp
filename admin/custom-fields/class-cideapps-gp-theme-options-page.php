@@ -139,13 +139,13 @@ class Cideapps_Gp_Theme_Options_Page extends Cideapps_Gp_Options_Page_Base {
 			array(
 				'id'          => 'location',
 				'label'       => esc_html__( 'Location', 'cideapps-gp' ),
-				'description' => esc_html__( 'Drag the marker to set the exact location', 'cideapps-gp' ),
+				'description' => esc_html__( 'Drag the marker and release it to suggest the address below. You can correct the street number manually if needed.', 'cideapps-gp' ),
 				'type'        => 'map',
 			),
 			array(
 				'id'          => 'business_address',
 				'label'       => esc_html__( 'Business address', 'cideapps-gp' ),
-				'description' => esc_html__( 'This address will be autocompleted after modifying and saving this page', 'cideapps-gp' ),
+				'description' => esc_html__( 'Suggested when you move the map marker. Edit it if needed; the text saved here is the one used on the site.', 'cideapps-gp' ),
 				'type'        => 'textarea',
 			),
 			array(

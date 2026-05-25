@@ -13,3 +13,20 @@
 .cagp-map-search {
 	margin-bottom: 8px;
 }
+
+.cagp-map-geocode-notice {
+	margin: 8px 0 12px;
+}
+
+.cagp-map-geocode-notice:empty {
+	display: none;
+	margin: 0;
+}
+
+.cagp-map-geocode-notice.notice-error {
+	border-left-color: #d63638;
+}
+
+.cagp-map-geocode-notice.notice-success {
+	border-left-color: #00a32a;
+}

@@ -286,7 +286,8 @@ class Cideapps_Gp_Options_Field_Renderer {
 		$latitude  = isset( $location['latitude'] ) ? $location['latitude'] : '';
 		$longitude = isset( $location['longitude'] ) ? $location['longitude'] : '';
 
-		echo '<div class="cagp-map-field" data-field-id="' . esc_attr( $field_id ) . '">';
+		echo '<div class="cagp-map-field" data-field-id="' . esc_attr( $field_id ) . '" data-address-field-id="business_address">';
+		echo '<div class="cagp-map-geocode-notice" aria-live="polite"></div>';
 		printf(
 			'<input type="text" class="large-text cagp-map-search" placeholder="%s" />',
 			esc_attr__( 'Search for an address', 'cideapps-gp' )
