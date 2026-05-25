@@ -75,6 +75,18 @@ class Cideapps_Gp_Meta_Registry {
 				'type'     => 'string',
 				'sanitize' => 'sanitize_text_field',
 			),
+			'cwt_services_image'    => array(
+				'type'     => 'string',
+				'sanitize' => 'esc_url_raw',
+			),
+			'cwt_services_image_id' => array(
+				'type'     => 'integer',
+				'sanitize' => 'absint',
+			),
+			'cwt_services_excerpt'  => array(
+				'type'     => 'string',
+				'sanitize' => 'sanitize_textarea_field',
+			),
 		);
 
 		foreach ( $fields as $meta_key => $args ) {

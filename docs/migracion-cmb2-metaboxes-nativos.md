@@ -45,10 +45,13 @@ Los temas y cualquier código que use `get_post_meta()`, `get_term_meta()` o `ge
 
 | Meta key | Tipo | Fase | Estado admin |
 |----------|------|------|--------------|
-| `service_pricing` | text_money | 1 | Nativo |
-| `service_slogan` | text | 1 | Nativo |
+| `service_pricing` | text_money | 1 | Nativo (`Cideapps_Gp_Service_Fields`) |
+| `service_slogan` | text | 1 | Nativo (`Cideapps_Gp_Service_Fields`) |
+| `cwt_services_image` | file (URL) | 1.4 | Nativo (`Cideapps_Gp_Service_Additional_Fields`) — migrado desde tema |
+| `cwt_services_image_id` | integer (auxiliar) | 1.4 | Nativo |
+| `cwt_services_excerpt` | textarea | 1.4 | Nativo |
 
-> **Nota:** El CPT `services` **nunca tuvo** meta de imagen a nivel de post en este plugin. La imagen de categoría vive en la taxonomía `service_category` (`service_taxonomy_image`), no en el post servicio.
+> **Origen `cwt_*`:** antes en `cideapps-wp-theme/inc/custom-fields.php` (CMB2). Centralizado en el plugin para no depender de CMB2 en el tema. Los bloques `cideapps-gt-blocks` siguen usando las mismas claves.
 
 ### Term meta — taxonomía `service_category`
 
@@ -76,48 +79,35 @@ Branding, contacto, redes sociales, mapa, etc. Ver `admin/custom-fields/class-ci
 | Pantalla | Qué debe verse | Qué NO debe verse |
 |----------|----------------|-------------------|
 | **Testimonials → editar** | 1 metabox nativo **Testimonial details** (imagen, job, opinion) | Metabox CMB2 de imagen separado |
-| **Services → editar** | 1 metabox nativo **Services pricing and generic details** (pricing, slogan) + metaboxes core de WP (título, editor, imagen destacada) | Metabox CMB2 duplicado; **no** hay metabox de imagen de servicio en el post |
+| **Services → editar** | 2 metaboxes nativos: **Services pricing and generic details** + **Additional information** (icono, excerpt) + core WP (título, editor, imagen destacada) | Metabox CMB2 del tema o plugin; duplicados |
 | **Services → Categories → editar término** | Campo nativo **Main image** en el formulario del término | Metabox CMB2 en taxonomía |
 | **Theme options** | Formulario Settings API nativo (tabla de campos) | Pantalla CMB2 antigua |
 | **Theme options → Settings** | Submenú con API key de Google Maps | — |
 
 ---
 
-## Corroboración antes de la Fase 6 — Services y metaboxes
+## Corroboración Services — metaboxes del plugin
 
-Si crees que “faltan metaboxes” en **Services**, revisa esto antes de continuar:
+En **Services → Añadir/Editar** deben verse **dos** metaboxes del plugin:
 
-### Comportamiento esperado (según el código actual)
+| Metabox | Clase | Campos |
+|---------|-------|--------|
+| Services pricing and generic details | `Cideapps_Gp_Service_Fields` | `service_pricing`, `service_slogan` |
+| Additional information | `Cideapps_Gp_Service_Additional_Fields` | `cwt_services_image` (+ `_id`), `cwt_services_excerpt` |
 
-En **Services → Añadir/Editar servicio** solo debe existir **un** metabox del plugin:
+El tema **no** debe registrar `cmb2_init` para servicios (`inc/custom-fields.php` vacío o sin require).
 
-- **Título:** `Services pricing and generic details`
-- **Campos:** `Pricing ($)` y `Slogan`
-- **Archivo:** `admin/custom-fields/class-cideapps-gp-service-fields.php`
+Imagen de **categoría** (no del post): taxonomía `service_category` → `service_taxonomy_image`.
 
-Además, WordPress muestra por defecto (porque el CPT declara `supports`):
+### Checklist Services (post-migración tema → plugin)
 
-- Título del post
-- Editor de contenido
-- Imagen destacada (Featured Image) — esto es **core de WordPress**, no meta del plugin
-
-### Lo que NO formó parte del plugin en `services` (post)
-
-| Campo / metabox | ¿Existió con CMB2 en este repo? | Dónde está si lo necesitas |
-|-----------------|----------------------------------|---------------------------|
-| Imagen principal del servicio (post) | No | Usar **Imagen destacada** del post, o añadir un campo `file` nuevo en Fase futura |
-| Más campos custom en el post | Solo `service_pricing` y `service_slogan` | Definir nuevos campos en `Cideapps_Gp_Service_Fields` |
-| Imagen de categoría | Sí, pero en **término** `service_category`, no en el post | **Services → Categories → Editar categoría** |
-
-### Checklist de corroboración Services (antes de Fase 6)
-
-| ID | Pregunta | Respuesta esperada | Tu confirmación |
-|----|----------|-------------------|-----------------|
-| C-S1 | ¿Ves el metabox **Services pricing and generic details** con Pricing y Slogan? | Sí | ⬜ |
-| C-S2 | ¿**No** aparece ningún metabox CMB2 en servicios? | Correcto (migración OK) | ⬜ |
-| C-S3 | ¿Buscabas una **imagen en el post** servicio? | No existía en el plugin; usar Featured Image o pedir nuevo campo | ⬜ |
-| C-S4 | ¿La imagen de categoría la gestionas en **Categories**, no en el post? | Sí, en el término de `service_category` | ⬜ |
-| C-S5 | ¿Necesitas **añadir** campos nuevos al post `services`? | Decisión de producto → nueva tarea, no regresión de migración | ⬜ |
+| ID | Prueba | Estado |
+|----|--------|--------|
+| C-S1 | Metabox pricing + slogan | ⬜ |
+| C-S2 | Metabox **Additional information** (icono + excerpt) | ⬜ |
+| C-S3 | Datos previos `cwt_services_*` visibles al editar | ⬜ |
+| C-S4 | Sin CMB2 en tema (`custom-fields.php` no cargado) | ⬜ |
+| C-S5 | Bloques `services-grid` muestran icono y excerpt | ⬜ |
 
 ### Acciones posibles según tu confirmación
 
