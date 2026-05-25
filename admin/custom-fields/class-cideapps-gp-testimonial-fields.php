@@ -11,7 +11,7 @@
  */
 
 /**
- * Native metabox for testimonial text fields and CMB2 metabox for the image field (Phase 1 migration).
+ * Native metabox for testimonial fields (Phase 2: image migrated from CMB2).
  *
  * @since 1.0.0
  * @package Cideapps_Gp
@@ -52,6 +52,13 @@ class Cideapps_Gp_Testimonial_Fields extends Cideapps_Gp_Metabox_Base {
 	protected function get_fields() {
 		return array(
 			array(
+				'id'           => 'testimonials_image',
+				'label'        => esc_html__( 'Main image', 'cideapps-gp' ),
+				'description'  => esc_html__( 'Suggested size 256 x 256 pixels.', 'cideapps-gp' ),
+				'type'         => 'file',
+				'preview_size' => array( 150, 150 ),
+			),
+			array(
 				'id'          => 'testimonials_job',
 				'label'       => esc_html__( 'Job', 'cideapps-gp' ),
 				'description' => esc_html__( 'Write the testimonial job (e.g. Sales manager, Marketing manager)', 'cideapps-gp' ),
@@ -63,45 +70,6 @@ class Cideapps_Gp_Testimonial_Fields extends Cideapps_Gp_Metabox_Base {
 				'description' => esc_html__( 'Write the testimonial opinion', 'cideapps-gp' ),
 				'type'        => 'textarea',
 			),
-		);
-	}
-
-	/**
-	 * Register CMB2 metabox for the image field until Phase 2 migration.
-	 *
-	 * @since 1.0.0
-	 */
-	public function testimonial_image_metabox() {
-		$prefix = 'testimonials_';
-
-		$testimonial_metabox = new_cmb2_box(
-			array(
-				'id'           => $prefix . 'image_metabox',
-				'title'        => esc_html__( 'Testimonial image', 'cideapps-gp' ),
-				'object_types' => array( 'testimonials' ),
-				'context'      => 'normal',
-				'priority'     => 'default',
-				'show_names'   => true,
-				'show_in_rest' => WP_REST_Server::ALLMETHODS,
-			)
-		);
-
-		$testimonial_metabox->add_field(
-			array(
-				'name'         => esc_html__( 'Main image', 'cideapps-gp' ),
-				'desc'         => esc_html__( 'Suggested size 256 x 256 pixels.', 'cideapps-gp' ),
-				'id'           => $prefix . 'image',
-				'preview_size' => array( 150, 150 ),
-				'type'         => 'file',
-				'query_args'   => array(
-					'type' => array(
-						'image/jpg',
-						'image/jpeg',
-						'image/png',
-						'image/webp',
-					),
-				),
-			)
 		);
 	}
 }

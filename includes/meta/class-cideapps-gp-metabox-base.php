@@ -63,6 +63,7 @@ abstract class Cideapps_Gp_Metabox_Base {
 	public function register() {
 		add_action( 'add_meta_boxes', array( $this, 'add_meta_box' ) );
 		add_action( 'save_post_' . $this->post_type, array( $this, 'save' ), 10, 2 );
+		add_action( 'admin_enqueue_scripts', array( $this, 'enqueue_admin_assets' ) );
 	}
 
 	/**
@@ -134,7 +135,12 @@ abstract class Cideapps_Gp_Metabox_Base {
 		$field_desc  = isset( $field['description'] ) ? $field['description'] : '';
 		$value       = get_post_meta( $post_id, $field_id, true );
 
-		echo '<p class="cagp-metabox-field cagp-metabox-field--' . esc_attr( $field_type ) . '">';
+		if ( 'file' === $field_type ) {
+			echo '<div class="cagp-metabox-field cagp-metabox-field--' . esc_attr( $field_type ) . '">';
+		} else {
+			echo '<p class="cagp-metabox-field cagp-metabox-field--' . esc_attr( $field_type ) . '">';
+		}
+
 		echo '<label for="' . esc_attr( $field_id ) . '"><strong>' . esc_html( $field_label ) . '</strong></label><br />';
 
 		switch ( $field_type ) {
@@ -155,6 +161,10 @@ abstract class Cideapps_Gp_Metabox_Base {
 				);
 				break;
 
+			case 'file':
+				$this->render_file_field( $field, $post_id );
+				break;
+
 			default:
 				printf(
 					'<input type="text" id="%1$s" name="%1$s" value="%2$s" class="regular-text" />',
@@ -168,7 +178,109 @@ abstract class Cideapps_Gp_Metabox_Base {
 			echo '<span class="description">' . esc_html( $field_desc ) . '</span>';
 		}
 
-		echo '</p>';
+		if ( 'file' === $field_type ) {
+			echo '</div>';
+		} else {
+			echo '</p>';
+		}
+	}
+
+	/**
+	 * Render a file/image field compatible with CMB2 storage (URL + _id).
+	 *
+	 * @since 1.2.0
+	 * @param array<string, mixed> $field   Field configuration.
+	 * @param int                  $post_id Post ID.
+	 */
+	protected function render_file_field( array $field, $post_id ) {
+		$field_id      = $field['id'];
+		$id_key        = $field_id . '_id';
+		$url           = get_post_meta( $post_id, $field_id, true );
+		$attachment_id = (int) get_post_meta( $post_id, $id_key, true );
+		$preview_size  = isset( $field['preview_size'] ) ? $field['preview_size'] : array( 150, 150 );
+
+		echo '<div class="cagp-metabox-file" data-field-id="' . esc_attr( $field_id ) . '">';
+
+		echo '<div class="cagp-metabox-file-preview">';
+		if ( $attachment_id ) {
+			echo wp_get_attachment_image( $attachment_id, $preview_size );
+		} elseif ( ! empty( $url ) ) {
+			printf( '<img src="%s" alt="" />', esc_url( $url ) );
+		}
+		echo '</div>';
+
+		printf(
+			'<input type="hidden" class="cagp-metabox-file-url" id="%1$s" name="%1$s" value="%2$s" />',
+			esc_attr( $field_id ),
+			esc_url( $url )
+		);
+		printf(
+			'<input type="hidden" class="cagp-metabox-file-id" id="%1$s" name="%1$s" value="%2$s" />',
+			esc_attr( $id_key ),
+			esc_attr( $attachment_id ? (string) $attachment_id : '' )
+		);
+
+		printf(
+			'<p class="cagp-metabox-file-actions"><button type="button" class="button cagp-metabox-file-upload">%s</button> ',
+			esc_html__( 'Select image', 'cideapps-gp' )
+		);
+		printf(
+			'<button type="button" class="button cagp-metabox-file-remove%s">%s</button></p>',
+			( $attachment_id || $url ) ? '' : ' hidden',
+			esc_html__( 'Remove image', 'cideapps-gp' )
+		);
+
+		echo '</div>';
+	}
+
+	/**
+	 * Enqueue admin assets when the metabox includes file fields.
+	 *
+	 * @since 1.2.0
+	 * @param string $hook Current admin page hook.
+	 */
+	public function enqueue_admin_assets( $hook ) {
+		if ( ! in_array( $hook, array( 'post.php', 'post-new.php' ), true ) ) {
+			return;
+		}
+
+		$screen = function_exists( 'get_current_screen' ) ? get_current_screen() : null;
+
+		if ( ! $screen || $this->post_type !== $screen->post_type ) {
+			return;
+		}
+
+		if ( ! $this->has_field_type( 'file' ) ) {
+			return;
+		}
+
+		wp_enqueue_media();
+
+		wp_localize_script(
+			'cideapps-gp',
+			'cagpMetaboxFile',
+			array(
+				'frameTitle'  => esc_html__( 'Select or upload image', 'cideapps-gp' ),
+				'frameButton' => esc_html__( 'Use this image', 'cideapps-gp' ),
+			)
+		);
+	}
+
+	/**
+	 * Check whether this metabox defines a given field type.
+	 *
+	 * @since 1.2.0
+	 * @param string $type Field type slug.
+	 * @return bool
+	 */
+	protected function has_field_type( $type ) {
+		foreach ( $this->get_fields() as $field ) {
+			if ( isset( $field['type'] ) && $type === $field['type'] ) {
+				return true;
+			}
+		}
+
+		return false;
 	}
 
 	/**
@@ -186,18 +298,73 @@ abstract class Cideapps_Gp_Metabox_Base {
 		}
 
 		foreach ( $this->get_fields() as $field ) {
-			$field_id = $field['id'];
-
-			if ( ! isset( $_POST[ $field_id ] ) ) {
-				continue;
-			}
-
-			// phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized -- sanitized below per field type.
-			$raw_value = wp_unslash( $_POST[ $field_id ] );
-			$value     = $this->sanitize_field_value( $field, $raw_value );
-
-			update_post_meta( $post_id, $field_id, $value );
+			$this->save_field( $post_id, $field );
 		}
+	}
+
+	/**
+	 * Save a single metabox field.
+	 *
+	 * @since 1.2.0
+	 * @param int                  $post_id Post ID.
+	 * @param array<string, mixed> $field   Field configuration.
+	 */
+	protected function save_field( $post_id, array $field ) {
+		$field_id   = $field['id'];
+		$field_type = isset( $field['type'] ) ? $field['type'] : 'text';
+
+		if ( 'file' === $field_type ) {
+			$this->save_file_field( $post_id, $field );
+			return;
+		}
+
+		if ( ! isset( $_POST[ $field_id ] ) ) {
+			return;
+		}
+
+		// phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized -- sanitized below per field type.
+		$raw_value = wp_unslash( $_POST[ $field_id ] );
+		$value     = $this->sanitize_field_value( $field, $raw_value );
+
+		update_post_meta( $post_id, $field_id, $value );
+	}
+
+	/**
+	 * Save file field meta (URL + attachment ID), matching CMB2 format.
+	 *
+	 * @since 1.2.0
+	 * @param int                  $post_id Post ID.
+	 * @param array<string, mixed> $field   Field configuration.
+	 */
+	protected function save_file_field( $post_id, array $field ) {
+		$field_id = $field['id'];
+		$id_key   = $field_id . '_id';
+
+		if ( ! isset( $_POST[ $field_id ] ) && ! isset( $_POST[ $id_key ] ) ) {
+			return;
+		}
+
+		// phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized -- sanitized below.
+		$url = isset( $_POST[ $field_id ] ) ? esc_url_raw( wp_unslash( $_POST[ $field_id ] ) ) : '';
+		// phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized -- cast to int below.
+		$attachment_id = isset( $_POST[ $id_key ] ) ? absint( wp_unslash( $_POST[ $id_key ] ) ) : 0;
+
+		if ( $attachment_id ) {
+			$attachment_url = wp_get_attachment_url( $attachment_id );
+
+			if ( $attachment_url ) {
+				$url = $attachment_url;
+			}
+		}
+
+		if ( $attachment_id || $url ) {
+			update_post_meta( $post_id, $field_id, $url );
+			update_post_meta( $post_id, $id_key, $attachment_id );
+			return;
+		}
+
+		delete_post_meta( $post_id, $field_id );
+		delete_post_meta( $post_id, $id_key );
 	}
 
 	/**

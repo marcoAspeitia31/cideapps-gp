@@ -213,7 +213,6 @@ class Cideapps_Gp {
 		$plugin_testimonial_fields = new Cideapps_Gp_Testimonial_Fields();
 
 		$this->loader->add_action( 'init', $plugin_testimonial_fields, 'register', 10 );
-		$this->loader->add_action( 'cmb2_init', $plugin_testimonial_fields, 'testimonial_image_metabox', 0 );
 
 	}
 

@@ -21,3 +21,23 @@
 .cagp-metabox-money {
 	max-width: 12rem;
 }
+
+.cagp-metabox-file-preview {
+	margin: 0.5em 0;
+}
+
+.cagp-metabox-file-preview img {
+	display: block;
+	max-width: 150px;
+	height: auto;
+	border: 1px solid #c3c4c7;
+	border-radius: 2px;
+}
+
+.cagp-metabox-file-actions {
+	margin: 0.5em 0 0;
+}
+
+.cagp-metabox-file-remove.hidden {
+	display: none;
+}

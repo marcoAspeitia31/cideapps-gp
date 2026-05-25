@@ -9,8 +9,8 @@ Documento de referencia para la migración gradual del plugin **Cideapps GP** de
 | Fase | Estado | Descripción |
 |------|--------|-------------|
 | **Fase 0** | ✅ Completada | Infraestructura base (`Metabox_Base`, `Meta_Registry`) |
-| **Fase 1** | ✅ Completada | Campos de texto en testimoniales y servicios |
-| Fase 2 | Pendiente | Campos de archivo/imagen |
+| **Fase 1** | ✅ Completada y validada | Campos de texto en testimoniales y servicios |
+| **Fase 2** | ✅ Completada | Campo de imagen en testimoniales |
 | Fase 3 | Pendiente | Term meta de taxonomía `service_category` |
 | Fase 4 | Pendiente | Páginas de opciones (`cagp_theme_options`, `cagp_settings_options`) |
 | Fase 5 | Pendiente | Campo de mapa (Google Maps) nativo |
@@ -36,8 +36,8 @@ Los temas y cualquier código que use `get_post_meta()`, `get_term_meta()` o `ge
 |----------|------|------|--------------|
 | `testimonials_job` | text | 1 | Nativo |
 | `testimonials_opinion` | textarea | 1 | Nativo |
-| `testimonials_image` | file (URL) | 2 | CMB2 |
-| `testimonials_image_id` | integer (auxiliar CMB2) | 2 | CMB2 |
+| `testimonials_image` | file (URL) | 2 | Nativo |
+| `testimonials_image_id` | integer (auxiliar) | 2 | Nativo |
 
 ### Post meta — CPT `services`
 
@@ -73,8 +73,9 @@ Clase abstracta que centraliza:
 
 - Registro con `add_meta_box()` y `save_post_{post_type}`
 - Nonce, comprobación de capabilities, guards de autosave/revisiones
-- Renderizado de tipos: `text`, `textarea`, `text_money`
+- Renderizado de tipos: `text`, `textarea`, `text_money`, `file`
 - Compatibilidad con block editor (`__block_editor_compatible_meta_box`)
+- Encolado condicional de `wp_enqueue_media()` para campos `file`
 
 ### `includes/meta/class-cideapps-gp-meta-registry.php`
 
@@ -124,6 +125,49 @@ admin/custom-fields/class-cideapps-gp-testimonial-fields.php (modificado)
 admin/custom-fields/class-cideapps-gp-service-fields.php     (modificado)
 admin/css/cideapps-gp-admin.css                    (modificado)
 docs/migracion-cmb2-metaboxes-nativos.md           (este archivo)
+```
+
+---
+
+## Resultados de testeo — Fase 1
+
+**Entorno:** validado por el usuario en `cideapps.local`.
+
+### Resumen
+- ✅ OK: mayoría de pruebas T-0.x, T-1.x, T-1.22–T-1.26
+- ⏭️ N/A: T-1.8 (editor clásico), T-1.20 (REST PATCH opcional)
+- ℹ️ T-1.18 / T-1.19: meta no visible en REST sin CMB2 — comportamiento esperado; `register_post_meta` está activo para cuando se requiera exposición REST nativa
+
+### ¿Continuar a Fase 2?
+✅ Sí — Fase 2 implementada.
+
+---
+
+## Actividades realizadas — Fase 2
+
+1. **`Cideapps_Gp_Metabox_Base`** ampliado con:
+   - Tipo de campo `file` (preview, seleccionar, quitar).
+   - Guardado compatible CMB2: `{key}` (URL) + `{key}_id` (attachment ID).
+   - `enqueue_admin_assets()` con `wp_enqueue_media()` condicional.
+
+2. **`Cideapps_Gp_Testimonial_Fields`**:
+   - Campo `testimonials_image` integrado en metabox **Testimonial details**.
+   - Eliminado metabox CMB2 **Testimonial image**.
+   - Testimoniales ya no usan `cmb2_init`.
+
+3. **`admin/js/cideapps-gp-admin.js`**: handler de biblioteca de medios para `.cagp-metabox-file`.
+
+4. **`admin/css/cideapps-gp-admin.css`**: estilos de preview y botones de imagen.
+
+### Archivos tocados (Fase 2)
+
+```
+includes/meta/class-cideapps-gp-metabox-base.php   (modificado)
+admin/custom-fields/class-cideapps-gp-testimonial-fields.php (modificado)
+includes/class-cideapps-gp.php                     (modificado)
+admin/js/cideapps-gp-admin.js                        (modificado)
+admin/css/cideapps-gp-admin.css                      (modificado)
+docs/migracion-cmb2-metaboxes-nativos.md             (modificado)
 ```
 
 ---
@@ -180,7 +224,7 @@ docs/migracion-cmb2-metaboxes-nativos.md           (este archivo)
 ✅ 1. Infraestructura base (Meta Registry + Metabox abstract)
 ✅ 2. Testimonials — text fields
 ✅ 3. Services — text fields
-4. Testimonials — image field
+✅ 4. Testimonials — image field
 5. Service taxonomy — image field
 6. Options — Settings API (campos simples)
 7. Options — file fields + wysiwyg + repeatables
@@ -285,7 +329,7 @@ Fase 1 — T-1.3 ✅ | T-1.5 ❌ (el valor no persiste al recargar)
 
 ---
 
-### Fase 2 — Campos de archivo/imagen (pendiente implementación)
+### Fase 2 — Campos de archivo/imagen (completada en código) ← **Probar ahora**
 
 | ID | Prueba | Estado | Notas |
 |----|--------|--------|-------|
@@ -294,7 +338,7 @@ Fase 1 — T-1.3 ✅ | T-1.5 ❌ (el valor no persiste al recargar)
 | T-2.3 | Guardar imagen persiste `testimonials_image` (URL) y `testimonials_image_id` (ID) | ⬜ | |
 | T-2.4 | Testimonial con imagen previa de CMB2 muestra la imagen en el campo nativo | ⬜ | |
 | T-2.5 | Eliminar imagen desde admin borra/actualiza URL e ID correctamente | ⬜ | |
-| T-2.6 | REST expone `testimonials_image` y `testimonials_image_id` | ⬜ | |
+| T-2.6 | REST expone `testimonials_image` y `testimonials_image_id` | ⬜ | Opcional; requiere `?_fields=meta` o meta registrada visible |
 | T-2.7 | Ya no existe metabox CMB2 **Testimonial image** | ⬜ | |
 
 ---
@@ -402,14 +446,13 @@ Copia, completa y envíame en el chat:
 
 ### Qué debes probar ahora (resumen)
 
-Con las **Fases 0 y 1** implementadas, prioriza en este orden:
+Con la **Fase 2** implementada, prioriza:
 
-1. **T-1.1 a T-1.14** — Admin de testimoniales y servicios (crear, editar, guardar, recargar).
-2. **T-1.15 a T-1.17** — Meta keys en base de datos (opcional pero recomendado).
-3. **T-1.18 a T-1.21** — REST API por ID de post concreto.
-4. **T-1.22 a T-1.26** — Regresión: Theme options, taxonomía, frontend, sin notices.
+1. **T-2.1 a T-2.7** — Imagen nativa en testimoniales (seleccionar, guardar, quitar, sin metabox CMB2).
+2. **T-2.4** — Testimonial con imagen previa de CMB2 muestra preview correctamente.
+3. Regresión rápida: Job/Opinion siguen guardando (T-1.4) y Theme options intacto (T-1.22).
 
-Las fases **2 a 8** están listadas para cuando las implementemos; no hace falta probarlas aún.
+Las fases **3 a 8** están listadas para cuando las implementemos.
 
 ---
 
@@ -434,4 +477,4 @@ Las fases **2 a 8** están listadas para cuando las implementemos; no hace falta
 
 ---
 
-*Última actualización: Fases 0 y 1 completadas. Checklist de testeo por fases añadido. Corrección i18n WP 6.7+.*
+*Última actualización: Fase 2 completada (imagen testimoniales nativa). Fase 1 validada.*
