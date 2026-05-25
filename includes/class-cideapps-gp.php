@@ -240,7 +240,7 @@ class Cideapps_Gp {
 
 		$plugin_options_menu_page_fields = new Cideapps_Gp_Options_Menu_Page_Fields();
 
-		$plugin_options_menu_page_fields->register();
+		$this->loader->add_action( 'init', $plugin_options_menu_page_fields, 'register', 10 );
 
 	}
 

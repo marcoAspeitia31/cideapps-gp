@@ -30,13 +30,39 @@ class Cideapps_Gp_Theme_Options_Page extends Cideapps_Gp_Options_Page_Base {
 	protected $menu_slug = 'cagp_theme_options';
 
 	/**
-	 * Constructor.
+	 * Page title.
+	 *
+	 * @return string
 	 */
-	public function __construct() {
-		$this->page_title    = esc_html__( 'Theme options', 'cideapps-gp' );
-		$this->menu_title    = esc_html__( 'Theme options', 'cideapps-gp' );
-		$this->menu_icon     = plugin_dir_url( dirname( __FILE__ ) ) . 'img/logo-cideapps.png';
-		$this->menu_position = 2;
+	protected function get_page_title() {
+		return esc_html__( 'Theme options', 'cideapps-gp' );
+	}
+
+	/**
+	 * Menu title.
+	 *
+	 * @return string
+	 */
+	protected function get_menu_title() {
+		return esc_html__( 'Theme options', 'cideapps-gp' );
+	}
+
+	/**
+	 * Menu icon URL.
+	 *
+	 * @return string
+	 */
+	protected function get_menu_icon() {
+		return plugin_dir_url( dirname( __FILE__ ) ) . 'img/logo-cideapps.png';
+	}
+
+	/**
+	 * Menu position.
+	 *
+	 * @return int
+	 */
+	protected function get_menu_position() {
+		return 2;
 	}
 
 	/**

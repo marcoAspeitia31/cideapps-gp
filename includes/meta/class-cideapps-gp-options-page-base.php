@@ -90,6 +90,46 @@ abstract class Cideapps_Gp_Options_Page_Base {
 	abstract protected function get_fields();
 
 	/**
+	 * Page title (translate only when rendering admin UI).
+	 *
+	 * @since 1.4.1
+	 * @return string
+	 */
+	protected function get_page_title() {
+		return $this->page_title;
+	}
+
+	/**
+	 * Menu title (translate only when rendering admin UI).
+	 *
+	 * @since 1.4.1
+	 * @return string
+	 */
+	protected function get_menu_title() {
+		return $this->menu_title;
+	}
+
+	/**
+	 * Menu icon URL.
+	 *
+	 * @since 1.4.1
+	 * @return string
+	 */
+	protected function get_menu_icon() {
+		return $this->menu_icon;
+	}
+
+	/**
+	 * Menu position.
+	 *
+	 * @since 1.4.1
+	 * @return int|null
+	 */
+	protected function get_menu_position() {
+		return $this->menu_position;
+	}
+
+	/**
 	 * Register admin menu entry.
 	 *
 	 * @since 1.4.0
@@ -98,8 +138,8 @@ abstract class Cideapps_Gp_Options_Page_Base {
 		if ( $this->parent_slug ) {
 			add_submenu_page(
 				$this->parent_slug,
-				$this->page_title,
-				$this->menu_title,
+				$this->get_page_title(),
+				$this->get_menu_title(),
 				$this->capability,
 				$this->menu_slug,
 				array( $this, 'render_page' )
@@ -108,13 +148,13 @@ abstract class Cideapps_Gp_Options_Page_Base {
 		}
 
 		add_menu_page(
-			$this->page_title,
-			$this->menu_title,
+			$this->get_page_title(),
+			$this->get_menu_title(),
 			$this->capability,
 			$this->menu_slug,
 			array( $this, 'render_page' ),
-			$this->menu_icon,
-			$this->menu_position
+			$this->get_menu_icon(),
+			$this->get_menu_position()
 		);
 	}
 
@@ -153,7 +193,7 @@ abstract class Cideapps_Gp_Options_Page_Base {
 		}
 
 		echo '<div class="wrap cagp-options-wrap">';
-		echo '<h1>' . esc_html( $this->page_title ) . '</h1>';
+		echo '<h1>' . esc_html( $this->get_page_title() ) . '</h1>';
 		echo '<form method="post" action="options.php" class="cagp-options-form">';
 		settings_fields( $this->option_name );
 		echo '<table class="form-table" role="presentation">';
