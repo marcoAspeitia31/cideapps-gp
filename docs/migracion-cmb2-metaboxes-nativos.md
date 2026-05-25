@@ -16,6 +16,7 @@ Documento de referencia para la migración gradual del plugin **Cideapps GP** de
 | **Fase 5** | ✅ Completada y validada | Mapa Google nativo en Theme options |
 | **Fase 6** | ✅ Completada y validada | REST: meta de posts y términos (T-6.2, T-6.3) |
 | **Fase 7** | ✅ Completada | CMB2 y `cmb_field_map` eliminados del repositorio |
+| **Fase 7.1** | ✅ Completada | UI Theme options: tabs + avisos de guardado |
 | Fase 8 | Pendiente | Preparación WordPress.org (`readme.txt`, PHPCS, etc.) |
 
 **CMB2:** eliminado del repositorio (Fase 7). El plugin usa solo metaboxes nativos y Settings API.
@@ -119,6 +120,13 @@ Imagen de **categoría** (no del post): taxonomía `service_category` → `servi
 | Confusión con **testimonials** (que sí tienen imagen en el mismo metabox) | Solo documentar; comportamiento distinto por diseño |
 
 ---
+
+## Fase 7.1 — UI Theme options (tabs y avisos)
+
+- Pestañas automáticas por campos `type => title` en Theme options (Branding, Contact, Social Media).
+- Avisos verde/rojo vía `settings_errors()` al guardar.
+- Errores de geocoding mostrados como aviso de error sin bloquear el resto del guardado.
+- Archivos: `cagp-options-admin.css`, `cagp-options-tabs.js`, cambios en `Cideapps_Gp_Options_Page_Base`.
 
 ## Siguiente paso: Fase 8
 

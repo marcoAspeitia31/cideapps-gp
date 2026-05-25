@@ -32,6 +32,23 @@ class Cideapps_Gp_Options_Field_Renderer {
 	}
 
 	/**
+	 * Render multiple fields inside a form table.
+	 *
+	 * @since 1.5.0
+	 * @param array<int, array<string, mixed>> $fields Field definitions.
+	 * @param array<string, mixed>             $values Option values.
+	 */
+	public function render_fields_table( array $fields, array $values ) {
+		echo '<table class="form-table" role="presentation">';
+
+		foreach ( $fields as $field ) {
+			$this->render_field( $field, $values );
+		}
+
+		echo '</table>';
+	}
+
+	/**
 	 * Render a field row.
 	 *
 	 * @param array<string, mixed> $field  Field definition.

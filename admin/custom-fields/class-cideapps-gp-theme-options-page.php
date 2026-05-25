@@ -66,6 +66,16 @@ class Cideapps_Gp_Theme_Options_Page extends Cideapps_Gp_Options_Page_Base {
 	}
 
 	/**
+	 * Use horizontal tabs for each `title` section.
+	 *
+	 * @since 1.5.0
+	 * @return bool
+	 */
+	protected function uses_tabbed_layout() {
+		return true;
+	}
+
+	/**
 	 * Field definitions.
 	 *
 	 * @return array<int, array<string, mixed>>

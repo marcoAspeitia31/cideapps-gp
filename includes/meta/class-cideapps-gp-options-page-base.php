@@ -79,7 +79,9 @@ abstract class Cideapps_Gp_Options_Page_Base {
 	public function register() {
 		add_action( 'admin_menu', array( $this, 'register_menu' ) );
 		add_action( 'admin_init', array( $this, 'register_settings' ) );
+		add_action( 'admin_init', array( $this, 'register_save_notice' ) );
 		add_action( 'admin_enqueue_scripts', array( $this, 'enqueue_assets' ) );
+		add_filter( 'wp_redirect', array( $this, 'redirect_with_active_tab' ), 10, 2 );
 	}
 
 	/**
@@ -176,6 +178,26 @@ abstract class Cideapps_Gp_Options_Page_Base {
 	}
 
 	/**
+	 * Whether fields grouped by `title` should render as horizontal tabs.
+	 *
+	 * @since 1.5.0
+	 * @return bool
+	 */
+	protected function uses_tabbed_layout() {
+		return false;
+	}
+
+	/**
+	 * Submit button label.
+	 *
+	 * @since 1.5.0
+	 * @return string
+	 */
+	protected function get_submit_button_label() {
+		return esc_html__( 'Save settings', 'cideapps-gp' );
+	}
+
+	/**
 	 * Render options page.
 	 *
 	 * @since 1.4.0
@@ -194,17 +216,194 @@ abstract class Cideapps_Gp_Options_Page_Base {
 
 		echo '<div class="wrap cagp-options-wrap">';
 		echo '<h1>' . esc_html( $this->get_page_title() ) . '</h1>';
+
+		$this->render_admin_notices();
+
 		echo '<form method="post" action="options.php" class="cagp-options-form">';
 		settings_fields( $this->option_name );
-		echo '<table class="form-table" role="presentation">';
 
-		foreach ( $this->get_fields() as $field ) {
-			$renderer->render_field( $field, $values );
+		if ( $this->uses_tabbed_layout() ) {
+			$this->render_tabbed_fields( $renderer, $values );
+		} else {
+			$renderer->render_fields_table( $this->get_fields(), $values );
 		}
 
-		echo '</table>';
-		submit_button( esc_html__( 'Save', 'cideapps-gp' ) );
+		submit_button( $this->get_submit_button_label() );
 		echo '</form></div>';
+	}
+
+	/**
+	 * Output Settings API notices (success / error).
+	 *
+	 * @since 1.5.0
+	 */
+	protected function render_admin_notices() {
+		if ( function_exists( 'settings_errors' ) ) {
+			settings_errors( $this->option_name );
+		}
+	}
+
+	/**
+	 * Build tab sections from `title` field definitions.
+	 *
+	 * @since 1.5.0
+	 * @return array<string, array<string, mixed>>
+	 */
+	protected function get_tab_sections() {
+		$tabs    = array();
+		$current = null;
+
+		foreach ( $this->get_fields() as $field ) {
+			$type = isset( $field['type'] ) ? $field['type'] : 'text';
+
+			if ( 'title' === $type ) {
+				$tab_id           = $field['id'];
+				$current          = $tab_id;
+				$tabs[ $tab_id ] = array(
+					'id'          => $tab_id,
+					'label'       => isset( $field['label'] ) ? $field['label'] : '',
+					'description' => isset( $field['description'] ) ? $field['description'] : '',
+					'fields'      => array(),
+				);
+				continue;
+			}
+
+			if ( $current ) {
+				$tabs[ $current ]['fields'][] = $field;
+			}
+		}
+
+		return $tabs;
+	}
+
+	/**
+	 * Resolve active tab id for the options screen.
+	 *
+	 * @since 1.5.0
+	 * @param array<string, array<string, mixed>> $tabs Tab sections.
+	 * @return string
+	 */
+	protected function get_active_tab_id( array $tabs ) {
+		$tab_ids = array_keys( $tabs );
+
+		if ( empty( $tab_ids ) ) {
+			return '';
+		}
+
+		// phpcs:ignore WordPress.Security.NonceVerification.Recommended -- tab is presentational only.
+		if ( ! empty( $_GET['tab'] ) ) {
+			// phpcs:ignore WordPress.Security.NonceVerification.Recommended
+			$requested = sanitize_key( wp_unslash( $_GET['tab'] ) );
+
+			if ( in_array( $requested, $tab_ids, true ) ) {
+				return $requested;
+			}
+		}
+
+		$key = $this->get_active_tab_transient_key();
+		$tab = get_transient( $key );
+
+		if ( is_string( $tab ) && in_array( $tab, $tab_ids, true ) ) {
+			delete_transient( $key );
+			return $tab;
+		}
+
+		return $tab_ids[0];
+	}
+
+	/**
+	 * Register admin notice after a successful Settings API save.
+	 *
+	 * @since 1.5.0
+	 */
+	public function register_save_notice() {
+		// phpcs:ignore WordPress.Security.NonceVerification.Recommended -- display-only query arg from core redirect.
+		if ( empty( $_GET['settings-updated'] ) || empty( $_GET['page'] ) ) {
+			return;
+		}
+
+		// phpcs:ignore WordPress.Security.NonceVerification.Recommended
+		if ( sanitize_key( wp_unslash( $_GET['page'] ) ) !== $this->menu_slug ) {
+			return;
+		}
+
+		add_settings_error(
+			$this->option_name,
+			'settings_saved',
+			esc_html__( 'Settings saved successfully.', 'cideapps-gp' ),
+			'updated'
+		);
+	}
+
+	/**
+	 * Render tab navigation and tab panels.
+	 *
+	 * @since 1.5.0
+	 * @param Cideapps_Gp_Options_Field_Renderer $renderer Field renderer.
+	 * @param array<string, mixed>               $values   Option values.
+	 */
+	protected function render_tabbed_fields( Cideapps_Gp_Options_Field_Renderer $renderer, array $values ) {
+		$tabs       = $this->get_tab_sections();
+		$active_tab = $this->get_active_tab_id( $tabs );
+
+		if ( empty( $tabs ) ) {
+			$renderer->render_fields_table( $this->get_fields(), $values );
+			return;
+		}
+
+		printf(
+			'<input type="hidden" name="cagp_options_active_tab" id="cagp-options-active-tab" value="%s" />',
+			esc_attr( $active_tab )
+		);
+
+		echo '<nav class="nav-tab-wrapper cagp-options-tabs" aria-label="' . esc_attr__( 'Settings sections', 'cideapps-gp' ) . '">';
+
+		foreach ( $tabs as $tab_id => $tab ) {
+			$classes = array( 'nav-tab' );
+
+			if ( $tab_id === $active_tab ) {
+				$classes[] = 'nav-tab-active';
+			}
+
+			printf(
+				'<a href="#%1$s" class="%2$s" data-tab="%1$s" role="tab" aria-selected="%3$s">%4$s</a>',
+				esc_attr( $tab_id ),
+				esc_attr( implode( ' ', $classes ) ),
+				$tab_id === $active_tab ? 'true' : 'false',
+				esc_html( $tab['label'] )
+			);
+		}
+
+		echo '</nav>';
+
+		echo '<div class="cagp-options-tab-panels">';
+
+		foreach ( $tabs as $tab_id => $tab ) {
+			$panel_classes = array( 'cagp-options-tab-panel' );
+
+			if ( $tab_id !== $active_tab ) {
+				$panel_classes[] = 'cagp-options-tab-panel--hidden';
+			}
+
+			printf(
+				'<div id="%1$s" class="%2$s" data-tab="%1$s" role="tabpanel">',
+				esc_attr( $tab_id ),
+				esc_attr( implode( ' ', $panel_classes ) )
+			);
+
+			if ( ! empty( $tab['label'] ) ) {
+				echo '<h2 class="cagp-options-tab-panel__title">' . esc_html( $tab['label'] ) . '</h2>';
+			}
+
+			if ( ! empty( $tab['description'] ) ) {
+				printf( '<p class="description cagp-options-tab-panel__desc">%s</p>', esc_html( $tab['description'] ) );
+			}
+
+			$renderer->render_fields_table( $tab['fields'], $values );
+			echo '</div>';
+		}
+
+		echo '</div>';
 	}
 
 	/**
@@ -218,6 +417,8 @@ abstract class Cideapps_Gp_Options_Page_Base {
 		if ( ! is_array( $input ) ) {
 			return get_option( $this->option_name, array() );
 		}
+
+		$this->store_active_tab_from_request();
 
 		$output = get_option( $this->option_name, array() );
 
@@ -341,10 +542,14 @@ abstract class Cideapps_Gp_Options_Page_Base {
 
 		wp_enqueue_style(
 			'cagp-options-admin',
-			plugins_url( 'admin/css/cagp-options-map.css', $plugin_file ),
+			plugins_url( 'admin/css/cagp-options-admin.css', $plugin_file ),
 			array(),
 			$version
 		);
+
+		if ( $this->uses_tabbed_layout() ) {
+			$this->enqueue_tabs_script();
+		}
 
 		if ( $this->has_field_type( 'file' ) ) {
 			Cideapps_Gp_File_Field_Assets::enqueue();
@@ -388,6 +593,106 @@ abstract class Cideapps_Gp_Options_Page_Base {
 		}
 
 		return false;
+	}
+
+	/**
+	 * Persist active tab on redirect after Settings API save.
+	 *
+	 * @since 1.5.0
+	 * @param string $location Redirect URL.
+	 * @param int    $status   HTTP status.
+	 * @return string
+	 */
+	public function redirect_with_active_tab( $location, $status ) {
+		unset( $status );
+
+		if ( ! $this->uses_tabbed_layout() || false === strpos( $location, 'page=' . $this->menu_slug ) ) {
+			return $location;
+		}
+
+		$tab = $this->get_stored_active_tab();
+
+		if ( $tab ) {
+			$location = add_query_arg( 'tab', $tab, $location );
+		}
+
+		return $location;
+	}
+
+	/**
+	 * Store active tab from the options form POST.
+	 *
+	 * @since 1.5.0
+	 */
+	protected function store_active_tab_from_request() {
+		if ( ! $this->uses_tabbed_layout() ) {
+			return;
+		}
+
+		// phpcs:ignore WordPress.Security.NonceVerification.Missing -- Settings API form; capability checked upstream.
+		if ( empty( $_POST['cagp_options_active_tab'] ) ) {
+			return;
+		}
+
+		// phpcs:ignore WordPress.Security.NonceVerification.Missing
+		$tab = sanitize_key( wp_unslash( $_POST['cagp_options_active_tab'] ) );
+
+		$tabs = $this->get_tab_sections();
+
+		if ( ! isset( $tabs[ $tab ] ) ) {
+			return;
+		}
+
+		set_transient(
+			$this->get_active_tab_transient_key(),
+			$tab,
+			MINUTE_IN_SECONDS
+		);
+	}
+
+	/**
+	 * Transient key for the active tab after save.
+	 *
+	 * @since 1.5.0
+	 * @return string
+	 */
+	protected function get_active_tab_transient_key() {
+		return 'cagp_options_tab_' . $this->option_name . '_' . get_current_user_id();
+	}
+
+	/**
+	 * Read and clear stored active tab.
+	 *
+	 * @since 1.5.0
+	 * @return string
+	 */
+	protected function get_stored_active_tab() {
+		$key = $this->get_active_tab_transient_key();
+		$tab = get_transient( $key );
+
+		if ( $tab ) {
+			delete_transient( $key );
+		}
+
+		return is_string( $tab ) ? $tab : '';
+	}
+
+	/**
+	 * Enqueue tab switching script.
+	 *
+	 * @since 1.5.0
+	 */
+	protected function enqueue_tabs_script() {
+		$plugin_file = dirname( dirname( dirname( __FILE__ ) ) ) . '/cideapps-gp.php';
+		$version     = defined( 'CIDEAPPS_GP_VERSION' ) ? CIDEAPPS_GP_VERSION : '1.0.0';
+
+		wp_enqueue_script(
+			'cagp-options-tabs',
+			plugins_url( 'admin/js/cagp-options-tabs.js', $plugin_file ),
+			array( 'jquery' ),
+			$version,
+			true
+		);
 	}
 
 	/**
