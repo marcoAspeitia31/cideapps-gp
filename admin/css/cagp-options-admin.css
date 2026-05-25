@@ -1,0 +1,56 @@
+/* Theme / settings options pages */
+
+.cagp-options-wrap .cagp-options-form {
+	margin-top: 0;
+}
+
+/* Admin notices (success / error) */
+.cagp-options-wrap .settings-error,
+.cagp-options-wrap .notice {
+	margin: 12px 0 16px;
+}
+
+.cagp-options-wrap .notice.notice-success,
+.cagp-options-wrap .notice.updated {
+	border-left-color: #00a32a;
+}
+
+.cagp-options-wrap .notice.notice-error,
+.cagp-options-wrap .notice.error {
+	border-left-color: #d63638;
+}
+
+/* Tab navigation */
+.cagp-options-tabs {
+	margin: 0 0 -1px;
+	padding: 0;
+}
+
+.cagp-options-tab-panels {
+	background: #fff;
+	border: 1px solid #c3c4c7;
+	box-shadow: 0 1px 1px rgba(0, 0, 0, 0.04);
+	padding: 0 16px 8px;
+}
+
+.cagp-options-tab-panel--hidden {
+	display: none;
+}
+
+.cagp-options-tab-panel__title {
+	margin: 1.25em 0 0.35em;
+	padding: 0;
+	font-size: 1.2em;
+}
+
+.cagp-options-tab-panel__desc {
+	margin: 0 0 1em;
+}
+
+.cagp-options-wrap .form-table th {
+	width: 220px;
+}
+
+.cagp-repeatable-row {
+	margin-bottom: 8px;
+}

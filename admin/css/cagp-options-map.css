@@ -1,0 +1,32 @@
+.cagp-map-canvas {
+	height: 400px;
+	width: 99%;
+	margin: 5px 1px 1px;
+	border: solid 1px #ddd;
+	box-sizing: border-box;
+}
+
+.cagp-map-canvas img {
+	max-width: none;
+}
+
+.cagp-map-search {
+	margin-bottom: 8px;
+}
+
+.cagp-map-geocode-notice {
+	margin: 8px 0 12px;
+}
+
+.cagp-map-geocode-notice:empty {
+	display: none;
+	margin: 0;
+}
+
+.cagp-map-geocode-notice.notice-error {
+	border-left-color: #d63638;
+}
+
+.cagp-map-geocode-notice.notice-success {
+	border-left-color: #00a32a;
+}

@@ -63,7 +63,7 @@ class Cideapps_Gp_Services_Post_Type {
             'label'                 => __( 'Service', 'cideapps-gp' ),
             'description'           => __( 'Service Description', 'cideapps-gp' ),
             'labels'                => $labels,
-            'supports'              => array( 'title', 'editor', 'thumbnail' ),
+            'supports'              => array( 'title', 'editor', 'thumbnail', 'custom-fields' ),
             'taxonomies'            => array( 'service_category' ),
             'hierarchical'          => false,
             'public'                => true,

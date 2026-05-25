@@ -116,10 +116,14 @@ class Cideapps_Gp {
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-cideapps-gp-i18n.php';
 
 		/**
-		 * The class responsible for defining metaboxes with cmb2 framework functionality.
+		 * Native meta infrastructure (Phase 0 migration from CMB2).
 		 */
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/cmb2-functions.php';
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/cmb_field_map/cmb-field-map.php';
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/meta/class-cideapps-gp-metabox-base.php';
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/meta/class-cideapps-gp-file-field-assets.php';
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/meta/class-cideapps-gp-term-fields-base.php';
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/meta/class-cideapps-gp-meta-registry.php';
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/meta/class-cideapps-gp-options-field-renderer.php';
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/meta/class-cideapps-gp-options-page-base.php';
 
 		/**
 		 * Register custom taxonomies
@@ -135,9 +139,12 @@ class Cideapps_Gp {
 		/**
 		 * The classes responsibles for defining custom metaboxes.
 		 */
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/custom-fields/class-cideapps-gp-theme-options-page.php';
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/custom-fields/class-cideapps-gp-settings-options-page.php';
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/custom-fields/class-cideapps-gp-options-menu-page-fields.php';
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/custom-fields/class-cideapps-gp-testimonial-fields.php';
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/custom-fields/class-cideapps-gp-service-fields.php';
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/custom-fields/class-cideapps-gp-service-additional-fields.php';
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/custom-fields/class-cideapps-gp-service-taxonomy-fields.php';
 
 		/**
@@ -154,6 +161,9 @@ class Cideapps_Gp {
 
 		$this->loader = new Cideapps_Gp_Loader();
 
+		$plugin_meta_registry = new Cideapps_Gp_Meta_Registry();
+		$this->loader->add_action( 'init', $plugin_meta_registry, 'register', 20 );
+
 	}
 
 	/**
@@ -169,7 +179,7 @@ class Cideapps_Gp {
 
 		$plugin_i18n = new Cideapps_Gp_i18n();
 
-		$this->loader->add_action( 'plugins_loaded', $plugin_i18n, 'load_plugin_textdomain' );
+		$this->loader->add_action( 'init', $plugin_i18n, 'load_plugin_textdomain', 0 );
 
 	}
 
@@ -203,7 +213,7 @@ class Cideapps_Gp {
 
 		$plugin_testimonial_fields = new Cideapps_Gp_Testimonial_Fields();
 
-		$this->loader->add_action( 'cmb2_init', $plugin_testimonial_fields, 'testimonial_metabox', 0 );
+		$plugin_testimonial_fields->register();
 
 	}
 
@@ -215,7 +225,11 @@ class Cideapps_Gp {
 
 		$plugin_services_fields = new Cideapps_Gp_Service_Fields();
 
-		$this->loader->add_action( 'cmb2_init', $plugin_services_fields, 'service_metabox', 0 );
+		$plugin_services_fields->register();
+
+		$plugin_services_additional_fields = new Cideapps_Gp_Service_Additional_Fields();
+
+		$plugin_services_additional_fields->register();
 
 	}
 
@@ -223,7 +237,7 @@ class Cideapps_Gp {
 
 		$plugin_services_taxonomy = new Cideapps_Gp_Service_Taxonomy_Fields();
 
-		$this->loader->add_action( 'cmb2_init', $plugin_services_taxonomy, 'service_taxonomy_metabox', 0 );
+		$plugin_services_taxonomy->register();
 
 	}
 
@@ -231,8 +245,7 @@ class Cideapps_Gp {
 
 		$plugin_options_menu_page_fields = new Cideapps_Gp_Options_Menu_Page_Fields();
 
-		$this->loader->add_action( 'cmb2_admin_init', $plugin_options_menu_page_fields, 'menu_page_metabox', 10, 0 );
-		$this->loader->add_action( 'updated_option', $plugin_options_menu_page_fields, 'geocode_business_address', 10, 3 );
+		$this->loader->add_action( 'init', $plugin_options_menu_page_fields, 'register', 10 );
 
 	}
 

@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Fired during plugin activation
+ * Testimonial custom fields.
  *
  * @link       https://github.com/marcoAspeitia31/
  * @since      1.0.0
@@ -11,61 +11,65 @@
  */
 
 /**
- * Fired during plugin activation.
+ * Native metabox for testimonial fields (Phase 2: image migrated from CMB2).
  *
- * This class defines all code necessary to run during the plugin's activation.
- *
- * @since      1.0.0
- * @package    Cideapps_Gp
+ * @since 1.0.0
+ * @package Cideapps_Gp
  * @subpackage Cideapps_Gp/admin/custom-fields
- * @author     Marco Aspeitia <maspeitiap@devitm.com>
  */
-class Cideapps_Gp_Testimonial_Fields {
+class Cideapps_Gp_Testimonial_Fields extends Cideapps_Gp_Metabox_Base {
 
-    function testimonial_metabox() {
+	/**
+	 * Post type slug.
+	 *
+	 * @var string
+	 */
+	protected $post_type = 'testimonials';
 
-        $prefix = 'testimonials_';
+	/**
+	 * Metabox ID.
+	 *
+	 * @var string
+	 */
+	protected $metabox_id = 'testimonials_details_metabox';
 
-        $testimonial_metabox = new_cmb2_box( array(
-            'id'            => $prefix . 'metabox',
-            'title'         => esc_html__( 'Testimonial details', 'cideapps-gp' ),
-            'object_types'  => array( 'testimonials' ),
-            'context'    => 'normal',
-            'priority'   => 'high',
-            'show_names' => true,
-            'show_in_rest' => WP_REST_Server::ALLMETHODS,
-        ) );
+	/**
+	 * Metabox title.
+	 *
+	 * @since 1.1.0
+	 * @return string
+	 */
+	protected function get_metabox_title() {
+		return esc_html__( 'Testimonial details', 'cideapps-gp' );
+	}
 
-        $testimonial_metabox->add_field( array(
-            'name' => esc_html__( 'Main image', 'cideapps-gp' ),
-            'desc' => esc_html__( 'Suggested size 256 x 256 pixels.', 'cideapps-gp' ),
-            'id'   => $prefix . 'image',
-            'preview_size' => array( 150, 150 ),
-            'type' => 'file',
-            'query_args' => array(
-                'type' => array(
-                    'image/jpg',
-                    'image/jpeg',
-                    'image/png',
-                    'image/webp',
-                )
-            )
-        ) );
-
-        $testimonial_metabox->add_field( array(
-            'name' => esc_html__( 'Job', 'cideapps-gp' ),
-            'desc' => esc_html__( 'Write the testimonial job (e.g. Sales manager, Marketing manager)', 'cideapps-gp' ),
-            'id'   => $prefix . 'job',
-            'type' => 'text',
-        ) );
-
-        $testimonial_metabox->add_field( array(
-            'name' => esc_html__( 'Opinion', 'cideapps-gp' ),
-            'desc' => esc_html__( 'Write the testimonial opinion', 'cideapps-gp' ),
-            'id'   => $prefix . 'opinion',
-            'type' => 'textarea_small',
-        ) );
-        
-    }
-
+	/**
+	 * Field definitions for native metabox.
+	 *
+	 * @since 1.1.0
+	 * @return array<int, array<string, mixed>>
+	 */
+	protected function get_fields() {
+		return array(
+			array(
+				'id'           => 'testimonials_image',
+				'label'        => esc_html__( 'Main image', 'cideapps-gp' ),
+				'description'  => esc_html__( 'Suggested size 256 x 256 pixels.', 'cideapps-gp' ),
+				'type'         => 'file',
+				'preview_size' => array( 150, 150 ),
+			),
+			array(
+				'id'          => 'testimonials_job',
+				'label'       => esc_html__( 'Job', 'cideapps-gp' ),
+				'description' => esc_html__( 'Write the testimonial job (e.g. Sales manager, Marketing manager)', 'cideapps-gp' ),
+				'type'        => 'text',
+			),
+			array(
+				'id'          => 'testimonials_opinion',
+				'label'       => esc_html__( 'Opinion', 'cideapps-gp' ),
+				'description' => esc_html__( 'Write the testimonial opinion', 'cideapps-gp' ),
+				'type'        => 'textarea',
+			),
+		);
+	}
 }

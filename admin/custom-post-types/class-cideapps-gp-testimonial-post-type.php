@@ -63,7 +63,7 @@ class Cideapps_Gp_Testimonial_Post_Type {
             'label'                 => __( 'Testimonial', 'cideapps-gp' ),
             'description'           => __( 'Testimonial Description', 'cideapps-gp' ),
             'labels'                => $labels,
-            'supports'              => array( 'title' ),
+            'supports'              => array( 'title', 'custom-fields' ),
             'taxonomies'            => array(),
             'hierarchical'          => false,
             'public'                => true,

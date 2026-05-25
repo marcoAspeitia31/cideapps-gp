@@ -1,113 +1,147 @@
 # Cideapps GP
 
-Plugin genérico para iniciar el desarrollo de proyectos en WordPress.  
-Incluye integración con **CMB2**, creación de **Custom Post Types (CPT)**, **taxonomías personalizadas** y **opciones de tema** para centralizar información de negocio.  
+Plugin foundation for custom WordPress projects: **Custom Post Types**, **taxonomies**, **native metaboxes**, and **theme options** (Settings API) to centralize business data for bespoke themes.
 
-Este plugin está basado en la plantilla generada con [WordPress Plugin Boilerplate (wppb.me)](http://wppb.me/).
-
----
-
-## 🚀 Características principales
-
-- **CMB2 integrado**  
-  Campos personalizados y metaboxes listos para extender en CPTs y taxonomías.
-  
-- **Custom Post Types incluidos**  
-  - **Services** (`services`)  
-  - **Testimonials** (`testimonials`)  
-
-- **Taxonomías personalizadas**  
-  - `service_category` (asociada al CPT `services`).  
-
-- **Opciones de tema**  
-  Página en el admin para agregar información del negocio (por ejemplo, datos de contacto o branding).
-
-- **Internacionalización (i18n)**  
-  Archivos `.po` y `.mo` en `/languages` para traducciones.
-
-- **Estructura clara**  
-  Separación de lógica en carpetas `admin`, `public` e `includes` siguiendo buenas prácticas.
+Based on the [WordPress Plugin Boilerplate](http://wppb.me/).
 
 ---
 
-## 📂 Estructura del plugin
+## Documentation
+
+| Document | Audience | Description |
+|----------|----------|-------------|
+| **[Guía para desarrolladores de temas](docs/guia-desarrollo-temas.md)** | Theme & block developers | **Main reference** — meta keys, `get_option` / `get_post_meta`, examples, security, REST |
+| [Migración CMB2 → nativo](docs/migracion-cmb2-metaboxes-nativos.md) | Maintainers | Internal migration history and phases |
+| [readme.txt](readme.txt) | WordPress.org | Plugin directory listing (English) |
+
+---
+
+## Quick start (theme developers)
+
+1. Activate **Cideapps GP**.
+2. Configure **Theme options** and **Settings** in wp-admin.
+3. In your theme `functions.php`:
+
+```php
+if ( ! defined( 'CIDEAPPS_GP' ) ) {
+	$opts = get_option( 'cagp_theme_options', array() );
+	define( 'CIDEAPPS_GP', is_array( $opts ) ? $opts : array() );
+}
+```
+
+4. Read post meta in templates:
+
+```php
+echo esc_html( get_post_meta( get_the_ID(), 'service_slogan', true ) );
+```
+
+5. For images, prefer attachment IDs:
+
+```php
+$logo_id = (int) ( CIDEAPPS_GP['menu_logo_id'] ?? 0 );
+if ( $logo_id ) {
+	echo wp_get_attachment_image( $logo_id, 'full' );
+}
+```
+
+**Full tables, keys, and best practices:** [docs/guia-desarrollo-temas.md](docs/guia-desarrollo-temas.md).
+
+---
+
+## Features
+
+- **Native WordPress metaboxes** — `Cideapps_Gp_Metabox_Base`, `Meta_Registry`
+- **CPTs:** `services`, `testimonials`
+- **Taxonomy:** `service_category`
+- **Options:** `cagp_theme_options`, `cagp_settings_options` (Google Maps API key, admin only)
+- **REST API** — post and term meta registered with `show_in_rest`
+- **i18n** — `languages/` (`es`, `es_MX`, `es_ES`)
+
+---
+
+## Data overview
+
+### Options
+
+| Option key | Purpose |
+|------------|---------|
+| `cagp_theme_options` | Branding, contact, map, social URLs |
+| `cagp_settings_options` | Google Maps API key (admin) |
+
+### Post meta — `testimonials`
+
+`testimonials_job`, `testimonials_opinion`, `testimonials_image`, `testimonials_image_id`
+
+### Post meta — `services`
+
+`service_pricing`, `service_slogan`, `cwt_services_image`, `cwt_services_image_id`, `cwt_services_excerpt`
+
+### Term meta — `service_category`
+
+`service_taxonomy_image`, `service_taxonomy_image_id`
+
+---
+
+## Project structure
 
 ```
 cideapps-gp/
-├── admin/                 # Código específico para el área de administración
-│   ├── custom-fields/      # Metaboxes con CMB2
-│   ├── custom-post-types/  # CPTs (services, testimonials)
-│   ├── custom-taxonomies/  # Taxonomías personalizadas
-│   ├── css/ js/ img/       # Assets para el admin
-│
-├── public/                # Código para el frontend
-│   ├── css/ js/ partials/
-│
-├── includes/              # Clases principales, loader, activador/desactivador
-│   └── cmb2-functions.php # Funciones de integración con CMB2
-│
-├── languages/             # Archivos de traducción
-├── cideapps-gp.php        # Bootstrap del plugin
-├── uninstall.php          # Limpieza al desinstalar
-├── LICENSE.txt
-└── README.md
+├── admin/                  # CPTs, taxonomies, options UI, assets
+├── includes/meta/          # Metabox base, options base, meta registry
+├── docs/                   # Theme developer guide + migration doc
+├── languages/
+├── readme.txt              # WordPress.org
+├── uninstall.php
+└── cideapps-gp.php
 ```
 
 ---
 
-## ⚙️ Instalación
+## Requirements
 
-1. Descarga este repositorio o clónalo en tu carpeta `wp-content/plugins`:
-   ```bash
-   git clone https://github.com/marcoAspeitia31/cideapps-gp.git
-   ```
-2. Activa el plugin desde el panel de administración de WordPress:  
-   **Plugins → Activar "Cideapps GP"**  
-3. Una vez activo:
-   - Revisa los CPTs "Services" y "Testimonials".  
-   - Configura los metaboxes con CMB2.  
-   - Agrega categorías en `service_category`.  
-   - Ajusta las opciones de negocio desde el menú correspondiente.  
+- WordPress 6.0+
+- PHP 7.4+
+- Optional: **Google Maps Platform** (admin map & geocoding only)
 
 ---
 
-## 📦 Requisitos
+## Installation
 
-- WordPress 6.0 o superior  
-- PHP 7.4+  
-- [CMB2](https://cmb2.io/) (ya integrado en el plugin)  
+```bash
+git clone https://github.com/marcoAspeitia31/cideapps-gp.git
+```
 
----
-
-## 👨‍💻 Desarrollo
-
-Este plugin está diseñado como base para proyectos personalizados.  
-Puedes extenderlo agregando:
-
-- Nuevos **CPTs** en `/admin/custom-post-types/`  
-- Nuevas **taxonomías** en `/admin/custom-taxonomies/`  
-- Campos adicionales con **CMB2** en `/admin/custom-fields/`  
+Activate in **Plugins → Cideapps GP**, then open **Theme options**.
 
 ---
 
-## 🌍 Traducciones
+## Uninstall behavior
 
-El plugin incluye soporte de internacionalización:  
+By default, uninstalling the plugin **does not delete** posts, meta, or options (safe for client sites). To remove plugin options on uninstall, use the filter documented in `uninstall.php`:
 
-- Español (`es`, `es_MX`)  
-- Plantilla base `cideapps-gp.pot` para generar otros idiomas  
-
----
-
-## 📜 Licencia
-
-Distribuido bajo la licencia **GPL-2.0+**.  
-Consulta el archivo [LICENSE.txt](./LICENSE.txt) para más información.  
+```php
+add_filter( 'cagp_uninstall_delete_data', '__return_true' );
+```
 
 ---
 
-## ✨ Autor
+## Development (plugin maintainers)
 
-**Marco Aspeitia**  
-- GitHub: [@marcoAspeitia31](https://github.com/marcoAspeitia31)  
-- Proyecto: [Cideapps](https://github.com/marcoAspeitia31/)  
+- New CPTs: `admin/custom-post-types/`
+- New taxonomies: `admin/custom-taxonomies/`
+- New metabox fields: extend `Cideapps_Gp_Metabox_Base` + register in `Cideapps_Gp_Meta_Registry`
+- New options: extend `Cideapps_Gp_Options_Page_Base`
+
+Before release, run [Plugin Check](https://wordpress.org/plugins/plugin-check/) and PHPCS with WordPress Coding Standards when preparing for WordPress.org.
+
+---
+
+## License
+
+GPL-2.0+ — see [LICENSE.txt](LICENSE.txt).
+
+---
+
+## Author
+
+**Marco Aspeitia** — [@marcoAspeitia31](https://github.com/marcoAspeitia31)
