@@ -22,9 +22,6 @@ msgstr ""
 "X-Poedit-Basepath: ..\n"
 "X-Generator: Poedit 3.7\n"
 "X-Poedit-SearchPath-0: .\n"
-"X-Poedit-SearchPathExcluded-0: includes/cmb2\n"
-"X-Poedit-SearchPathExcluded-1: includes/cmb_field_map\n"
-"X-Poedit-SearchPathExcluded-2: includes/cmb2-functions.php\n"
 
 #: admin/class-cideapps-gp-admin.php:124
 msgctxt "cideapps-gp"

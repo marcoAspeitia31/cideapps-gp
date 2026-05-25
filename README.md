@@ -1,17 +1,17 @@
 # Cideapps GP
 
 Plugin genérico para iniciar el desarrollo de proyectos en WordPress.  
-Incluye integración con **CMB2**, creación de **Custom Post Types (CPT)**, **taxonomías personalizadas** y **opciones de tema** para centralizar información de negocio.  
+Incluye **Custom Post Types (CPT)**, **taxonomías personalizadas**, **metaboxes nativos** y **opciones de tema** (Settings API) para centralizar información de negocio.
 
 Este plugin está basado en la plantilla generada con [WordPress Plugin Boilerplate (wppb.me)](http://wppb.me/).
 
 ---
 
-## 🚀 Características principales
+## Características principales
 
-- **CMB2 integrado**  
-  Campos personalizados y metaboxes listos para extender en CPTs y taxonomías.
-  
+- **Metaboxes nativos de WordPress**  
+  Campos personalizados en CPTs y taxonomías (`Cideapps_Gp_Metabox_Base`, `Meta_Registry`).
+
 - **Custom Post Types incluidos**  
   - **Services** (`services`)  
   - **Testimonials** (`testimonials`)  
@@ -20,94 +20,97 @@ Este plugin está basado en la plantilla generada con [WordPress Plugin Boilerpl
   - `service_category` (asociada al CPT `services`).  
 
 - **Opciones de tema**  
-  Página en el admin para agregar información del negocio (por ejemplo, datos de contacto o branding).
+  - `cagp_theme_options` — branding, contacto, mapa, redes sociales.  
+  - `cagp_settings_options` — API key de Google Maps.
+
+- **REST API**  
+  Meta de posts y términos registrada con `register_post_meta` / `register_term_meta` y expuesta en JSON (requiere soporte `custom-fields` en los CPT).
 
 - **Internacionalización (i18n)**  
   Archivos `.po` y `.mo` en `/languages` para traducciones.
 
 - **Estructura clara**  
-  Separación de lógica en carpetas `admin`, `public` e `includes` siguiendo buenas prácticas.
+  Separación de lógica en carpetas `admin`, `public`, `includes/meta` siguiendo buenas prácticas.
 
 ---
 
-## 📂 Estructura del plugin
+## Estructura del plugin
 
 ```
 cideapps-gp/
-├── admin/                 # Código específico para el área de administración
-│   ├── custom-fields/      # Metaboxes con CMB2
+├── admin/
+│   ├── custom-fields/      # Metaboxes y páginas de opciones
 │   ├── custom-post-types/  # CPTs (services, testimonials)
 │   ├── custom-taxonomies/  # Taxonomías personalizadas
-│   ├── css/ js/ img/       # Assets para el admin
+│   ├── css/ js/ img/
 │
-├── public/                # Código para el frontend
+├── public/
 │   ├── css/ js/ partials/
 │
-├── includes/              # Clases principales, loader, activador/desactivador
-│   └── cmb2-functions.php # Funciones de integración con CMB2
+├── includes/
+│   ├── meta/               # Infraestructura nativa (metaboxes, options, registry)
+│   ├── class-cideapps-gp.php
+│   └── ...
 │
-├── languages/             # Archivos de traducción
-├── cideapps-gp.php        # Bootstrap del plugin
-├── uninstall.php          # Limpieza al desinstalar
+├── docs/                   # Documentación de migración CMB2 → nativo
+├── languages/
+├── cideapps-gp.php
+├── uninstall.php
 ├── LICENSE.txt
 └── README.md
 ```
 
 ---
 
-## ⚙️ Instalación
+## Instalación
 
-1. Descarga este repositorio o clónalo en tu carpeta `wp-content/plugins`:
+1. Clona o copia el plugin en `wp-content/plugins/`:
    ```bash
    git clone https://github.com/marcoAspeitia31/cideapps-gp.git
    ```
-2. Activa el plugin desde el panel de administración de WordPress:  
-   **Plugins → Activar "Cideapps GP"**  
-3. Una vez activo:
-   - Revisa los CPTs "Services" y "Testimonials".  
-   - Configura los metaboxes con CMB2.  
-   - Agrega categorías en `service_category`.  
-   - Ajusta las opciones de negocio desde el menú correspondiente.  
+2. Activa **Cideapps GP** en **Plugins**.
+3. Configura:
+   - CPTs Services y Testimonials.  
+   - Categorías en `service_category`.  
+   - **Theme options** y **Settings** en el menú del plugin.
 
 ---
 
-## 📦 Requisitos
+## Requisitos
 
-- WordPress 6.0 o superior  
+- WordPress 6.0 o superior (probado con REST y metaboxes nativos en WP 7.x)  
 - PHP 7.4+  
-- [CMB2](https://cmb2.io/) (ya integrado en el plugin)  
+- Servicio externo opcional: **Google Maps** (geocoding y mapa en Theme options)
 
 ---
 
-## 👨‍💻 Desarrollo
+## Desarrollo
 
-Este plugin está diseñado como base para proyectos personalizados.  
-Puedes extenderlo agregando:
+Extensión recomendada:
 
-- Nuevos **CPTs** en `/admin/custom-post-types/`  
-- Nuevas **taxonomías** en `/admin/custom-taxonomies/`  
-- Campos adicionales con **CMB2** en `/admin/custom-fields/`  
+- Nuevos CPTs en `/admin/custom-post-types/`  
+- Nuevas taxonomías en `/admin/custom-taxonomies/`  
+- Campos en metaboxes: extender `Cideapps_Gp_Metabox_Base` y registrar claves en `Cideapps_Gp_Meta_Registry`  
+- Opciones: extender `Cideapps_Gp_Options_Page_Base`
 
----
-
-## 🌍 Traducciones
-
-El plugin incluye soporte de internacionalización:  
-
-- Español (`es`, `es_MX`)  
-- Plantilla base `cideapps-gp.pot` para generar otros idiomas  
+Documentación de migración desde CMB2: [`docs/migracion-cmb2-metaboxes-nativos.md`](docs/migracion-cmb2-metaboxes-nativos.md).
 
 ---
 
-## 📜 Licencia
+## Traducciones
 
-Distribuido bajo la licencia **GPL-2.0+**.  
-Consulta el archivo [LICENSE.txt](./LICENSE.txt) para más información.  
+- Español (`es`, `es_MX`, `es_ES`)  
+- Plantilla `cideapps-gp.pot`
 
 ---
 
-## ✨ Autor
+## Licencia
+
+**GPL-2.0+** — ver [LICENSE.txt](./LICENSE.txt).
+
+---
+
+## Autor
 
 **Marco Aspeitia**  
-- GitHub: [@marcoAspeitia31](https://github.com/marcoAspeitia31)  
-- Proyecto: [Cideapps](https://github.com/marcoAspeitia31/)  
+- GitHub: [@marcoAspeitia31](https://github.com/marcoAspeitia31)

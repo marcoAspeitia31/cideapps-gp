@@ -14,11 +14,11 @@ Documento de referencia para la migración gradual del plugin **Cideapps GP** de
 | **Fase 3** | ✅ Completada y validada | Term meta de taxonomía `service_category` |
 | **Fase 4** | ✅ Completada y validada | Páginas de opciones (Settings API) |
 | **Fase 5** | ✅ Completada y validada | Mapa Google nativo en Theme options |
-| **Fase 6** | ✅ Completada | REST: meta de posts y términos expuesta en API |
-| Fase 7 | Pendiente | Eliminar carpetas `includes/cmb2/` y `cmb_field_map/` del repo |
+| **Fase 6** | ✅ Completada y validada | REST: meta de posts y términos (T-6.2, T-6.3) |
+| **Fase 7** | ✅ Completada | CMB2 y `cmb_field_map` eliminados del repositorio |
 | Fase 8 | Pendiente | Preparación WordPress.org (`readme.txt`, PHPCS, etc.) |
 
-**CMB2 en runtime:** ya no se carga (sin hooks `cmb2_init` / `cmb2_admin_init`). Las carpetas en `includes/cmb2/` y `includes/cmb_field_map/` siguen en disco hasta la Fase 7.
+**CMB2:** eliminado del repositorio (Fase 7). El plugin usa solo metaboxes nativos y Settings API.
 
 ---
 
@@ -120,9 +120,9 @@ Imagen de **categoría** (no del post): taxonomía `service_category` → `servi
 
 ---
 
-## Siguiente paso: Fase 7
+## Siguiente paso: Fase 8
 
-Eliminar del repositorio las carpetas `includes/cmb2/` y `includes/cmb_field_map/` (ya no se usan en runtime). Luego Fase 8 (WordPress.org).
+Preparación WordPress.org (`readme.txt`, PHPCS, Plugin Check).
 
 ---
 
@@ -135,6 +135,8 @@ Eliminar del repositorio las carpetas `includes/cmb2/` y `includes/cmb_field_map
 | 3 | ✅ Validado | T-3.1 a T-3.6 |
 | 4 | ✅ Validado | T-4.1 a T-4.8 |
 | 5 | ✅ Validado | T-5.1 a T-5.5 |
+| 6 | ✅ Validado | T-6.2, T-6.3 |
+| 7 | ✅ Completada | CMB2 eliminado del disco |
 | i18n | ✅ Corregido | Textdomain en `init`; sin Notice `_load_textdomain_just_in_time` |
 
 ---
@@ -196,10 +198,12 @@ docs/migracion-cmb2-metaboxes-nativos.md
 
 ## Fases restantes (resumen)
 
-### Fase 7 — Limpieza del repositorio
+### Fase 7 — Limpieza del repositorio ✅
 
-- Eliminar `includes/cmb2/`, `includes/cmb_field_map/`, `includes/cmb2-functions.php` (si aún existen)
-- Verificar que no queden referencias en el código
+- Eliminado `includes/cmb2/` (~229 archivos)
+- Eliminado `includes/cmb_field_map/`
+- Eliminado `includes/cmb2-functions.php`
+- `README.md` actualizado (sin referencias a CMB2)
 
 ### Fase 8 — WordPress.org
 
@@ -210,8 +214,7 @@ docs/migracion-cmb2-metaboxes-nativos.md
 ## Orden sugerido de commits
 
 ```
-✅ 1–10. Migración funcional (Fases 0–6)
-11. Fase 7 — Eliminar carpetas CMB2 del repo
+✅ 1–11. Migración funcional (Fases 0–7)
 12. Fase 8 — WordPress.org
 ```
 
@@ -291,10 +294,10 @@ docs/migracion-cmb2-metaboxes-nativos.md
 | ID | Prueba | Estado | Notas |
 |----|--------|--------|-------|
 | T-6.1 | `register_term_meta` activo | ✅ | Fase 3 |
-| T-6.2 | Meta posts visible en REST (`meta` en JSON) | ⬜ | Probar en tu entorno |
-| T-6.3 | Meta términos visible en REST | ⬜ | `GET /wp/v2/service_category/{id}` |
-| T-6.4 | Editar meta vía REST (usuario con `edit_post`) | ⬜ | Opcional |
-| T-6.5 | Usuario sin permisos no puede PATCH meta | ⬜ | Opcional |
+| T-6.2 | Meta posts visible en REST (`meta` en JSON) | ✅ | |
+| T-6.3 | Meta términos visible en REST | ✅ | |
+| T-6.4 | Editar meta vía REST | ⏭️ | Opcional |
+| T-6.5 | Permisos REST PATCH | ⏭️ | Opcional |
 
 ---
 
@@ -302,7 +305,10 @@ docs/migracion-cmb2-metaboxes-nativos.md
 
 | ID | Prueba | Estado | Notas |
 |----|--------|--------|-------|
-| T-7.1 a T-7.4 | Limpieza carpetas | ⬜ | |
+| T-7.1 | Carpetas `cmb2` y `cmb_field_map` eliminadas | ✅ | |
+| T-7.2 | Plugin activa sin errores | ✅ | Verificado con WP-CLI |
+| T-7.3 | Admin y REST operativos | ⬜ | Smoke test en tu entorno |
+| T-7.4 | Tamaño del plugin reducido | ✅ | ~230 archivos menos |
 
 ---
 
@@ -355,4 +361,13 @@ docs/migracion-cmb2-metaboxes-nativos.md
 
 ---
 
-*Última actualización: Fase 6 completada (REST + `custom-fields`). Services adicionales (`cwt_*`) centralizados en plugin.*
+*Última actualización: Fase 7 completada (CMB2 eliminado). Fases 0–6 validadas.*
+
+---
+
+## Actividades realizadas — Fase 7
+
+1. Eliminación física de `includes/cmb2/`, `includes/cmb_field_map/` y `includes/cmb2-functions.php`.
+2. Sin referencias PHP activas a CMB2 (ya retiradas en Fases 1–5).
+3. `README.md` reescrito para describir arquitectura nativa.
+4. Plugin verificado activo; REST `meta` en `services` sigue respondiendo.
