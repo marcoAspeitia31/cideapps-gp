@@ -119,6 +119,8 @@ class Cideapps_Gp {
 		 * Native meta infrastructure (Phase 0 migration from CMB2).
 		 */
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/meta/class-cideapps-gp-metabox-base.php';
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/meta/class-cideapps-gp-file-field-assets.php';
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/meta/class-cideapps-gp-term-fields-base.php';
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/meta/class-cideapps-gp-meta-registry.php';
 
 		/**
@@ -232,7 +234,7 @@ class Cideapps_Gp {
 
 		$plugin_services_taxonomy = new Cideapps_Gp_Service_Taxonomy_Fields();
 
-		$this->loader->add_action( 'cmb2_init', $plugin_services_taxonomy, 'service_taxonomy_metabox', 0 );
+		$plugin_services_taxonomy->register();
 
 	}
 

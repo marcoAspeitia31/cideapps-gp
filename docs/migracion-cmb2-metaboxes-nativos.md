@@ -10,8 +10,8 @@ Documento de referencia para la migración gradual del plugin **Cideapps GP** de
 |------|--------|-------------|
 | **Fase 0** | ✅ Completada | Infraestructura base (`Metabox_Base`, `Meta_Registry`) |
 | **Fase 1** | ✅ Completada y validada | Campos de texto en testimoniales y servicios |
-| **Fase 2** | ✅ Completada | Campo de imagen en testimoniales |
-| Fase 3 | Pendiente | Term meta de taxonomía `service_category` |
+| **Fase 2** | ✅ Completada y validada | Campo de imagen en testimoniales |
+| **Fase 3** | ✅ Completada | Term meta de taxonomía `service_category` |
 | Fase 4 | Pendiente | Páginas de opciones (`cagp_theme_options`, `cagp_settings_options`) |
 | Fase 5 | Pendiente | Campo de mapa (Google Maps) nativo |
 | Fase 6 | Pendiente | Registro completo de meta (term meta, options REST) |
@@ -50,8 +50,8 @@ Los temas y cualquier código que use `get_post_meta()`, `get_term_meta()` o `ge
 
 | Meta key | Tipo | Fase | Estado admin |
 |----------|------|------|--------------|
-| `service_taxonomy_image` | file (URL) | 3 | CMB2 |
-| `service_taxonomy_image_id` | integer | 3 | CMB2 |
+| `service_taxonomy_image` | file (URL) | 3 | Nativo |
+| `service_taxonomy_image_id` | integer (auxiliar) | 3 | Nativo |
 
 ### Options — `cagp_theme_options`
 
@@ -228,7 +228,7 @@ docs/migracion-cmb2-metaboxes-nativos.md             (modificado)
 ✅ 2. Testimonials — text fields
 ✅ 3. Services — text fields
 ✅ 4. Testimonials — image field
-5. Service taxonomy — image field
+✅ 5. Service taxonomy — image field
 6. Options — Settings API (campos simples)
 7. Options — file fields + wysiwyg + repeatables
 8. Options — mapa nativo + geocoding con wp_remote_get
@@ -346,7 +346,7 @@ Fase 1 — T-1.3 ✅ | T-1.5 ❌ (el valor no persiste al recargar)
 
 ---
 
-### Fase 3 — Term meta `service_category` (pendiente implementación)
+### Fase 3 — Term meta `service_category` (completada en código) ← **Probar ahora**
 
 | ID | Prueba | Estado | Notas |
 |----|--------|--------|-------|
@@ -449,13 +449,42 @@ Copia, completa y envíame en el chat:
 
 ### Qué debes probar ahora (resumen)
 
-Con la **Fase 2** implementada, prioriza:
+Con la **Fase 3** implementada, prioriza:
 
-1. **T-2.1 a T-2.7** — Imagen nativa en testimoniales (seleccionar, guardar, quitar, sin metabox CMB2).
-2. **T-2.4** — Testimonial con imagen previa de CMB2 muestra preview correctamente.
-3. Regresión rápida: Job/Opinion siguen guardando (T-1.4) y Theme options intacto (T-1.22).
+1. **T-3.1 a T-3.5** — Imagen en categorías de servicio (crear/editar término, guardar, quitar).
+2. Regresión: testimoniales (T-2.x) y Theme options (T-1.22) siguen operativos.
 
-Las fases **3 a 8** están listadas para cuando las implementemos.
+Las fases **4 a 8** están listadas para cuando las implementemos.
+
+---
+
+## Resultados de testeo — Fase 2
+
+- ✅ OK: T-2.1 a T-2.5, T-2.7
+- ⏭️ T-2.6: meta no expuesta en REST (esperado, igual que Fase 1)
+
+---
+
+## Actividades realizadas — Fase 3
+
+1. **`Cideapps_Gp_Term_Fields_Base`** — UI nativa en pantallas `edit-tags.php` y `term.php`, guardado con nonce y capabilities de la taxonomía.
+
+2. **`Cideapps_Gp_File_Field_Assets`** — encolado compartido de medios (reutilizado por posts y términos).
+
+3. **`Cideapps_Gp_Service_Taxonomy_Fields`** — campo `service_taxonomy_image` (+ `_id`) migrado; eliminado `cmb2_init` para taxonomía.
+
+4. **`Cideapps_Gp_Meta_Registry`** — `register_term_meta()` para `service_category` con `show_in_rest`.
+
+### Archivos tocados (Fase 3)
+
+```
+includes/meta/class-cideapps-gp-term-fields-base.php   (nuevo)
+includes/meta/class-cideapps-gp-file-field-assets.php  (nuevo)
+includes/meta/class-cideapps-gp-meta-registry.php      (modificado)
+includes/meta/class-cideapps-gp-metabox-base.php       (modificado)
+admin/custom-fields/class-cideapps-gp-service-taxonomy-fields.php (modificado)
+includes/class-cideapps-gp.php                         (modificado)
+```
 
 ---
 
@@ -463,7 +492,7 @@ Las fases **3 a 8** están listadas para cuando las implementemos.
 
 | Riesgo | Mitigación aplicada / pendiente |
 |--------|----------------------------------|
-| Formato distinto en `file` | Fase 2: guardar URL + `{key}_id` |
+| Formato distinto en `file` | Fase 2–3: guardar URL + `{key}_id` en post y term meta |
 | Repeatables como string vs array | Fase 4: inspeccionar BD y replicar formato |
 | `text_money` con símbolo `$` | UI muestra `$` decorativo; valor guardado con `sanitize_text_field` |
 | Doble guardado CMB2 + nativo | Servicios: CMB2 eliminado; Testimoniales: campos separados por metabox |
@@ -480,4 +509,4 @@ Las fases **3 a 8** están listadas para cuando las implementemos.
 
 ---
 
-*Última actualización: Fase 2 completada (imagen testimoniales nativa). Fase 1 validada.*
+*Última actualización: Fase 3 completada (term meta service_category). Fases 1–2 validadas.*

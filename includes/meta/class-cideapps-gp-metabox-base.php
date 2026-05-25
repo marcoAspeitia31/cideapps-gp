@@ -254,28 +254,7 @@ abstract class Cideapps_Gp_Metabox_Base {
 			return;
 		}
 
-		wp_enqueue_media();
-
-		$plugin_file = dirname( dirname( dirname( __FILE__ ) ) ) . '/cideapps-gp.php';
-		$script_url  = plugins_url( 'admin/js/cagp-metabox-file.js', $plugin_file );
-		$version     = defined( 'CIDEAPPS_GP_VERSION' ) ? CIDEAPPS_GP_VERSION : '1.0.0';
-
-		wp_enqueue_script(
-			'cagp-metabox-file',
-			$script_url,
-			array( 'jquery', 'media-upload' ),
-			$version,
-			true
-		);
-
-		wp_localize_script(
-			'cagp-metabox-file',
-			'cagpMetaboxFile',
-			array(
-				'frameTitle'  => esc_html__( 'Select or upload image', 'cideapps-gp' ),
-				'frameButton' => esc_html__( 'Use this image', 'cideapps-gp' ),
-			)
-		);
+		Cideapps_Gp_File_Field_Assets::enqueue();
 	}
 
 	/**
