@@ -20,6 +20,8 @@
  * @author     Marco Aspeitia <maspeitiap@devitm.com>
  */
 
+defined( 'ABSPATH' ) || exit;
+
 class Cideapps_Gp_Services_Post_Type {
 
     /**

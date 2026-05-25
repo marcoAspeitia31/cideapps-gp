@@ -24,9 +24,9 @@ if ( ! defined( 'WP_UNINSTALL_PLUGIN' ) ) {
  * @since 1.1.0
  * @param bool $delete Whether to delete data. Default false.
  */
-$delete_data = (bool) apply_filters( 'cagp_uninstall_delete_data', false );
+$cagp_delete_data = (bool) apply_filters( 'cagp_uninstall_delete_data', false );
 
-if ( ! $delete_data ) {
+if ( ! $cagp_delete_data ) {
 	return;
 }
 

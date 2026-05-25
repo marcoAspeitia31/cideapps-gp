@@ -8,6 +8,8 @@
  * @since      1.3.0
  */
 
+defined( 'ABSPATH' ) || exit;
+
 /**
  * Registers add/edit term UI and save handlers.
  *
@@ -278,16 +280,21 @@ abstract class Cideapps_Gp_Term_Fields_Base {
 	 * @param array<string, mixed> $field   Field configuration.
 	 */
 	protected function save_field( $term_id, array $field ) {
+		// Nonce and capability verified in can_save() before this runs.
+		// phpcs:disable WordPress.Security.NonceVerification.Missing
+
 		$field_type = isset( $field['type'] ) ? $field['type'] : 'text';
 
 		if ( 'file' === $field_type ) {
 			$this->save_file_field( $term_id, $field );
+			// phpcs:enable WordPress.Security.NonceVerification.Missing
 			return;
 		}
 
 		$field_id = $field['id'];
 
 		if ( ! isset( $_POST[ $field_id ] ) ) {
+			// phpcs:enable WordPress.Security.NonceVerification.Missing
 			return;
 		}
 
@@ -295,6 +302,8 @@ abstract class Cideapps_Gp_Term_Fields_Base {
 		$value = sanitize_text_field( wp_unslash( $_POST[ $field_id ] ) );
 
 		update_term_meta( $term_id, $field_id, $value );
+
+		// phpcs:enable WordPress.Security.NonceVerification.Missing
 	}
 
 	/**
@@ -305,10 +314,14 @@ abstract class Cideapps_Gp_Term_Fields_Base {
 	 * @param array<string, mixed> $field   Field configuration.
 	 */
 	protected function save_file_field( $term_id, array $field ) {
+		// Nonce and capability verified in can_save() before this runs.
+		// phpcs:disable WordPress.Security.NonceVerification.Missing
+
 		$field_id = $field['id'];
 		$id_key   = $field_id . '_id';
 
 		if ( ! isset( $_POST[ $field_id ] ) && ! isset( $_POST[ $id_key ] ) ) {
+			// phpcs:enable WordPress.Security.NonceVerification.Missing
 			return;
 		}
 
@@ -328,11 +341,14 @@ abstract class Cideapps_Gp_Term_Fields_Base {
 		if ( $attachment_id || $url ) {
 			update_term_meta( $term_id, $field_id, $url );
 			update_term_meta( $term_id, $id_key, $attachment_id );
+			// phpcs:enable WordPress.Security.NonceVerification.Missing
 			return;
 		}
 
 		delete_term_meta( $term_id, $field_id );
 		delete_term_meta( $term_id, $id_key );
+
+		// phpcs:enable WordPress.Security.NonceVerification.Missing
 	}
 
 	/**

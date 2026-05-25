@@ -121,7 +121,7 @@ class Cideapps_Gp_Admin {
                 'Uncategorized',
                 $taxonomy,
                 array(
-					'description'	=>  _x('This is your default term of your custom category', 'cideapps-gp'),
+					'description'	=> _x( 'This is your default term of your custom category', 'Default taxonomy term description', 'cideapps-gp' ),
                     'slug'          =>  'uncategorized',
                 )
             );
@@ -150,7 +150,7 @@ class Cideapps_Gp_Admin {
 				$taxonomy,
 				array(
 					'slug' 		  => 'main-services',
-					'description' => _x('This term needs to relate the main services that will appear in the website frontend', 'cideapps-gp'),
+					'description' => _x( 'This term needs to relate the main services that will appear in the website frontend', 'Main services term description', 'cideapps-gp' ),
 				)
 			);
 
@@ -165,7 +165,7 @@ class Cideapps_Gp_Admin {
 				$taxonomy,
 				array(
 					'slug' => 'featured-services',
-					'description' => _x('This term needs to relate the featured services that will appear in the website frontend', 'cideapps-gp'),
+					'description' => _x( 'This term needs to relate the featured services that will appear in the website frontend', 'Featured services term description', 'cideapps-gp' ),
 				),
 			);
 

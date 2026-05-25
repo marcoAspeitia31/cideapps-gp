@@ -1,5 +1,7 @@
 <?php
 
+defined( 'ABSPATH' ) || exit;
+
 class Cideapps_Gp_Taxonomies {
 
     /**

@@ -8,6 +8,8 @@
  * @since      1.1.0
  */
 
+defined( 'ABSPATH' ) || exit;
+
 /**
  * Provides registration, rendering, and saving for post metaboxes.
  *
@@ -354,15 +356,20 @@ abstract class Cideapps_Gp_Metabox_Base {
 	 * @param array<string, mixed> $field   Field configuration.
 	 */
 	protected function save_field( $post_id, array $field ) {
+		// Nonce and capability verified in can_save() before this runs.
+		// phpcs:disable WordPress.Security.NonceVerification.Missing
+
 		$field_id   = $field['id'];
 		$field_type = isset( $field['type'] ) ? $field['type'] : 'text';
 
 		if ( 'file' === $field_type ) {
 			$this->save_file_field( $post_id, $field );
+			// phpcs:enable WordPress.Security.NonceVerification.Missing
 			return;
 		}
 
 		if ( ! isset( $_POST[ $field_id ] ) ) {
+			// phpcs:enable WordPress.Security.NonceVerification.Missing
 			return;
 		}
 
@@ -371,6 +378,8 @@ abstract class Cideapps_Gp_Metabox_Base {
 		$value     = $this->sanitize_field_value( $field, $raw_value );
 
 		update_post_meta( $post_id, $field_id, $value );
+
+		// phpcs:enable WordPress.Security.NonceVerification.Missing
 	}
 
 	/**
@@ -381,10 +390,14 @@ abstract class Cideapps_Gp_Metabox_Base {
 	 * @param array<string, mixed> $field   Field configuration.
 	 */
 	protected function save_file_field( $post_id, array $field ) {
+		// Nonce and capability verified in can_save() before this runs.
+		// phpcs:disable WordPress.Security.NonceVerification.Missing
+
 		$field_id = $field['id'];
 		$id_key   = $field_id . '_id';
 
 		if ( ! isset( $_POST[ $field_id ] ) && ! isset( $_POST[ $id_key ] ) ) {
+			// phpcs:enable WordPress.Security.NonceVerification.Missing
 			return;
 		}
 
@@ -404,11 +417,14 @@ abstract class Cideapps_Gp_Metabox_Base {
 		if ( $attachment_id || $url ) {
 			update_post_meta( $post_id, $field_id, $url );
 			update_post_meta( $post_id, $id_key, $attachment_id );
+			// phpcs:enable WordPress.Security.NonceVerification.Missing
 			return;
 		}
 
 		delete_post_meta( $post_id, $field_id );
 		delete_post_meta( $post_id, $id_key );
+
+		// phpcs:enable WordPress.Security.NonceVerification.Missing
 	}
 
 	/**

@@ -13,6 +13,8 @@
  * @subpackage Cideapps_Gp/includes
  */
 
+defined( 'ABSPATH' ) || exit;
+
 /**
  * The core plugin class.
  *
@@ -75,7 +77,6 @@ class Cideapps_Gp {
 		$this->plugin_name = 'cideapps-gp';
 
 		$this->load_dependencies();
-		$this->set_locale();
 		$this->define_admin_hooks();
 		$this->define_testimonial_hooks();
 		$this->define_services_hooks();
@@ -91,7 +92,6 @@ class Cideapps_Gp {
 	 * Include the following files that make up the plugin:
 	 *
 	 * - Cideapps_Gp_Loader. Orchestrates the hooks of the plugin.
-	 * - Cideapps_Gp_i18n. Defines internationalization functionality.
 	 * - Cideapps_Gp_Admin. Defines all hooks for the admin area.
 	 * - Cideapps_Gp_Public. Defines all hooks for the public side of the site.
 	 *
@@ -108,12 +108,6 @@ class Cideapps_Gp {
 		 * core plugin.
 		 */
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-cideapps-gp-loader.php';
-
-		/**
-		 * The class responsible for defining internationalization functionality
-		 * of the plugin.
-		 */
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-cideapps-gp-i18n.php';
 
 		/**
 		 * Native meta infrastructure (Phase 0 migration from CMB2).
@@ -163,23 +157,6 @@ class Cideapps_Gp {
 
 		$plugin_meta_registry = new Cideapps_Gp_Meta_Registry();
 		$this->loader->add_action( 'init', $plugin_meta_registry, 'register', 20 );
-
-	}
-
-	/**
-	 * Define the locale for this plugin for internationalization.
-	 *
-	 * Uses the Cideapps_Gp_i18n class in order to set the domain and to register the hook
-	 * with WordPress.
-	 *
-	 * @since    1.0.0
-	 * @access   private
-	 */
-	private function set_locale() {
-
-		$plugin_i18n = new Cideapps_Gp_i18n();
-
-		$this->loader->add_action( 'init', $plugin_i18n, 'load_plugin_textdomain', 0 );
 
 	}
 

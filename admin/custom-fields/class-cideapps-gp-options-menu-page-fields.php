@@ -10,6 +10,8 @@
  * @subpackage Cideapps_Gp/admin/custom-fields
  */
 
+defined( 'ABSPATH' ) || exit;
+
 /**
  * Coordinates theme options, settings submenu, and reverse geocoding AJAX.
  *

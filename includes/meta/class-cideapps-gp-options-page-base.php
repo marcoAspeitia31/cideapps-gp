@@ -8,6 +8,8 @@
  * @since      1.4.0
  */
 
+defined( 'ABSPATH' ) || exit;
+
 /**
  * Registers and renders a plugin options page stored as a single array option.
  *
@@ -740,7 +742,7 @@ abstract class Cideapps_Gp_Options_Page_Base {
 					'https://maps.googleapis.com/maps/api/js'
 				),
 				array(),
-				null,
+				$version,
 				true
 			);
 			$map_deps[] = 'cagp-google-maps-api';
